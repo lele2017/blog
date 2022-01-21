@@ -1,6 +1,6 @@
 {
-  "name": "wolanx's blog",
-  "short_name": "wolanx's blog",
+  "name": "wolanx",
+  "short_name": "wolanx",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
