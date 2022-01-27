@@ -1,0 +1,190 @@
+<!doctype html><html lang=en-us dir=ltr>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="Intro #  重学算法，之前停留在学习基本思想比如 leetcode#704，但是问题衍生出来的实际问题直接看不懂 leetcode#475。 重新以实际题的方式去了解
+二分 #   单调性 000111找突变边界 使用主动与被动不同的视角看     704. 二分查找 https://leetcode-cn.com/problems/binary-search/
+  278. 第一个错误的版本 https://leetcode-cn.com/problems/first-bad-version/
+  475. 供暖器 https://leetcode-cn.com/problems/heaters/
+  540. 有序数组中的单一元素 https://leetcode-cn.com/problems/single-element-in-a-sorted-array/
+  240. 搜索二维矩阵 II https://leetcode-cn.com/problems/search-a-2d-matrix-ii/
+  875. 爱吃香蕉的珂珂 https://leetcode-cn.com/problems/koko-eating-bananas/
+  611. 有效三角形的个数 https://leetcode-cn.com/problems/valid-triangle-number/
+  1760. 袋子里最少数目的球 https://leetcode-cn.com/problems/minimum-limit-of-balls-in-a-bag/
+  300. 最长递增子序列 https://leetcode-cn.com/problems/longest-increasing-subsequence/
+  1011. 在 D 天内送达包裹的能力 https://leetcode-cn.com/problems/capacity-to-ship-packages-within-d-days/
+  动态规划 #  ">
+<meta name=theme-color content="#FFFFFF">
+<meta name=color-scheme content="light dark"><meta property="og:title" content="算法总结">
+<meta property="og:description" content="Intro #  重学算法，之前停留在学习基本思想比如 leetcode#704，但是问题衍生出来的实际问题直接看不懂 leetcode#475。 重新以实际题的方式去了解
+二分 #   单调性 000111找突变边界 使用主动与被动不同的视角看     704. 二分查找 https://leetcode-cn.com/problems/binary-search/
+  278. 第一个错误的版本 https://leetcode-cn.com/problems/first-bad-version/
+  475. 供暖器 https://leetcode-cn.com/problems/heaters/
+  540. 有序数组中的单一元素 https://leetcode-cn.com/problems/single-element-in-a-sorted-array/
+  240. 搜索二维矩阵 II https://leetcode-cn.com/problems/search-a-2d-matrix-ii/
+  875. 爱吃香蕉的珂珂 https://leetcode-cn.com/problems/koko-eating-bananas/
+  611. 有效三角形的个数 https://leetcode-cn.com/problems/valid-triangle-number/
+  1760. 袋子里最少数目的球 https://leetcode-cn.com/problems/minimum-limit-of-balls-in-a-bag/
+  300. 最长递增子序列 https://leetcode-cn.com/problems/longest-increasing-subsequence/
+  1011. 在 D 天内送达包裹的能力 https://leetcode-cn.com/problems/capacity-to-ship-packages-within-d-days/
+  动态规划 #  ">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://wolanx.com/posts/algo/algo/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2022-01-25T12:00:00+08:00">
+<meta property="article:modified_time" content="2022-01-25T12:00:00+08:00">
+<title>算法总结 | wolanx</title>
+<link rel=manifest href=/manifest.json>
+<link rel=icon href=/favicon.png type=image/x-icon>
+<link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous>
+<script defer src=/flexsearch.min.js></script>
+<script defer src=/en.search.min.9994ed01461c8cbfc91a200533697c03cb941057a80051b934c54db24fc5aa0b.js integrity="sha256-mZTtAUYcjL/JGiAFM2l8A8uUEFeoAFG5NMVNsk/Fqgs=" crossorigin=anonymous></script>
+</head>
+<body dir=ltr>
+<input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control>
+<main class="container flex">
+<aside class=book-menu>
+<div class=book-menu-content>
+<nav>
+<h2 class=book-brand>
+<a class="flex align-center" href=/><span>wolanx</span>
+</a>
+</h2>
+<div class=book-search>
+<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
+<div class="book-search-spinner hidden"></div>
+<ul id=book-search-results></ul>
+</div>
+<ul>
+<li>
+<a href=/projects/>
+Project
+</a>
+</li>
+<li>
+<a href=https://github.com/wolanx target=_blank rel=noopener>
+Github
+</a>
+</li>
+</ul>
+</nav>
+<script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+</div>
+</aside>
+<div class=book-page>
+<header class=book-header>
+<div class="flex align-center justify-between">
+<label for=menu-control>
+<img src=/svg/menu.svg class=book-icon alt=Menu>
+</label>
+<strong>算法总结</strong>
+<label for=toc-control>
+<img src=/svg/toc.svg class=book-icon alt="Table of Contents">
+</label>
+</div>
+<aside class="hidden clearfix">
+<nav id=TableOfContents>
+<ul>
+<li><a href=#intro>Intro</a></li>
+<li><a href=#二分>二分</a>
+<ul>
+<li><a href=#动态规划>动态规划</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</aside>
+</header>
+<article class=markdown>
+<h1>
+<a href=/posts/algo/algo/>算法总结</a>
+</h1>
+<h5>2022-01-25 12:00:00</h5>
+<div>
+<a href=/categories/algo/>algo</a>
+</div>
+<h2 id=intro>
+Intro
+<a class=anchor href=#intro>#</a>
+</h2>
+<p>重学算法，之前停留在学习基本思想比如 leetcode#704，但是问题衍生出来的实际问题直接看不懂 leetcode#475。
+重新以实际题的方式去了解</p>
+<h2 id=二分>
+二分
+<a class=anchor href=#%e4%ba%8c%e5%88%86>#</a>
+</h2>
+<ul>
+<li>单调性</li>
+<li>000111找突变边界</li>
+<li>使用主动与被动不同的视角看</li>
+</ul>
+<hr>
+<ul>
+<li>
+<p><input checked disabled type=checkbox> 704. 二分查找 <a href=https://leetcode-cn.com/problems/binary-search/>https://leetcode-cn.com/problems/binary-search/</a></p>
+</li>
+<li>
+<p><input checked disabled type=checkbox> 278. 第一个错误的版本 <a href=https://leetcode-cn.com/problems/first-bad-version/>https://leetcode-cn.com/problems/first-bad-version/</a></p>
+</li>
+<li>
+<p><input checked disabled type=checkbox> 475. 供暖器 <a href=https://leetcode-cn.com/problems/heaters/>https://leetcode-cn.com/problems/heaters/</a></p>
+</li>
+<li>
+<p><input checked disabled type=checkbox> 540. 有序数组中的单一元素 <a href=https://leetcode-cn.com/problems/single-element-in-a-sorted-array/>https://leetcode-cn.com/problems/single-element-in-a-sorted-array/</a></p>
+</li>
+<li>
+<p><input checked disabled type=checkbox> 240. 搜索二维矩阵 II <a href=https://leetcode-cn.com/problems/search-a-2d-matrix-ii/>https://leetcode-cn.com/problems/search-a-2d-matrix-ii/</a></p>
+</li>
+<li>
+<p><input checked disabled type=checkbox> 875. 爱吃香蕉的珂珂 <a href=https://leetcode-cn.com/problems/koko-eating-bananas/>https://leetcode-cn.com/problems/koko-eating-bananas/</a></p>
+</li>
+<li>
+<p><input disabled type=checkbox> 611. 有效三角形的个数 <a href=https://leetcode-cn.com/problems/valid-triangle-number/>https://leetcode-cn.com/problems/valid-triangle-number/</a></p>
+</li>
+<li>
+<p><input disabled type=checkbox> 1760. 袋子里最少数目的球 <a href=https://leetcode-cn.com/problems/minimum-limit-of-balls-in-a-bag/>https://leetcode-cn.com/problems/minimum-limit-of-balls-in-a-bag/</a></p>
+</li>
+<li>
+<p><input disabled type=checkbox> 300. 最长递增子序列 <a href=https://leetcode-cn.com/problems/longest-increasing-subsequence/>https://leetcode-cn.com/problems/longest-increasing-subsequence/</a></p>
+</li>
+<li>
+<p><input disabled type=checkbox> 1011. 在 D 天内送达包裹的能力 <a href=https://leetcode-cn.com/problems/capacity-to-ship-packages-within-d-days/>https://leetcode-cn.com/problems/capacity-to-ship-packages-within-d-days/</a></p>
+</li>
+</ul>
+<h3 id=动态规划>
+动态规划
+<a class=anchor href=#%e5%8a%a8%e6%80%81%e8%a7%84%e5%88%92>#</a>
+</h3>
+</article>
+<footer class=book-footer>
+<div class="flex flex-wrap justify-between">
+<div>
+<a class="flex align-center" href=https://github.com/wolanx/blog/edit/main/content/posts/algo/algo.md target=_blank rel=noopener>
+<img src=/svg/edit.svg class=book-icon alt=Edit>
+<span>Edit this page</span>
+</a>
+</div>
+</div>
+<script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+</footer>
+<div class=book-comments>
+</div>
+<label for=menu-control class="hidden book-menu-overlay"></label>
+</div>
+<aside class=book-toc>
+<div class=book-toc-content>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#intro>Intro</a></li>
+<li><a href=#二分>二分</a>
+<ul>
+<li><a href=#动态规划>动态规划</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</aside>
+</main>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>algo on wolanx</title><link>https://wolanx.com/categories/algo/</link><description>Recent content in algo on wolanx</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 25 Jan 2022 12:00:00 +0800</lastBuildDate><atom:link href="https://wolanx.com/categories/algo/index.xml" rel="self" type="application/rss+xml"/><item><title>算法总结</title><link>https://wolanx.com/posts/algo/algo/</link><pubDate>Tue, 25 Jan 2022 12:00:00 +0800</pubDate><guid>https://wolanx.com/posts/algo/algo/</guid><description>Intro # 重学算法，之前停留在学习基本思想比如 leetcode#704，但是问题衍生出来的实际问题直接看不懂 leetcode#475。 重新以实际题的方式去了解
+二分 # 单调性 000111找突变边界 使用主动与被动不同的视角看 704. 二分查找 https://leetcode-cn.com/problems/binary-search/
+278. 第一个错误的版本 https://leetcode-cn.com/problems/first-bad-version/
+475. 供暖器 https://leetcode-cn.com/problems/heaters/
+540. 有序数组中的单一元素 https://leetcode-cn.com/problems/single-element-in-a-sorted-array/
+240. 搜索二维矩阵 II https://leetcode-cn.com/problems/search-a-2d-matrix-ii/
+875. 爱吃香蕉的珂珂 https://leetcode-cn.com/problems/koko-eating-bananas/
+611. 有效三角形的个数 https://leetcode-cn.com/problems/valid-triangle-number/
+1760. 袋子里最少数目的球 https://leetcode-cn.com/problems/minimum-limit-of-balls-in-a-bag/
+300. 最长递增子序列 https://leetcode-cn.com/problems/longest-increasing-subsequence/
+1011. 在 D 天内送达包裹的能力 https://leetcode-cn.com/problems/capacity-to-ship-packages-within-d-days/
+动态规划 #</description></item></channel></rss>

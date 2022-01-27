@@ -1,0 +1,161 @@
+<!doctype html><html lang=en-us dir=ltr>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="Intro #  快速可自定义的虚拟机，几行命令搞定，不用再设置一堆东西。 自定义文件Vagrantfile实现环境重复利用 https://www.vagrantup.com/intro
+Install #  https://www.vagrantup.com/downloads # wget https://releases.hashicorp.com/vagrant/2.2.19/vagrant_2.2.19_x86_64.msi Start #  vagrant init generic/alpine312 # https://vagrantcloud.com/search vagrant up --provider=hyperv # start vagrant halt # stop vagrant ssh vagrant destroy # delete Other #  vagrant box list # list image vagrant global-status # list vm vagrant destroy 1a2b3c4d # 手动下包 wget https://app.vagrantup.com/generic/boxes/alpine312/versions/3.6.4/providers/hyperv.box vagrant box add my/alpine312 hyperv.box # 127.0.0.1:2222 # root vagrant Vagrantfile #  # touch Vagrantfile Vagrant.">
+<meta name=theme-color content="#FFFFFF">
+<meta name=color-scheme content="light dark"><meta property="og:title" content="vagrant">
+<meta property="og:description" content="Intro #  快速可自定义的虚拟机，几行命令搞定，不用再设置一堆东西。 自定义文件Vagrantfile实现环境重复利用 https://www.vagrantup.com/intro
+Install #  https://www.vagrantup.com/downloads # wget https://releases.hashicorp.com/vagrant/2.2.19/vagrant_2.2.19_x86_64.msi Start #  vagrant init generic/alpine312 # https://vagrantcloud.com/search vagrant up --provider=hyperv # start vagrant halt # stop vagrant ssh vagrant destroy # delete Other #  vagrant box list # list image vagrant global-status # list vm vagrant destroy 1a2b3c4d # 手动下包 wget https://app.vagrantup.com/generic/boxes/alpine312/versions/3.6.4/providers/hyperv.box vagrant box add my/alpine312 hyperv.box # 127.0.0.1:2222 # root vagrant Vagrantfile #  # touch Vagrantfile Vagrant.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://wolanx.com/posts/tool/vagrant/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2022-01-10T12:00:00+08:00">
+<meta property="article:modified_time" content="2022-01-10T12:00:00+08:00">
+<title>vagrant | wolanx</title>
+<link rel=manifest href=/manifest.json>
+<link rel=icon href=/favicon.png type=image/x-icon>
+<link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous>
+<script defer src=/flexsearch.min.js></script>
+<script defer src=/en.search.min.9994ed01461c8cbfc91a200533697c03cb941057a80051b934c54db24fc5aa0b.js integrity="sha256-mZTtAUYcjL/JGiAFM2l8A8uUEFeoAFG5NMVNsk/Fqgs=" crossorigin=anonymous></script>
+</head>
+<body dir=ltr>
+<input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control>
+<main class="container flex">
+<aside class=book-menu>
+<div class=book-menu-content>
+<nav>
+<h2 class=book-brand>
+<a class="flex align-center" href=/><span>wolanx</span>
+</a>
+</h2>
+<div class=book-search>
+<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
+<div class="book-search-spinner hidden"></div>
+<ul id=book-search-results></ul>
+</div>
+<ul>
+<li>
+<a href=/projects/>
+Project
+</a>
+</li>
+<li>
+<a href=https://github.com/wolanx target=_blank rel=noopener>
+Github
+</a>
+</li>
+</ul>
+</nav>
+<script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+</div>
+</aside>
+<div class=book-page>
+<header class=book-header>
+<div class="flex align-center justify-between">
+<label for=menu-control>
+<img src=/svg/menu.svg class=book-icon alt=Menu>
+</label>
+<strong>vagrant</strong>
+<label for=toc-control>
+<img src=/svg/toc.svg class=book-icon alt="Table of Contents">
+</label>
+</div>
+<aside class="hidden clearfix">
+<nav id=TableOfContents>
+<ul>
+<li><a href=#intro>Intro</a></li>
+<li><a href=#install>Install</a></li>
+<li><a href=#start>Start</a></li>
+<li><a href=#other>Other</a></li>
+<li><a href=#vagrantfile>Vagrantfile</a></li>
+</ul>
+</nav>
+</aside>
+</header>
+<article class=markdown>
+<h1>
+<a href=/posts/tool/vagrant/>vagrant</a>
+</h1>
+<h5>2022-01-10 12:00:00</h5>
+<div>
+<a href=/categories/tool/>tool</a>,
+<a href=/categories/liunx/>liunx</a>
+</div>
+<h2 id=intro>
+Intro
+<a class=anchor href=#intro>#</a>
+</h2>
+<p>快速可自定义的虚拟机，几行命令搞定，不用再设置一堆东西。
+自定义文件Vagrantfile实现环境重复利用 <a href=https://www.vagrantup.com/intro>https://www.vagrantup.com/intro</a></p>
+<h2 id=install>
+Install
+<a class=anchor href=#install>#</a>
+</h2>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>https://www.vagrantup.com/downloads
+<span style=color:#75715e># wget https://releases.hashicorp.com/vagrant/2.2.19/vagrant_2.2.19_x86_64.msi</span>
+</code></pre></div><h2 id=start>
+Start
+<a class=anchor href=#start>#</a>
+</h2>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>vagrant init generic/alpine312  <span style=color:#75715e># https://vagrantcloud.com/search</span>
+
+vagrant up --provider<span style=color:#f92672>=</span>hyperv    <span style=color:#75715e># start</span>
+vagrant halt                    <span style=color:#75715e># stop</span>
+
+vagrant ssh
+
+vagrant destroy <span style=color:#75715e># delete</span>
+</code></pre></div><h2 id=other>
+Other
+<a class=anchor href=#other>#</a>
+</h2>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>vagrant box list                <span style=color:#75715e># list image</span>
+vagrant global-status           <span style=color:#75715e># list vm</span>
+vagrant destroy 1a2b3c4d
+
+<span style=color:#75715e># 手动下包 wget https://app.vagrantup.com/generic/boxes/alpine312/versions/3.6.4/providers/hyperv.box</span>
+vagrant box add my/alpine312 hyperv.box
+
+<span style=color:#75715e># 127.0.0.1:2222 # root vagrant</span>
+</code></pre></div><h2 id=vagrantfile>
+Vagrantfile
+<a class=anchor href=#vagrantfile>#</a>
+</h2>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby><span style=color:#75715e># touch Vagrantfile</span>
+<span style=color:#66d9ef>Vagrant</span><span style=color:#f92672>.</span>configure(<span style=color:#e6db74>&#34;2&#34;</span>) <span style=color:#66d9ef>do</span> <span style=color:#f92672>|</span>config<span style=color:#f92672>|</span>
+  config<span style=color:#f92672>.</span>vm<span style=color:#f92672>.</span>box <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;generic/alpine312&#34;</span>
+<span style=color:#66d9ef>end</span>
+</code></pre></div></article>
+<footer class=book-footer>
+<div class="flex flex-wrap justify-between">
+<div>
+<a class="flex align-center" href=https://github.com/wolanx/blog/edit/main/content/posts/tool/vagrant.md target=_blank rel=noopener>
+<img src=/svg/edit.svg class=book-icon alt=Edit>
+<span>Edit this page</span>
+</a>
+</div>
+</div>
+<script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+</footer>
+<div class=book-comments>
+</div>
+<label for=menu-control class="hidden book-menu-overlay"></label>
+</div>
+<aside class=book-toc>
+<div class=book-toc-content>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#intro>Intro</a></li>
+<li><a href=#install>Install</a></li>
+<li><a href=#start>Start</a></li>
+<li><a href=#other>Other</a></li>
+<li><a href=#vagrantfile>Vagrantfile</a></li>
+</ul>
+</nav>
+</div>
+</aside>
+</main>
+</body>
+</html>
