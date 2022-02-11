@@ -1,0 +1,162 @@
+<!doctype html><html lang=en-us dir=ltr>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="2019.04.04 #  FROM php:7.1.11-fpm-alpine RUN apk add --no-cache freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev \  && apk add --no-cache --virtual .build-deps autoconf g++ libssh2 openssl openssl-dev make pcre-dev tree curl \  && apk add --no-cache postgresql-dev \  && docker-php-ext-configure gd \  --with-gd \  --with-freetype-dir=/usr/include/ \  --with-png-dir=/usr/include/ \  --with-jpeg-dir=/usr/include/ \  && pecl install mongodb-1.5.2 redis apcu xdebug \  && docker-php-ext-enable mongodb redis apcu xdebug \  && docker-php-ext-install gd pdo_mysql opcache bcmath pgsql pdo_pgsql zip sockets \  && apk del .">
+<meta name=theme-color content="#FFFFFF">
+<meta name=color-scheme content="light dark"><meta property="og:title" content="php Dockerfile">
+<meta property="og:description" content="2019.04.04 #  FROM php:7.1.11-fpm-alpine RUN apk add --no-cache freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev \  && apk add --no-cache --virtual .build-deps autoconf g++ libssh2 openssl openssl-dev make pcre-dev tree curl \  && apk add --no-cache postgresql-dev \  && docker-php-ext-configure gd \  --with-gd \  --with-freetype-dir=/usr/include/ \  --with-png-dir=/usr/include/ \  --with-jpeg-dir=/usr/include/ \  && pecl install mongodb-1.5.2 redis apcu xdebug \  && docker-php-ext-enable mongodb redis apcu xdebug \  && docker-php-ext-install gd pdo_mysql opcache bcmath pgsql pdo_pgsql zip sockets \  && apk del .">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://wolanx.com/posts/docker/php.dockerfile/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2018-03-22T00:00:00+00:00">
+<meta property="article:modified_time" content="2018-03-22T00:00:00+00:00">
+<title>php Dockerfile | wolanx</title>
+<link rel=manifest href=/manifest.json>
+<link rel=icon href=/favicon.png type=image/x-icon>
+<link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous>
+<script defer src=/flexsearch.min.js></script>
+<script defer src=/en.search.min.d3a53fd4695200ed07c1eb4fcd021d7784044b549b225db278079ee93272b4c2.js integrity="sha256-06U/1GlSAO0HwetPzQIdd4QES1SbIl2yeAee6TJytMI=" crossorigin=anonymous></script>
+</head>
+<body dir=ltr>
+<input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control>
+<main class="container flex">
+<aside class=book-menu>
+<div class=book-menu-content>
+<nav>
+<h2 class=book-brand>
+<a class="flex align-center" href=/><span>wolanx</span>
+</a>
+</h2>
+<div class=book-search>
+<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
+<div class="book-search-spinner hidden"></div>
+<ul id=book-search-results></ul>
+</div>
+<ul>
+<li>
+<a href=/projects/>
+Project
+</a>
+</li>
+<li>
+<a href=https://github.com/wolanx target=_blank rel=noopener>
+Github
+</a>
+</li>
+</ul>
+</nav>
+<script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+</div>
+</aside>
+<div class=book-page>
+<header class=book-header>
+<div class="flex align-center justify-between">
+<label for=menu-control>
+<img src=/svg/menu.svg class=book-icon alt=Menu>
+</label>
+<strong>php Dockerfile</strong>
+<label for=toc-control>
+<img src=/svg/toc.svg class=book-icon alt="Table of Contents">
+</label>
+</div>
+<aside class="hidden clearfix">
+<nav id=TableOfContents></nav>
+</aside>
+</header>
+<article class=markdown>
+<h1>
+<a href=/posts/docker/php.dockerfile/>php Dockerfile</a>
+</h1>
+<h5>2018-03-22 00:00:00</h5>
+<div>
+<a href=/categories/docker/>docker</a>
+</div>
+<h1 id=20190404>
+2019.04.04
+<a class=anchor href=#20190404>#</a>
+</h1>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>FROM php:7.1.11-fpm-alpine
+
+RUN apk add --no-cache freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>    <span style=color:#f92672>&amp;&amp;</span> apk add --no-cache --virtual .build-deps autoconf g++ libssh2 openssl openssl-dev make pcre-dev tree curl <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>    <span style=color:#f92672>&amp;&amp;</span> apk add --no-cache postgresql-dev <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>    <span style=color:#f92672>&amp;&amp;</span> docker-php-ext-configure gd <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>        --with-gd <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>        --with-freetype-dir<span style=color:#f92672>=</span>/usr/include/ <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>        --with-png-dir<span style=color:#f92672>=</span>/usr/include/ <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>        --with-jpeg-dir<span style=color:#f92672>=</span>/usr/include/ <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>    <span style=color:#f92672>&amp;&amp;</span> pecl install mongodb-1.5.2 redis apcu xdebug <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>    <span style=color:#f92672>&amp;&amp;</span> docker-php-ext-enable mongodb redis apcu xdebug <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>    <span style=color:#f92672>&amp;&amp;</span> docker-php-ext-install gd pdo_mysql opcache bcmath pgsql pdo_pgsql zip sockets <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>    <span style=color:#f92672>&amp;&amp;</span> apk del .build-deps <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>    <span style=color:#f92672>&amp;&amp;</span> pecl clear-cache <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>    <span style=color:#f92672>&amp;&amp;</span> docker-php-source delete
+
+RUN curl https://getcomposer.org/composer.phar -o /usr/local/bin/composer <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>    <span style=color:#f92672>&amp;&amp;</span> chmod +x /usr/local/bin/composer <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>    <span style=color:#f92672>&amp;&amp;</span> mkdir -p /var/runtime <span style=color:#f92672>&amp;&amp;</span> chmod -R <span style=color:#ae81ff>777</span> /var/runtime <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>    <span style=color:#f92672>&amp;&amp;</span> alias ll<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;ls -l&#39;</span>
+
+<span style=color:#75715e># COPY __cicd__/php/php.ini /usr/local/etc/php/</span>
+<span style=color:#75715e># COPY __cicd__/php/www.conf /usr/local/etc/php-fpm.d/</span>
+<span style=color:#75715e># docker build -f Dockerfile.php -t zx5435/php:7.1.11 .</span>
+</code></pre></div><h1 id=20190307-error>
+2019.03.07 error
+<a class=anchor href=#20190307-error>#</a>
+</h1>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>librabbitmq
+pecl install amqp
+composer config -g repo.packagist composer https://packagist.phpcomposer.com
+</code></pre></div><h1 id=20181009-bitdata>
+2018.10.09 bitdata
+<a class=anchor href=#20181009-bitdata>#</a>
+</h1>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>FROM php:7.1.10-fpm-alpine
+
+RUN apk add --no-cache freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>    <span style=color:#f92672>&amp;&amp;</span> apk add --no-cache --virtual .build-deps autoconf g++ libssh2 openssl openssl-dev make pcre-dev <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>    <span style=color:#f92672>&amp;&amp;</span> apk add --no-cache postgresql-dev <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>    <span style=color:#f92672>&amp;&amp;</span> docker-php-ext-configure gd <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>        --with-gd <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>        --with-freetype-dir<span style=color:#f92672>=</span>/usr/include/ <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>        --with-png-dir<span style=color:#f92672>=</span>/usr/include/ <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>        --with-jpeg-dir<span style=color:#f92672>=</span>/usr/include/ <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>    <span style=color:#f92672>&amp;&amp;</span> pecl install mongodb-1.5.2 redis apcu xdebug <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>    <span style=color:#f92672>&amp;&amp;</span> docker-php-ext-enable mongodb redis apcu xdebug <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>    <span style=color:#f92672>&amp;&amp;</span> docker-php-ext-install gd pdo_mysql opcache bcmath pgsql pdo_pgsql zip <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>    <span style=color:#f92672>&amp;&amp;</span> apk del .build-deps <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>    <span style=color:#f92672>&amp;&amp;</span> pecl clear-cache <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>    <span style=color:#f92672>&amp;&amp;</span> docker-php-source delete
+
+RUN curl https://getcomposer.org/composer.phar -o /usr/local/bin/composer <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>    <span style=color:#f92672>&amp;&amp;</span> chmod +x /usr/local/bin/composer <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>    <span style=color:#f92672>&amp;&amp;</span> mkdir -p /var/runtime <span style=color:#f92672>&amp;&amp;</span> chmod -R <span style=color:#ae81ff>777</span> /var/runtime
+
+<span style=color:#75715e># COPY __cicd__/php/php.ini /usr/local/etc/php/</span>
+<span style=color:#75715e># COPY __cicd__/php/www.conf /usr/local/etc/php-fpm.d/</span>
+<span style=color:#75715e># docker build -f __cicd__/php/Dockerfile.runtime -t zx5435/php:7.1.10 .</span>
+</code></pre></div></article>
+<footer class=book-footer>
+<div class="flex flex-wrap justify-between">
+<div>
+<a class="flex align-center" href=https://github.com/wolanx/blog/edit/main/content/posts/docker/php.Dockerfile.md target=_blank rel=noopener>
+<img src=/svg/edit.svg class=book-icon alt=Edit>
+<span>Edit this page</span>
+</a>
+</div>
+</div>
+<script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+</footer>
+<div class=book-comments>
+</div>
+<label for=menu-control class="hidden book-menu-overlay"></label>
+</div>
+<aside class=book-toc>
+<div class=book-toc-content>
+<nav id=TableOfContents></nav>
+</div>
+</aside>
+</main>
+</body>
+</html>
