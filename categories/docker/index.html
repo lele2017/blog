@@ -13,7 +13,7 @@
 <link rel=icon href=/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous>
 <script defer src=/flexsearch.min.js></script>
-<script defer src=/en.search.min.d3a53fd4695200ed07c1eb4fcd021d7784044b549b225db278079ee93272b4c2.js integrity="sha256-06U/1GlSAO0HwetPzQIdd4QES1SbIl2yeAee6TJytMI=" crossorigin=anonymous></script>
+<script defer src=/en.search.min.df7cd563e18b31b0fe3891fa05707e910ba3c4bb46d82aeb2b975391619c45d3.js integrity="sha256-33zVY+GLMbD+OJH6BXB+kQujxLtG2CrrK5dTkWGcRdM=" crossorigin=anonymous></script>
 <link rel=alternate type=application/rss+xml href=https://wolanx.com/categories/docker/index.xml title=wolanx>
 </head>
 <body dir=ltr>
@@ -34,13 +34,13 @@
 </div>
 <ul>
 <li>
-<a href=/projects/>
-Project
+<a href=/posts/>
+Blog
 </a>
 </li>
 <li>
-<a href=https://github.com/wolanx target=_blank rel=noopener>
-Github
+<a href=/projects/>
+Project
 </a>
 </li>
 </ul>
@@ -66,6 +66,14 @@ Github
 <strong>Categories</strong>
 <ul>
 <li class="flex justify-between">
+<a href=/categories/docker/>docker</a>
+<span>2</span>
+</li>
+<li class="flex justify-between">
+<a href=/categories/csdn/>csdn</a>
+<span>3</span>
+</li>
+<li class="flex justify-between">
 <a href=/categories/algo/>algo</a>
 <span>1</span>
 </li>
@@ -75,10 +83,6 @@ Github
 </li>
 <li class="flex justify-between">
 <a href=/categories/liunx/>liunx</a>
-<span>1</span>
-</li>
-<li class="flex justify-between">
-<a href=/categories/docker/>docker</a>
 <span>1</span>
 </li>
 </ul>
@@ -92,6 +96,18 @@ Github
 </nav>
 </aside>
 </header>
+<article class="markdown book-post">
+<h2>
+<a href=/posts/docker/python.dockerfile/>python Dockerfile</a>
+</h2>
+<h5>2022-02-11 22:17:51</h5>
+<div>
+<a href=/categories/docker/>docker</a>
+</div>
+<p>FROMpython:3.10.0-slimRUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list \ && sed -i 's/security.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.listRUN mkdir ~/.pip \ && echo '[global]\n \ trusted-host=mirrors.aliyun.com\n \ index-url=https://mirrors.aliyun.com/pypi/simple\n \ ' > ~/.pip/pip.confRUN apt-get update -y \ && apt-get install -y gcc curl \ && apt-get install -y --no-install-recommends vim tree \ && rm -rf /var/lib/apt/lists/*RUN curl -s -L -o ~/rocketmq-client-cpp-2.0.0.amd64.deb \ 'https://github.com.cnpmjs.org/apache/rocketmq-client-cpp/releases/download/2.0.0/rocketmq-client-cpp-2.0.0.amd64.deb' \ && dpkg -i ~/rocketmq-client-cpp-2.0.0.amd64.deb \ && rm -f ~/rocketmq-client-cpp-2.
+<a href=/posts/docker/python.dockerfile/>...</a>
+</p>
+</article>
 <article class="markdown book-post">
 <h2>
 <a href=/posts/docker/php.dockerfile/>php Dockerfile</a>
@@ -119,6 +135,14 @@ Github
 <strong>Categories</strong>
 <ul>
 <li class="flex justify-between">
+<a href=/categories/docker/>docker</a>
+<span>2</span>
+</li>
+<li class="flex justify-between">
+<a href=/categories/csdn/>csdn</a>
+<span>3</span>
+</li>
+<li class="flex justify-between">
 <a href=/categories/algo/>algo</a>
 <span>1</span>
 </li>
@@ -128,10 +152,6 @@ Github
 </li>
 <li class="flex justify-between">
 <a href=/categories/liunx/>liunx</a>
-<span>1</span>
-</li>
-<li class="flex justify-between">
-<a href=/categories/docker/>docker</a>
 <span>1</span>
 </li>
 </ul>

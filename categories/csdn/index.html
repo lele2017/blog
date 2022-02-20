@@ -4,17 +4,17 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=description content>
 <meta name=theme-color content="#FFFFFF">
-<meta name=color-scheme content="light dark"><meta property="og:title" content="Categories">
+<meta name=color-scheme content="light dark"><meta property="og:title" content="csdn">
 <meta property="og:description" content>
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://wolanx.com/categories/">
-<title>Categories | wolanx</title>
+<meta property="og:url" content="https://wolanx.com/categories/csdn/">
+<title>csdn | wolanx</title>
 <link rel=manifest href=/manifest.json>
 <link rel=icon href=/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous>
 <script defer src=/flexsearch.min.js></script>
 <script defer src=/en.search.min.df7cd563e18b31b0fe3891fa05707e910ba3c4bb46d82aeb2b975391619c45d3.js integrity="sha256-33zVY+GLMbD+OJH6BXB+kQujxLtG2CrrK5dTkWGcRdM=" crossorigin=anonymous></script>
-<link rel=alternate type=application/rss+xml href=https://wolanx.com/categories/index.xml title=wolanx>
+<link rel=alternate type=application/rss+xml href=https://wolanx.com/categories/csdn/index.xml title=wolanx>
 </head>
 <body dir=ltr>
 <input type=checkbox class="hidden toggle" id=menu-control>
@@ -54,7 +54,7 @@ Project
 <label for=menu-control>
 <img src=/svg/menu.svg class=book-icon alt=Menu>
 </label>
-<strong>Categories</strong>
+<strong>csdn</strong>
 <label for=toc-control>
 <img src=/svg/toc.svg class=book-icon alt="Table of Contents">
 </label>
@@ -98,42 +98,43 @@ Project
 </header>
 <article class="markdown book-post">
 <h2>
-<a href=/categories/docker/>docker</a>
-</h2>
-<h5>2022-02-11 22:17:51</h5>
-<p>
-</p>
-</article>
-<article class="markdown book-post">
-<h2>
-<a href=/categories/csdn/>csdn</a>
+<a href=/posts/article/hugo-+-github-action-%E5%85%8D%E8%B4%B9%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A22022%E7%89%88/>hugo + github action 免费个人博客【2022版】</a>
 </h2>
 <h5>2022-02-11 17:44:26</h5>
-<p>
+<div>
+<a href=/categories/csdn/>csdn</a>
+</div>
+<p>https://blog.csdn.net/wolanx/article/details/122857729 Intro # 免费个人博客 的教程非常的 多，但大多面向 纯小白，反而对有一定基础的同学显得 落后 + 啰嗦，本文整合目前已知最好的方式，最快捷优雅的搞定一个博客，并给出 常见错误。
+知识点 # hugo 的安装及使用不是本文重点，其实同理 hexo git github 默认已掌握 github page 生成可访问的页面的 灵魂 所在 github action 自动生成上一步 完整链路解析 # git commit 提交 触发 github action .github/workflows/my-pipeline.yml 并满足设置中的 on 条件 触发 pipeline 中的 steps checkout：相当与 git clone，并且后续操作具有 github 完整权限，可以通过 permissions 设置 setup hugo：准备构建要求，安装对应版本，注意是否需要 extended build：构建出静态文件，并输出到 public 文件夹 deploy：该插件来自 插件市场 自动创建分支 gh-pages 自动 copy public 到新分支 自动提交 自动生成 CNAME 文件，根据 cname 设置，想要 自定义域名 的注意这里了 打开 https://github.
+<a href=/posts/article/hugo-+-github-action-%E5%85%8D%E8%B4%B9%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A22022%E7%89%88/>...</a>
 </p>
 </article>
 <article class="markdown book-post">
 <h2>
-<a href=/categories/algo/>algo</a>
+<a href=/posts/article/logfmt-python-%E5%AE%9E%E7%8E%B0/>logfmt python 实现</a>
 </h2>
-<h5>2022-01-25 12:00:00</h5>
-<p>
+<h5>2022-02-11 15:45:10</h5>
+<div>
+<a href=/categories/csdn/>csdn</a>
+</div>
+<p>https://blog.csdn.net/wolanx/article/details/122733747 Intro # 现在很多主流日志系统推崇 logfmt 格式，但是 python 中配套的不多，这边给个参考
+日志大概长这样
+# log.info("haha") time="2022-01-28T17:00:52+0800" type=default level=info method="a.py:82" msg="haha" # log.warning("no access") time="2022-01-28T17:00:52+0800" type=default level=warning method="a.py:83" msg="no access" 实现过程 # PiiLogger 继承 logging.Logger 绑定自定义的 formatter 清空原有 handler 否则会重复输出 把 formatter 注册给 handler hook 外层 变量 （如：每条log带上web请求的uuid） PiiLoggerFormatter 继承 logging.Formatter 实现 format 的 自定义，内嵌变量请参考 官方 LogRecord 属性 hook 外层 变量 外层变量的使用 # def getUUid(): v = None if has_request_context(): # 判断 flask web 的生命周期下 v = Pii.
+<a href=/posts/article/logfmt-python-%E5%AE%9E%E7%8E%B0/>...</a>
 </p>
 </article>
 <article class="markdown book-post">
 <h2>
-<a href=/categories/tool/>tool</a>
+<a href=/posts/article/python-%E4%BD%BF%E7%94%A8-reportlab-%E7%94%9F%E6%88%90-pdf/>python 使用 reportlab 生成 pdf</a>
 </h2>
-<h5>2022-01-20 22:17:51</h5>
-<p>
-</p>
-</article>
-<article class="markdown book-post">
-<h2>
-<a href=/categories/liunx/>liunx</a>
-</h2>
-<h5>2022-01-10 12:00:00</h5>
-<p>
+<h5>2022-02-09 15:30:51</h5>
+<div>
+<a href=/categories/csdn/>csdn</a>
+</div>
+<p>https://blog.csdn.net/wolanx/article/details/122828185 Intro # 项目中遇到需要 导出统计报表 等业务时，通常需要 pdf 格式。python 中比较有名的就是 reportlab 。 这边通过几个小 demo 快速演示常用 api。所有功能点 源码 都在 使用场景。
+一句话了解：跟 css 差不多，就是不断地对每样东西设置 style，然后把 style 和内容绑定。
+功能点 # 生成 文件： 先 SimpleDocTemplate(&lsquo;xxx.pdf&rsquo;)，然后 build 流文件：先 io.BytesIO() 生成句柄，然后同理 曲线图 LinePlot 饼图 Pie 文字 Paragraph fontSize 字体大小 推荐 14 加粗 &lt;b>xxx&lt;/b> 使用的是 html 的方式，字体自动实现 firstLineIndent 首行缩进 推荐 2 * fontSize leading 行间距 推荐 1.5 * fontSize fontName 默认中文会变成 ■ 下载 .
+<a href=/posts/article/python-%E4%BD%BF%E7%94%A8-reportlab-%E7%94%9F%E6%88%90-pdf/>...</a>
 </p>
 </article>
 <footer class=book-footer>

@@ -1,0 +1,254 @@
+<!doctype html><html lang=en-us dir=ltr>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="https://blog.csdn.net/wolanx/article/details/122733747  Intro #  现在很多主流日志系统推崇 logfmt 格式，但是 python 中配套的不多，这边给个参考
+日志大概长这样
+# log.info(&#34;haha&#34;) time=&#34;2022-01-28T17:00:52+0800&#34; type=default level=info method=&#34;a.py:82&#34; msg=&#34;haha&#34; # log.warning(&#34;no access&#34;) time=&#34;2022-01-28T17:00:52+0800&#34; type=default level=warning method=&#34;a.py:83&#34; msg=&#34;no access&#34; 实现过程 #   PiiLogger 继承 logging.Logger  绑定自定义的 formatter 清空原有 handler 否则会重复输出 把 formatter 注册给 handler hook 外层 变量 （如：每条log带上web请求的uuid）   PiiLoggerFormatter 继承 logging.Formatter  实现 format 的 自定义，内嵌变量请参考 官方 LogRecord 属性  hook 外层 变量    外层变量的使用 #  def getUUid(): v = None if has_request_context(): # 判断 flask web 的生命周期下 v = Pii.">
+<meta name=theme-color content="#FFFFFF">
+<meta name=color-scheme content="light dark"><meta property="og:title" content="logfmt python 实现">
+<meta property="og:description" content="https://blog.csdn.net/wolanx/article/details/122733747  Intro #  现在很多主流日志系统推崇 logfmt 格式，但是 python 中配套的不多，这边给个参考
+日志大概长这样
+# log.info(&#34;haha&#34;) time=&#34;2022-01-28T17:00:52+0800&#34; type=default level=info method=&#34;a.py:82&#34; msg=&#34;haha&#34; # log.warning(&#34;no access&#34;) time=&#34;2022-01-28T17:00:52+0800&#34; type=default level=warning method=&#34;a.py:83&#34; msg=&#34;no access&#34; 实现过程 #   PiiLogger 继承 logging.Logger  绑定自定义的 formatter 清空原有 handler 否则会重复输出 把 formatter 注册给 handler hook 外层 变量 （如：每条log带上web请求的uuid）   PiiLoggerFormatter 继承 logging.Formatter  实现 format 的 自定义，内嵌变量请参考 官方 LogRecord 属性  hook 外层 变量    外层变量的使用 #  def getUUid(): v = None if has_request_context(): # 判断 flask web 的生命周期下 v = Pii.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://wolanx.com/posts/article/logfmt-python-%E5%AE%9E%E7%8E%B0/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2022-02-11T15:45:10+08:00">
+<meta property="article:modified_time" content="2022-02-11T15:45:10+08:00">
+<title>logfmt python 实现 | wolanx</title>
+<link rel=manifest href=/manifest.json>
+<link rel=icon href=/favicon.png type=image/x-icon>
+<link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous>
+<script defer src=/flexsearch.min.js></script>
+<script defer src=/en.search.min.df7cd563e18b31b0fe3891fa05707e910ba3c4bb46d82aeb2b975391619c45d3.js integrity="sha256-33zVY+GLMbD+OJH6BXB+kQujxLtG2CrrK5dTkWGcRdM=" crossorigin=anonymous></script>
+</head>
+<body dir=ltr>
+<input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control>
+<main class="container flex">
+<aside class=book-menu>
+<div class=book-menu-content>
+<nav>
+<h2 class=book-brand>
+<a class="flex align-center" href=/><span>wolanx</span>
+</a>
+</h2>
+<div class=book-search>
+<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
+<div class="book-search-spinner hidden"></div>
+<ul id=book-search-results></ul>
+</div>
+<ul>
+<li>
+<a href=/posts/>
+Blog
+</a>
+</li>
+<li>
+<a href=/projects/>
+Project
+</a>
+</li>
+</ul>
+</nav>
+<script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+</div>
+</aside>
+<div class=book-page>
+<header class=book-header>
+<div class="flex align-center justify-between">
+<label for=menu-control>
+<img src=/svg/menu.svg class=book-icon alt=Menu>
+</label>
+<strong>logfmt python 实现</strong>
+<label for=toc-control>
+<img src=/svg/toc.svg class=book-icon alt="Table of Contents">
+</label>
+</div>
+<aside class="hidden clearfix">
+<nav id=TableOfContents>
+<ul>
+<li><a href=#intro>Intro</a></li>
+<li><a href=#实现过程>实现过程</a></li>
+<li><a href=#外层变量的使用>外层变量的使用</a></li>
+<li><a href=#完整代码>完整代码</a></li>
+</ul>
+</nav>
+</aside>
+</header>
+<article class=markdown>
+<h1>
+<a href=/posts/article/logfmt-python-%E5%AE%9E%E7%8E%B0/>logfmt python 实现</a>
+</h1>
+<h5>2022-02-11 15:45:10</h5>
+<div>
+<a href=/categories/csdn/>csdn</a>
+</div>
+<blockquote>
+<p><a href=https://blog.csdn.net/wolanx/article/details/122733747 target=_blank>https://blog.csdn.net/wolanx/article/details/122733747</a>
+</p>
+</blockquote>
+<h2 id=intro>
+Intro
+<a class=anchor href=#intro>#</a>
+</h2>
+<p>现在很多主流日志系统推崇 <code>logfmt</code> 格式，但是 <code>python</code> 中配套的不多，这边给个参考</p>
+<p>日志大概长这样</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#75715e># log.info(&#34;haha&#34;)</span>
+time<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;2022-01-28T17:00:52+0800&#34;</span> type<span style=color:#f92672>=</span>default level<span style=color:#f92672>=</span>info method<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;a.py:82&#34;</span> msg<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;haha&#34;</span>
+<span style=color:#75715e># log.warning(&#34;no access&#34;)</span>
+time<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;2022-01-28T17:00:52+0800&#34;</span> type<span style=color:#f92672>=</span>default level<span style=color:#f92672>=</span>warning method<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;a.py:83&#34;</span> msg<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;no access&#34;</span>
+</code></pre></div><h2 id=实现过程>
+实现过程
+<a class=anchor href=#%e5%ae%9e%e7%8e%b0%e8%bf%87%e7%a8%8b>#</a>
+</h2>
+<ul>
+<li>PiiLogger 继承 logging.Logger
+<ul>
+<li>绑定自定义的 formatter</li>
+<li>清空原有 handler 否则会重复输出</li>
+<li>把 formatter 注册给 handler</li>
+<li>hook 外层 变量 （如：每条log带上web请求的uuid）</li>
+</ul>
+</li>
+<li>PiiLoggerFormatter 继承 logging.Formatter
+<ul>
+<li>实现 format 的 自定义，内嵌变量请参考 <a href=https://docs.python.org/zh-cn/3/library/logging.html#logrecord-attributes target=_blank>官方 LogRecord 属性</a>
+</li>
+<li>hook 外层 变量</li>
+</ul>
+</li>
+</ul>
+<h2 id=外层变量的使用>
+外层变量的使用
+<a class=anchor href=#%e5%a4%96%e5%b1%82%e5%8f%98%e9%87%8f%e7%9a%84%e4%bd%bf%e7%94%a8>#</a>
+</h2>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>getUUid</span>():
+    v <span style=color:#f92672>=</span> <span style=color:#66d9ef>None</span>
+    <span style=color:#66d9ef>if</span> has_request_context(): <span style=color:#75715e># 判断 flask web 的生命周期下</span>
+        v <span style=color:#f92672>=</span> Pii<span style=color:#f92672>.</span>app<span style=color:#f92672>.</span>get(<span style=color:#e6db74>&#34;uuid&#34;</span>, <span style=color:#e6db74>&#34;&#34;</span>) <span style=color:#75715e># 根据自己业务写</span>
+
+    <span style=color:#66d9ef>return</span> {<span style=color:#e6db74>&#34;uuid&#34;</span>: v}
+
+log <span style=color:#f92672>=</span> PiiLogger<span style=color:#f92672>.</span>manager<span style=color:#f92672>.</span>getLogger(<span style=color:#e6db74>&#34;default&#34;</span>)
+log<span style=color:#f92672>.</span>withFormatter(getUUid)
+log<span style=color:#f92672>.</span>info(<span style=color:#e6db74>&#34;haha&#34;</span>)
+<span style=color:#75715e># time=&#34;2022-01-29T10:38:21+0800&#34; type=default level=info method=&#34;views.request_after&#34; uuid=&#34;860ea870-80ac-11ec-a366-1eaadecc49e8&#34; msg=&#34;haha&#34;</span>
+</code></pre></div><h2 id=完整代码>
+完整代码
+<a class=anchor href=#%e5%ae%8c%e6%95%b4%e4%bb%a3%e7%a0%81>#</a>
+</h2>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> logging
+<span style=color:#f92672>import</span> numbers
+<span style=color:#f92672>from</span> json.encoder <span style=color:#f92672>import</span> JSONEncoder
+<span style=color:#f92672>from</span> typing <span style=color:#f92672>import</span> Any
+
+
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>PiiLogger</span>(logging<span style=color:#f92672>.</span>Logger):
+    <span style=color:#66d9ef>def</span> __init__(self, name: str, level<span style=color:#f92672>=</span>logging<span style=color:#f92672>.</span>NOTSET) <span style=color:#f92672>-&gt;</span> <span style=color:#66d9ef>None</span>:
+        super()<span style=color:#f92672>.</span>__init__(name, level)
+
+        self<span style=color:#f92672>.</span>setLevel(logging<span style=color:#f92672>.</span>INFO)
+        self<span style=color:#f92672>.</span>root<span style=color:#f92672>.</span>handlers<span style=color:#f92672>.</span>clear()
+
+        ch <span style=color:#f92672>=</span> logging<span style=color:#f92672>.</span>StreamHandler()
+        ch<span style=color:#f92672>.</span>setLevel(logging<span style=color:#f92672>.</span>INFO)
+        self<span style=color:#f92672>.</span>formatter <span style=color:#f92672>=</span> PiiLoggerFormatter(
+            fmt<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;time=&#34;</span><span style=color:#e6db74>%(asctime)s</span><span style=color:#e6db74>&#34; type=</span><span style=color:#e6db74>%(name)s</span><span style=color:#e6db74> level=</span><span style=color:#e6db74>%(levelname)s</span><span style=color:#e6db74> method=&#34;</span><span style=color:#e6db74>%(method)s</span><span style=color:#e6db74>&#34;&#39;</span>,
+            datefmt<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;%Y-%m-</span><span style=color:#e6db74>%d</span><span style=color:#e6db74>T%H:%M:%S%z&#34;</span>,
+        )
+        ch<span style=color:#f92672>.</span>setFormatter(self<span style=color:#f92672>.</span>formatter)
+
+        self<span style=color:#f92672>.</span>addHandler(ch)
+
+    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>withFields</span>(self, ret):
+        print(ret)
+        <span style=color:#66d9ef>return</span> self
+
+    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>withFormatter</span>(self, func):
+        self<span style=color:#f92672>.</span>formatter<span style=color:#f92672>.</span>setExt(func)
+
+
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>PiiLoggerFormatter</span>(logging<span style=color:#f92672>.</span>Formatter):
+    ext: Any <span style=color:#f92672>=</span> <span style=color:#66d9ef>None</span>
+
+    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>format</span>(self, record):
+        <span style=color:#66d9ef>if</span> record<span style=color:#f92672>.</span>funcName <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;&lt;module&gt;&#34;</span>:
+            method <span style=color:#f92672>=</span> <span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>{</span>record<span style=color:#f92672>.</span>filename<span style=color:#e6db74>}</span><span style=color:#e6db74>:</span><span style=color:#e6db74>{</span>record<span style=color:#f92672>.</span>lineno<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>
+        <span style=color:#66d9ef>else</span>:
+            method <span style=color:#f92672>=</span> <span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>{</span>record<span style=color:#f92672>.</span>module<span style=color:#e6db74>}</span><span style=color:#e6db74>.</span><span style=color:#e6db74>{</span>record<span style=color:#f92672>.</span>funcName<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>
+
+        record<span style=color:#f92672>.</span>__setattr__(<span style=color:#e6db74>&#34;method&#34;</span>, method)
+        record<span style=color:#f92672>.</span>levelname <span style=color:#f92672>=</span> record<span style=color:#f92672>.</span>levelname<span style=color:#f92672>.</span>lower()
+        msg <span style=color:#f92672>=</span> JSONEncoder()<span style=color:#f92672>.</span>encode(str(record<span style=color:#f92672>.</span>msg))
+
+        ret <span style=color:#f92672>=</span> super()<span style=color:#f92672>.</span>format(record)
+
+        <span style=color:#66d9ef>if</span> self<span style=color:#f92672>.</span>ext:
+            mor <span style=color:#f92672>=</span> logfmt(self<span style=color:#f92672>.</span>ext())
+            <span style=color:#66d9ef>if</span> mor:
+                ret <span style=color:#f92672>+=</span> <span style=color:#e6db74>&#34; &#34;</span> <span style=color:#f92672>+</span> mor
+
+        <span style=color:#66d9ef>return</span> <span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>{</span>ret<span style=color:#e6db74>}</span><span style=color:#e6db74> msg=</span><span style=color:#e6db74>{</span>msg<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>
+
+    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>setExt</span>(self, func):
+        self<span style=color:#f92672>.</span>ext <span style=color:#f92672>=</span> func
+
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>logfmt</span>(extra):
+    outarr <span style=color:#f92672>=</span> []
+    <span style=color:#66d9ef>for</span> k, v <span style=color:#f92672>in</span> extra<span style=color:#f92672>.</span>items():
+        <span style=color:#66d9ef>if</span> v <span style=color:#f92672>is</span> <span style=color:#66d9ef>None</span>:
+            outarr<span style=color:#f92672>.</span>append(<span style=color:#e6db74>&#34;</span><span style=color:#e6db74>%s</span><span style=color:#e6db74>=&#34;</span> <span style=color:#f92672>%</span> k)
+            <span style=color:#66d9ef>continue</span>
+
+        <span style=color:#66d9ef>if</span> isinstance(v, bool):
+            v <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;true&#34;</span> <span style=color:#66d9ef>if</span> v <span style=color:#66d9ef>else</span> <span style=color:#e6db74>&#34;false&#34;</span>
+        <span style=color:#66d9ef>elif</span> isinstance(v, numbers<span style=color:#f92672>.</span>Number):
+            <span style=color:#66d9ef>pass</span>
+        <span style=color:#66d9ef>else</span>:
+            <span style=color:#66d9ef>if</span> isinstance(v, (dict, object)):
+                v <span style=color:#f92672>=</span> str(v)
+            v <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;&#34;</span><span style=color:#e6db74>%s</span><span style=color:#e6db74>&#34;&#39;</span> <span style=color:#f92672>%</span> v<span style=color:#f92672>.</span>replace(<span style=color:#e6db74>&#39;&#34;&#39;</span>, <span style=color:#e6db74>&#39;</span><span style=color:#ae81ff>\\</span><span style=color:#e6db74>&#34;&#39;</span>)
+        outarr<span style=color:#f92672>.</span>append(<span style=color:#e6db74>&#34;</span><span style=color:#e6db74>%s</span><span style=color:#e6db74>=</span><span style=color:#e6db74>%s</span><span style=color:#e6db74>&#34;</span> <span style=color:#f92672>%</span> (k, v))
+    <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34; &#34;</span><span style=color:#f92672>.</span>join(outarr)
+
+
+PiiLogger<span style=color:#f92672>.</span>manager<span style=color:#f92672>.</span>setLoggerClass(PiiLogger)
+
+
+<span style=color:#66d9ef>if</span> __name__ <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;__main__&#34;</span>:
+    <span style=color:#75715e># use</span>
+    log <span style=color:#f92672>=</span> PiiLogger<span style=color:#f92672>.</span>manager<span style=color:#f92672>.</span>getLogger(<span style=color:#e6db74>&#34;default&#34;</span>)
+    log<span style=color:#f92672>.</span>info(<span style=color:#e6db74>&#34;haha&#34;</span>)
+    log<span style=color:#f92672>.</span>warning(<span style=color:#e6db74>&#34;no access&#34;</span>)
+</code></pre></div></article>
+<footer class=book-footer>
+<div class="flex flex-wrap justify-between">
+<div>
+<a class="flex align-center" href=https://github.com/wolanx/blog/edit/main/content/posts/article/logfmt%20python%20%e5%ae%9e%e7%8e%b0.md target=_blank rel=noopener>
+<img src=/svg/edit.svg class=book-icon alt=Edit>
+<span>Edit this page</span>
+</a>
+</div>
+</div>
+<script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+</footer>
+<div class=book-comments>
+</div>
+<label for=menu-control class="hidden book-menu-overlay"></label>
+</div>
+<aside class=book-toc>
+<div class=book-toc-content>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#intro>Intro</a></li>
+<li><a href=#实现过程>实现过程</a></li>
+<li><a href=#外层变量的使用>外层变量的使用</a></li>
+<li><a href=#完整代码>完整代码</a></li>
+</ul>
+</nav>
+</div>
+</aside>
+</main>
+</body>
+</html>
