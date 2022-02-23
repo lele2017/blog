@@ -4,17 +4,17 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=description content>
 <meta name=theme-color content="#FFFFFF">
-<meta name=color-scheme content="light dark"><meta property="og:title" content="docker">
+<meta name=color-scheme content="light dark"><meta property="og:title" content="Blog">
 <meta property="og:description" content>
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://wolanx.com/categories/docker/">
-<title>docker | wolanx</title>
+<meta property="og:url" content="https://wolanx.com/posts/">
+<title>Blog | wolanx</title>
 <link rel=manifest href=/manifest.json>
 <link rel=icon href=/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous>
 <script defer src=/flexsearch.min.js></script>
 <script defer src=/en.search.min.93a3438dd95325e4d5581bc65308f9b7fb5bc72a6eed67464459b38b0ca76fc0.js integrity="sha256-k6NDjdlTJeTVWBvGUwj5t/tbxypu7WdGRFmziwynb8A=" crossorigin=anonymous></script>
-<link rel=alternate type=application/rss+xml href=https://wolanx.com/categories/docker/index.xml title=wolanx>
+<link rel=alternate type=application/rss+xml href=https://wolanx.com/posts/index.xml title=wolanx>
 </head>
 <body dir=ltr>
 <input type=checkbox class="hidden toggle" id=menu-control>
@@ -54,7 +54,7 @@ Project
 <label for=menu-control>
 <img src=/svg/menu.svg class=book-icon alt=Menu>
 </label>
-<strong>docker</strong>
+<strong>Blog</strong>
 <label for=toc-control>
 <img src=/svg/toc.svg class=book-icon alt="Table of Contents">
 </label>
@@ -96,18 +96,6 @@ Project
 </nav>
 </aside>
 </header>
-<article class="markdown book-post">
-<h2>
-<a href=/posts/docker/python.dockerfile/>python Dockerfile</a>
-</h2>
-<h5>2022-02-11 22:17:51</h5>
-<div>
-<a href=/categories/docker/>docker</a>
-</div>
-<p>FROMpython:3.10.0-slimRUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list \ && sed -i 's/security.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.listRUN mkdir ~/.pip \ && echo '[global]\n \ trusted-host=mirrors.aliyun.com\n \ index-url=https://mirrors.aliyun.com/pypi/simple\n \ ' > ~/.pip/pip.confRUN apt-get update -y \ && apt-get install -y gcc curl \ && apt-get install -y --no-install-recommends vim tree \ && rm -rf /var/lib/apt/lists/*RUN curl -s -L -o ~/rocketmq-client-cpp-2.0.0.amd64.deb \ 'https://github.com.cnpmjs.org/apache/rocketmq-client-cpp/releases/download/2.0.0/rocketmq-client-cpp-2.0.0.amd64.deb' \ && dpkg -i ~/rocketmq-client-cpp-2.0.0.amd64.deb \ && rm -f ~/rocketmq-client-cpp-2.
-<a href=/posts/docker/python.dockerfile/>...</a>
-</p>
-</article>
 <article class="markdown book-post">
 <h2>
 <a href=/posts/docker/k3s/>k3s</a>
@@ -195,8 +183,34 @@ mysql postgres redis mongo apcu gd xdebug bcmath zip FROM php:7.1.11-fpm-alpine 
 <a href=/posts/docker/php.dockerfile/>...</a>
 </p>
 </article>
+<ul class="pagination pagination-default">
+<li class=page-item>
+<a href=/posts/ aria-label=First class=page-link role=button><span aria-hidden=true>&#171;&#171;</span></a>
+</li>
+<li class=page-item>
+<a href=/posts/ aria-label=Previous class=page-link role=button><span aria-hidden=true>&#171;</span></a>
+</li>
+<li class=page-item>
+<a href=/posts/ aria-label="Page 1" class=page-link role=button>1</a>
+</li>
+<li class="page-item active">
+<a aria-current=page aria-label="Page 2" class=page-link role=button>2</a>
+</li>
+<li class="page-item disabled">
+<a aria-disabled=true aria-label=Next class=page-link role=button tabindex=-1><span aria-hidden=true>&#187;</span></a>
+</li>
+<li class="page-item disabled">
+<a aria-disabled=true aria-label=Last class=page-link role=button tabindex=-1><span aria-hidden=true>&#187;&#187;</span></a>
+</li>
+</ul>
 <footer class=book-footer>
 <div class="flex flex-wrap justify-between">
+<div>
+<a class="flex align-center" href=https://github.com/wolanx/blog/edit/main/content/posts/_index.md target=_blank rel=noopener>
+<img src=/svg/edit.svg class=book-icon alt=Edit>
+<span>Edit this page</span>
+</a>
+</div>
 </div>
 <script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
 </footer>

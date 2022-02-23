@@ -1,0 +1,262 @@
+<!doctype html><html lang=en-us dir=ltr>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="infrastructure #  portainer 管理 #  docker run -d --restart=unless-stopped --name portainer -p 1234:9000 -v &#34;/var/run/docker.sock:/var/run/docker.sock&#34; portainer/portainer-ce:2.6.0 docker run -d --restart=unless-stopped --name portainer -p 1234:9000 -v &#34;/var/run/docker.sock:/var/run/docker.sock&#34; portainer/portainer:1.23.2 # //./pipe/docker_engine # &#34;hosts&#34;: [&#34;tcp://0.0.0.0:2375&#34;] server { listen 80; charset utf-8; server_name uat.docker.manager; location / { proxy_pass http://127.0.0.1:1234; proxy_http_version 1.1; proxy_set_header Connection &#34;&#34;; proxy_set_header Host $host; proxy_set_header Scheme $scheme; } } registry #  DOCKER_OPTS=&#34;--insecure-registry 192.168.1.19:5000&#34; docker run -d -p 5000:5000 --restart=always --name registry registry:2.">
+<meta name=theme-color content="#FFFFFF">
+<meta name=color-scheme content="light dark"><meta property="og:title" content="docker app">
+<meta property="og:description" content="infrastructure #  portainer 管理 #  docker run -d --restart=unless-stopped --name portainer -p 1234:9000 -v &#34;/var/run/docker.sock:/var/run/docker.sock&#34; portainer/portainer-ce:2.6.0 docker run -d --restart=unless-stopped --name portainer -p 1234:9000 -v &#34;/var/run/docker.sock:/var/run/docker.sock&#34; portainer/portainer:1.23.2 # //./pipe/docker_engine # &#34;hosts&#34;: [&#34;tcp://0.0.0.0:2375&#34;] server { listen 80; charset utf-8; server_name uat.docker.manager; location / { proxy_pass http://127.0.0.1:1234; proxy_http_version 1.1; proxy_set_header Connection &#34;&#34;; proxy_set_header Host $host; proxy_set_header Scheme $scheme; } } registry #  DOCKER_OPTS=&#34;--insecure-registry 192.168.1.19:5000&#34; docker run -d -p 5000:5000 --restart=always --name registry registry:2.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://wolanx.com/posts/docker/app/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2018-03-22T00:00:00+00:00">
+<meta property="article:modified_time" content="2018-03-22T00:00:00+00:00">
+<title>docker app | wolanx</title>
+<link rel=manifest href=/manifest.json>
+<link rel=icon href=/favicon.png type=image/x-icon>
+<link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous>
+<script defer src=/flexsearch.min.js></script>
+<script defer src=/en.search.min.93a3438dd95325e4d5581bc65308f9b7fb5bc72a6eed67464459b38b0ca76fc0.js integrity="sha256-k6NDjdlTJeTVWBvGUwj5t/tbxypu7WdGRFmziwynb8A=" crossorigin=anonymous></script>
+</head>
+<body dir=ltr>
+<input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control>
+<main class="container flex">
+<aside class=book-menu>
+<div class=book-menu-content>
+<nav>
+<h2 class=book-brand>
+<a class="flex align-center" href=/><span>wolanx</span>
+</a>
+</h2>
+<div class=book-search>
+<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
+<div class="book-search-spinner hidden"></div>
+<ul id=book-search-results></ul>
+</div>
+<ul>
+<li>
+<a href=/posts/>
+Blog
+</a>
+</li>
+<li>
+<a href=/projects/>
+Project
+</a>
+</li>
+</ul>
+</nav>
+<script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+</div>
+</aside>
+<div class=book-page>
+<header class=book-header>
+<div class="flex align-center justify-between">
+<label for=menu-control>
+<img src=/svg/menu.svg class=book-icon alt=Menu>
+</label>
+<strong>docker app</strong>
+<label for=toc-control>
+<img src=/svg/toc.svg class=book-icon alt="Table of Contents">
+</label>
+</div>
+<aside class="hidden clearfix">
+<nav id=TableOfContents>
+<ul>
+<li><a href=#infrastructure>infrastructure</a>
+<ul>
+<li><a href=#portainer-管理>portainer 管理</a></li>
+<li><a href=#registry>registry</a></li>
+<li><a href=#cadvisor>cadvisor</a></li>
+</ul>
+</li>
+<li><a href=#db>db</a>
+<ul>
+<li><a href=#mysql>mysql</a></li>
+<li><a href=#redis>redis</a></li>
+<li><a href=#mongodb>mongodb</a></li>
+<li><a href=#phpmyadmin>phpmyadmin</a></li>
+</ul>
+</li>
+<li><a href=#other>other</a>
+<ul>
+<li><a href=#zentao-禅道>zentao 禅道</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</aside>
+</header>
+<article class=markdown>
+<h1>
+<a href=/posts/docker/app/>docker app</a>
+</h1>
+<h5>2018-03-22 00:00:00</h5>
+<div>
+<a href=/categories/docker/>docker</a>
+</div>
+<h2 id=infrastructure>
+infrastructure
+<a class=anchor href=#infrastructure>#</a>
+</h2>
+<h3 id=portainer-管理>
+portainer 管理
+<a class=anchor href=#portainer-%e7%ae%a1%e7%90%86>#</a>
+</h3>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>docker run -d --restart<span style=color:#f92672>=</span>unless-stopped --name portainer -p 1234:9000 -v <span style=color:#e6db74>&#34;/var/run/docker.sock:/var/run/docker.sock&#34;</span> portainer/portainer-ce:2.6.0
+docker run -d --restart<span style=color:#f92672>=</span>unless-stopped --name portainer -p 1234:9000 -v <span style=color:#e6db74>&#34;/var/run/docker.sock:/var/run/docker.sock&#34;</span> portainer/portainer:1.23.2
+<span style=color:#75715e># //./pipe/docker_engine</span>
+<span style=color:#75715e># &#34;hosts&#34;: [&#34;tcp://0.0.0.0:2375&#34;]</span>
+server <span style=color:#f92672>{</span>
+    listen       80;
+    charset      utf-8;
+    server_name  uat.docker.manager;
+    location / <span style=color:#f92672>{</span>
+        proxy_pass http://127.0.0.1:1234;
+
+        proxy_http_version 1.1;
+        proxy_set_header Connection <span style=color:#e6db74>&#34;&#34;</span>;
+
+        proxy_set_header Host $host;
+        proxy_set_header Scheme $scheme;
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><h3 id=registry>
+registry
+<a class=anchor href=#registry>#</a>
+</h3>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>DOCKER_OPTS<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;--insecure-registry 192.168.1.19:5000&#34;</span>
+docker run -d -p 5000:5000 --restart<span style=color:#f92672>=</span>always --name registry registry:2.6.2
+
+docker push 192.168.199.115:5000/r1
+docker rmi  192.168.199.115:5000/r1
+docker pull 192.168.199.115:5000/r1
+
+<span style=color:#75715e># /var/lib/registry/docker/registry/v2 # tree -L 4</span>
+</code></pre></div><h3 id=cadvisor>
+cadvisor
+<a class=anchor href=#cadvisor>#</a>
+</h3>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>sudo docker run <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>  --volume<span style=color:#f92672>=</span>/:/rootfs:ro <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>  --volume<span style=color:#f92672>=</span>/var/run:/var/run:rw <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>  --volume<span style=color:#f92672>=</span>/sys:/sys:ro <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>  --volume<span style=color:#f92672>=</span>/var/lib/docker/:/var/lib/docker:ro <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>  --volume<span style=color:#f92672>=</span>/dev/disk/:/dev/disk:ro <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>  --publish<span style=color:#f92672>=</span>2345:8080 <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>  --detach<span style=color:#f92672>=</span>true <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>  --name<span style=color:#f92672>=</span>cadvisor <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>  google/cadvisor:v0.28.3
+</code></pre></div><h2 id=db>
+db
+<a class=anchor href=#db>#</a>
+</h2>
+<h3 id=mysql>
+mysql
+<a class=anchor href=#mysql>#</a>
+</h3>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>docker run --restart<span style=color:#f92672>=</span>unless-stopped --name mysql-1 -it -d <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>  -v <span style=color:#e6db74>&#34;</span>$PWD<span style=color:#e6db74>&#34;</span>:/var/lib/mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD<span style=color:#f92672>=</span>password -e TZ<span style=color:#f92672>=</span>Asia/Shanghai mysql:8.0.15 <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>  --character-set-server<span style=color:#f92672>=</span>utf8mb4 --collation-server<span style=color:#f92672>=</span>utf8mb4_general_ci
+<span style=color:#75715e># --character-set-server=utf8 --collation-server=utf8_general_ci</span>
+</code></pre></div><h3 id=redis>
+redis
+<a class=anchor href=#redis>#</a>
+</h3>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>docker run --restart<span style=color:#f92672>=</span>unless-stopped --name redis-1 -d -p 6379:6379 redis:6.0.3-alpine
+docker run --restart<span style=color:#f92672>=</span>unless-stopped --name redis-1 -d -p 6379:6379 redis:3.2.9-alpine
+docker run --name some-redis -d redis:alpine
+docker run -it --link some-redis:redis --rm redis:alpine redis-cli -h 139.196.14.14 -p <span style=color:#ae81ff>6379</span>
+
+docker run --restart<span style=color:#f92672>=</span>unless-stopped -v <span style=color:#e6db74>&#34;</span>$PWD<span style=color:#e6db74>/redis.conf&#34;</span>:/usr/local/etc/redis/redis.conf -v <span style=color:#e6db74>&#34;</span>$PWD<span style=color:#e6db74>&#34;</span>:/data --name redis-2 -d -p 6379:6379 redis:3.2.9-alpine redis-server /usr/local/etc/redis/redis.conf
+
+redis-server --requirepass <span style=color:#ae81ff>12345</span>
+</code></pre></div><h3 id=mongodb>
+mongodb
+<a class=anchor href=#mongodb>#</a>
+</h3>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>docker run --restart<span style=color:#f92672>=</span>unless-stopped --name mongo-1 -d -p 27017:27017 -v <span style=color:#e6db74>&#34;</span>$PWD<span style=color:#e6db74>&#34;</span>:/etc/mongo mongo:3.6.4
+<span style=color:#75715e># 常用命令</span>
+show dbs <span style=color:#75715e># 全部db</span>
+use test <span style=color:#75715e># 进database</span>
+db <span style=color:#75715e># 查看当前database</span>
+db.stats<span style=color:#f92672>()</span>; <span style=color:#75715e># 显示当前db状态</span>
+db.dropDatabase<span style=color:#f92672>()</span>;  <span style=color:#75715e>#删除当前使用数据库</span>
+
+<span style=color:#75715e># user</span>
+show users; <span style=color:#75715e># 显示当前所有用户</span>
+db.createUser<span style=color:#f92672>({</span>user:<span style=color:#e6db74>&#34;ynh-test&#34;</span>,pwd:<span style=color:#e6db74>&#34;ynh-test&#34;</span>,roles:<span style=color:#f92672>[{</span>role:<span style=color:#e6db74>&#34;userAdmin&#34;</span>,db:<span style=color:#e6db74>&#34;ynh-test&#34;</span><span style=color:#f92672>}]})</span>; <span style=color:#75715e># 创建用户</span>
+db.removeUser<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;userName&#34;</span><span style=color:#f92672>)</span>; <span style=color:#75715e># 删除用户</span>
+
+db.tb_test.insert<span style=color:#f92672>({</span><span style=color:#e6db74>&#34;_id&#34;</span>:<span style=color:#e6db74>&#34;520&#34;</span>,<span style=color:#e6db74>&#34;name&#34;</span>:<span style=color:#e6db74>&#34;xiaoming&#34;</span><span style=color:#f92672>})</span>
+db.tb_test.find<span style=color:#f92672>()</span>;
+</code></pre></div><h3 id=phpmyadmin>
+phpmyadmin
+<a class=anchor href=#phpmyadmin>#</a>
+</h3>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>docker run --restart<span style=color:#f92672>=</span>unless-stopped --name pmd -d -p 33060:80 phpmyadmin/phpmyadmin:4.7
+-e PMA_HOST<span style=color:#f92672>=</span>139.196.14.10
+vi /etc/phpmyadmin/config.user.inc.php
+supervisorctl restart all
+</code></pre></div><h2 id=other>
+other
+<a class=anchor href=#other>#</a>
+</h2>
+<h3 id=zentao-禅道>
+zentao 禅道
+<a class=anchor href=#zentao-%e7%a6%85%e9%81%93>#</a>
+</h3>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>docker run -d -p 8880:80 \
+        -e USER=&#34;root&#34; -e PASSWD=&#34;password&#34; \
+        -e BIND_ADDRESS=&#34;false&#34; \
+        -e SMTP_HOST=&#34;163.177.90.125 smtp.exmail.qq.com&#34; \
+        -v &#34;$PWD&#34;:/opt/zbox/ \
+        --name zentao-server \
+        idoop/zentao:latest
+</code></pre></div></article>
+<footer class=book-footer>
+<div class="flex flex-wrap justify-between">
+<div>
+<a class="flex align-center" href=https://github.com/wolanx/blog/edit/main/content/posts/docker/app.md target=_blank rel=noopener>
+<img src=/svg/edit.svg class=book-icon alt=Edit>
+<span>Edit this page</span>
+</a>
+</div>
+</div>
+<script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+</footer>
+<div class=book-comments>
+</div>
+<label for=menu-control class="hidden book-menu-overlay"></label>
+</div>
+<aside class=book-toc>
+<div class=book-toc-content>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#infrastructure>infrastructure</a>
+<ul>
+<li><a href=#portainer-管理>portainer 管理</a></li>
+<li><a href=#registry>registry</a></li>
+<li><a href=#cadvisor>cadvisor</a></li>
+</ul>
+</li>
+<li><a href=#db>db</a>
+<ul>
+<li><a href=#mysql>mysql</a></li>
+<li><a href=#redis>redis</a></li>
+<li><a href=#mongodb>mongodb</a></li>
+<li><a href=#phpmyadmin>phpmyadmin</a></li>
+</ul>
+</li>
+<li><a href=#other>other</a>
+<ul>
+<li><a href=#zentao-禅道>zentao 禅道</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</aside>
+</main>
+</body>
+</html>

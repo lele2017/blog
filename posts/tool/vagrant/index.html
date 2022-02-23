@@ -15,7 +15,7 @@
 <link rel=icon href=/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous>
 <script defer src=/flexsearch.min.js></script>
-<script defer src=/en.search.min.df7cd563e18b31b0fe3891fa05707e910ba3c4bb46d82aeb2b975391619c45d3.js integrity="sha256-33zVY+GLMbD+OJH6BXB+kQujxLtG2CrrK5dTkWGcRdM=" crossorigin=anonymous></script>
+<script defer src=/en.search.min.93a3438dd95325e4d5581bc65308f9b7fb5bc72a6eed67464459b38b0ca76fc0.js integrity="sha256-k6NDjdlTJeTVWBvGUwj5t/tbxypu7WdGRFmziwynb8A=" crossorigin=anonymous></script>
 </head>
 <body dir=ltr>
 <input type=checkbox class="hidden toggle" id=menu-control>
@@ -92,13 +92,13 @@ Intro
 Install
 <a class=anchor href=#install>#</a>
 </h2>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>https://www.vagrantup.com/downloads
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>https://www.vagrantup.com/downloads
 <span style=color:#75715e># wget https://releases.hashicorp.com/vagrant/2.2.19/vagrant_2.2.19_x86_64.msi</span>
 </code></pre></div><h2 id=start>
 Start
 <a class=anchor href=#start>#</a>
 </h2>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>vagrant init generic/alpine312  <span style=color:#75715e># https://vagrantcloud.com/search</span>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>vagrant init generic/alpine312  <span style=color:#75715e># https://vagrantcloud.com/search</span>
 
 vagrant up --provider<span style=color:#f92672>=</span>hyperv    <span style=color:#75715e># start</span>
 vagrant halt                    <span style=color:#75715e># stop</span>
@@ -110,7 +110,7 @@ vagrant destroy <span style=color:#75715e># delete</span>
 Other
 <a class=anchor href=#other>#</a>
 </h2>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>vagrant box list                <span style=color:#75715e># list image</span>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>vagrant box list                <span style=color:#75715e># list image</span>
 vagrant global-status           <span style=color:#75715e># list vm</span>
 vagrant destroy 1a2b3c4d
 
@@ -122,10 +122,10 @@ vagrant box add my/alpine312 hyperv.box
 Vagrantfile
 <a class=anchor href=#vagrantfile>#</a>
 </h2>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby><span style=color:#75715e># touch Vagrantfile</span>
-<span style=color:#66d9ef>Vagrant</span><span style=color:#f92672>.</span>configure(<span style=color:#e6db74>&#34;2&#34;</span>) <span style=color:#66d9ef>do</span> <span style=color:#f92672>|</span>config<span style=color:#f92672>|</span>
-  config<span style=color:#f92672>.</span>vm<span style=color:#f92672>.</span>box <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;generic/alpine312&#34;</span>
-<span style=color:#66d9ef>end</span>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#75715e># touch Vagrantfile</span>
+Vagrant.configure<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;2&#34;</span><span style=color:#f92672>)</span> <span style=color:#66d9ef>do</span> |config|
+  config.vm.box <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;generic/alpine312&#34;</span>
+end
 </code></pre></div></article>
 <footer class=book-footer>
 <div class="flex flex-wrap justify-between">

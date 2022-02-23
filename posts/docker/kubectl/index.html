@@ -1,0 +1,257 @@
+<!doctype html><html lang=en-us dir=ltr>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="kubectl #   备忘录 https://kubernetes.io/docs/reference/kubectl/cheatsheet/   export KUBECONFIG=~/Desktop/www/work-book/env/sandbox/1_kubernetes/kubeconfig kubectl get pod -A kubectl run hello-minikube --image=zx5435/go-fs:v1 --port=8080 kubectl delete -n default deployment hello-minikube kubectl logs -f pod-gim-uat-app-2 kubectl logs --tail=50 -f pod-gim-uat-app-2 install #  curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.16.0/bin/windows/amd64/kubectl.exe config #  namespace #  kubectl config set-context --current --namespace=$(basename $PWD) kubectl config set-context --current --namespace=ccm-perf kubectl config set-context $(kubectl config current-context) --namespace=ccm-perf run #  kubectl run hello-minikube --image=zx5435/go-fs:v1 --port=8080 delete 批量 #  kubectl -nccm-uat get pod --field-selector=status.">
+<meta name=theme-color content="#FFFFFF">
+<meta name=color-scheme content="light dark"><meta property="og:title" content="kubectl">
+<meta property="og:description" content="kubectl #   备忘录 https://kubernetes.io/docs/reference/kubectl/cheatsheet/   export KUBECONFIG=~/Desktop/www/work-book/env/sandbox/1_kubernetes/kubeconfig kubectl get pod -A kubectl run hello-minikube --image=zx5435/go-fs:v1 --port=8080 kubectl delete -n default deployment hello-minikube kubectl logs -f pod-gim-uat-app-2 kubectl logs --tail=50 -f pod-gim-uat-app-2 install #  curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.16.0/bin/windows/amd64/kubectl.exe config #  namespace #  kubectl config set-context --current --namespace=$(basename $PWD) kubectl config set-context --current --namespace=ccm-perf kubectl config set-context $(kubectl config current-context) --namespace=ccm-perf run #  kubectl run hello-minikube --image=zx5435/go-fs:v1 --port=8080 delete 批量 #  kubectl -nccm-uat get pod --field-selector=status.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://wolanx.com/posts/docker/kubectl/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2019-03-23T00:00:00+00:00">
+<meta property="article:modified_time" content="2019-03-23T00:00:00+00:00">
+<title>kubectl | wolanx</title>
+<link rel=manifest href=/manifest.json>
+<link rel=icon href=/favicon.png type=image/x-icon>
+<link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous>
+<script defer src=/flexsearch.min.js></script>
+<script defer src=/en.search.min.93a3438dd95325e4d5581bc65308f9b7fb5bc72a6eed67464459b38b0ca76fc0.js integrity="sha256-k6NDjdlTJeTVWBvGUwj5t/tbxypu7WdGRFmziwynb8A=" crossorigin=anonymous></script>
+</head>
+<body dir=ltr>
+<input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control>
+<main class="container flex">
+<aside class=book-menu>
+<div class=book-menu-content>
+<nav>
+<h2 class=book-brand>
+<a class="flex align-center" href=/><span>wolanx</span>
+</a>
+</h2>
+<div class=book-search>
+<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
+<div class="book-search-spinner hidden"></div>
+<ul id=book-search-results></ul>
+</div>
+<ul>
+<li>
+<a href=/posts/>
+Blog
+</a>
+</li>
+<li>
+<a href=/projects/>
+Project
+</a>
+</li>
+</ul>
+</nav>
+<script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+</div>
+</aside>
+<div class=book-page>
+<header class=book-header>
+<div class="flex align-center justify-between">
+<label for=menu-control>
+<img src=/svg/menu.svg class=book-icon alt=Menu>
+</label>
+<strong>kubectl</strong>
+<label for=toc-control>
+<img src=/svg/toc.svg class=book-icon alt="Table of Contents">
+</label>
+</div>
+<aside class="hidden clearfix">
+<nav id=TableOfContents>
+<ul>
+<li><a href=#kubectl>kubectl</a></li>
+<li><a href=#install>install</a></li>
+<li><a href=#config>config</a>
+<ul>
+<li><a href=#namespace>namespace</a></li>
+</ul>
+</li>
+<li><a href=#run>run</a></li>
+<li><a href=#delete-批量>delete 批量</a></li>
+<li><a href=#port-forward>port-forward</a></li>
+<li><a href=#configmap>configmap</a></li>
+<li><a href=#kustomize>kustomize</a>
+<ul>
+<li><a href=#kubectl-builtins>kubectl builtins</a></li>
+<li><a href=#install-1>install</a></li>
+<li><a href=#config-tpl>config tpl</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</aside>
+</header>
+<article class=markdown>
+<h1>
+<a href=/posts/docker/kubectl/>kubectl</a>
+</h1>
+<h5>2019-03-23 00:00:00</h5>
+<div>
+<a href=/categories/docker/>docker</a>
+</div>
+<h2 id=kubectl>
+kubectl
+<a class=anchor href=#kubectl>#</a>
+</h2>
+<ul>
+<li>备忘录 <a href=https://kubernetes.io/docs/reference/kubectl/cheatsheet/ target=_blank>https://kubernetes.io/docs/reference/kubectl/cheatsheet/</a>
+</li>
+</ul>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>export KUBECONFIG<span style=color:#f92672>=</span>~/Desktop/www/work-book/env/sandbox/1_kubernetes/kubeconfig
+
+kubectl get pod -A
+
+kubectl run hello-minikube --image<span style=color:#f92672>=</span>zx5435/go-fs:v1 --port<span style=color:#f92672>=</span><span style=color:#ae81ff>8080</span>
+
+kubectl delete -n default deployment hello-minikube
+
+kubectl logs -f pod-gim-uat-app-2
+kubectl logs --tail<span style=color:#f92672>=</span><span style=color:#ae81ff>50</span> -f pod-gim-uat-app-2
+</code></pre></div><h2 id=install>
+install
+<a class=anchor href=#install>#</a>
+</h2>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.16.0/bin/windows/amd64/kubectl.exe
+</code></pre></div><h2 id=config>
+config
+<a class=anchor href=#config>#</a>
+</h2>
+<h3 id=namespace>
+namespace
+<a class=anchor href=#namespace>#</a>
+</h3>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl config set-context --current --namespace<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>basename $PWD<span style=color:#66d9ef>)</span>
+kubectl config set-context --current --namespace<span style=color:#f92672>=</span>ccm-perf
+kubectl config set-context <span style=color:#66d9ef>$(</span>kubectl config current-context<span style=color:#66d9ef>)</span> --namespace<span style=color:#f92672>=</span>ccm-perf
+</code></pre></div><h2 id=run>
+run
+<a class=anchor href=#run>#</a>
+</h2>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl run hello-minikube --image<span style=color:#f92672>=</span>zx5435/go-fs:v1 --port<span style=color:#f92672>=</span><span style=color:#ae81ff>8080</span>
+</code></pre></div><h2 id=delete-批量>
+delete 批量
+<a class=anchor href=#delete-%e6%89%b9%e9%87%8f>#</a>
+</h2>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl -nccm-uat get pod --field-selector<span style=color:#f92672>=</span>status.phase!<span style=color:#f92672>=</span>Running
+kubectl -nccm-uat get pod --field-selector<span style=color:#f92672>=</span>status.phase<span style=color:#f92672>==</span>Failed
+</code></pre></div><h2 id=port-forward>
+port-forward
+<a class=anchor href=#port-forward>#</a>
+</h2>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#75715e># outside:inside 左外右内</span>
+kubectl -nzx5435 port-forward --address 0.0.0.0 service/air-ticket 7777:80
+
+kubectl -nzx5435 expose deployment air-ticket --type<span style=color:#f92672>=</span>LoadBalancer --name<span style=color:#f92672>=</span>my-service
+</code></pre></div><h2 id=configmap>
+configmap
+<a class=anchor href=#configmap>#</a>
+</h2>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>kubectl -nccm-perf create configmap mq-conf --from-file<span style=color:#f92672>=</span>activemq
+</code></pre></div><h2 id=kustomize>
+kustomize
+<a class=anchor href=#kustomize>#</a>
+</h2>
+<h3 id=kubectl-builtins>
+kubectl builtins
+<a class=anchor href=#kubectl-builtins>#</a>
+</h3>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#75715e># kustomization.yaml</span>
+<span style=color:#75715e># k apply -k config/</span>
+<span style=color:#f92672>apiVersion</span>: <span style=color:#ae81ff>kustomize.config.k8s.io/v1beta1</span>
+<span style=color:#f92672>kind</span>: <span style=color:#ae81ff>Kustomization</span>
+<span style=color:#f92672>generatorOptions</span>:
+<span style=color:#75715e># disableNameSuffixHash: true</span>
+<span style=color:#f92672>labels</span>:
+  <span style=color:#f92672>type</span>: <span style=color:#ae81ff>generated</span>
+<span style=color:#f92672>annotations</span>:
+  <span style=color:#f92672>note</span>: <span style=color:#ae81ff>generated</span>
+<span style=color:#f92672>configMapGenerator</span>:
+- <span style=color:#f92672>name</span>: <span style=color:#ae81ff>gim-fs</span>
+  <span style=color:#f92672>files</span>:
+    - <span style=color:#ae81ff>pii.yml</span>
+    - <span style=color:#ae81ff>activemq.xml</span>
+    - <span style=color:#ae81ff>broker.ks</span>
+- <span style=color:#f92672>name</span>: <span style=color:#ae81ff>ept-env</span>
+  <span style=color:#f92672>literals</span>:
+    - <span style=color:#ae81ff>ACTIVEMQ_PASSWORD=admin</span>
+</code></pre></div><h3 id=install-1>
+install
+<a class=anchor href=#install-1>#</a>
+</h3>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#75715e># install</span>
+curl -s <span style=color:#e6db74>&#34;https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh&#34;</span>  | bash
+
+kustomize build | kubectl apply -f -
+</code></pre></div><h3 id=config-tpl>
+config tpl
+<a class=anchor href=#config-tpl>#</a>
+</h3>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#75715e># kustomization.yaml</span>
+<span style=color:#f92672>namespace</span>: <span style=color:#ae81ff>gimc-prod</span>
+<span style=color:#f92672>generatorOptions</span>:
+  <span style=color:#75715e># disableNameSuffixHash: true</span>
+  <span style=color:#f92672>labels</span>:
+    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>generated</span>
+  <span style=color:#f92672>annotations</span>:
+    <span style=color:#f92672>note</span>: <span style=color:#ae81ff>generated</span>
+<span style=color:#f92672>configMapGenerator</span>:
+  - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>gimc-cfgs</span>
+    <span style=color:#f92672>files</span>:
+      - <span style=color:#ae81ff>pii.yml</span>
+  - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>ept-env</span>
+    <span style=color:#f92672>literals</span>:
+      - <span style=color:#ae81ff>MYSQL_DB_NAME=gimc-prod</span>
+<span style=color:#f92672>secretGenerator</span>:
+  - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>gimc-https</span>
+    <span style=color:#f92672>files</span>:
+      - <span style=color:#ae81ff>tls.key</span>
+      - <span style=color:#ae81ff>tls.crt</span>
+</code></pre></div></article>
+<footer class=book-footer>
+<div class="flex flex-wrap justify-between">
+<div>
+<a class="flex align-center" href=https://github.com/wolanx/blog/edit/main/content/posts/docker/kubectl.md target=_blank rel=noopener>
+<img src=/svg/edit.svg class=book-icon alt=Edit>
+<span>Edit this page</span>
+</a>
+</div>
+</div>
+<script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+</footer>
+<div class=book-comments>
+</div>
+<label for=menu-control class="hidden book-menu-overlay"></label>
+</div>
+<aside class=book-toc>
+<div class=book-toc-content>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#kubectl>kubectl</a></li>
+<li><a href=#install>install</a></li>
+<li><a href=#config>config</a>
+<ul>
+<li><a href=#namespace>namespace</a></li>
+</ul>
+</li>
+<li><a href=#run>run</a></li>
+<li><a href=#delete-批量>delete 批量</a></li>
+<li><a href=#port-forward>port-forward</a></li>
+<li><a href=#configmap>configmap</a></li>
+<li><a href=#kustomize>kustomize</a>
+<ul>
+<li><a href=#kubectl-builtins>kubectl builtins</a></li>
+<li><a href=#install-1>install</a></li>
+<li><a href=#config-tpl>config tpl</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</aside>
+</main>
+</body>
+</html>
