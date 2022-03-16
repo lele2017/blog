@@ -4,17 +4,17 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=description content>
 <meta name=theme-color content="#FFFFFF">
-<meta name=color-scheme content="light dark"><meta property="og:title" content="liunx">
+<meta name=color-scheme content="light dark"><meta property="og:title" content="linux">
 <meta property="og:description" content>
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://wolanx.com/categories/liunx/">
-<title>liunx | wolanx</title>
+<meta property="og:url" content="https://wolanx.com/categories/linux/">
+<title>linux | wolanx</title>
 <link rel=manifest href=/manifest.json>
 <link rel=icon href=/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous>
 <script defer src=/flexsearch.min.js></script>
-<script defer src=/en.search.min.93a3438dd95325e4d5581bc65308f9b7fb5bc72a6eed67464459b38b0ca76fc0.js integrity="sha256-k6NDjdlTJeTVWBvGUwj5t/tbxypu7WdGRFmziwynb8A=" crossorigin=anonymous></script>
-<link rel=alternate type=application/rss+xml href=https://wolanx.com/categories/liunx/index.xml title=wolanx>
+<script defer src=/en.search.min.baeb7c0d85155e5015b78675c4a53a7f103644b300b1fc8bba1dd993bedc67bf.js integrity="sha256-uut8DYUVXlAVt4Z1xKU6fxA2RLMAsfyLuh3Zk77cZ78=" crossorigin=anonymous></script>
+<link rel=alternate type=application/rss+xml href=https://wolanx.com/categories/linux/index.xml title=wolanx>
 </head>
 <body dir=ltr>
 <input type=checkbox class="hidden toggle" id=menu-control>
@@ -54,7 +54,7 @@ Project
 <label for=menu-control>
 <img src=/svg/menu.svg class=book-icon alt=Menu>
 </label>
-<strong>liunx</strong>
+<strong>linux</strong>
 <label for=toc-control>
 <img src=/svg/toc.svg class=book-icon alt="Table of Contents">
 </label>
@@ -67,7 +67,7 @@ Project
 <ul>
 <li class="flex justify-between">
 <a href=/categories/tool/>tool</a>
-<span>3</span>
+<span>5</span>
 </li>
 <li class="flex justify-between">
 <a href=/categories/docker/>docker</a>
@@ -82,8 +82,8 @@ Project
 <span>1</span>
 </li>
 <li class="flex justify-between">
-<a href=/categories/liunx/>liunx</a>
-<span>1</span>
+<a href=/categories/linux/>linux</a>
+<span>3</span>
 </li>
 </ul>
 </li>
@@ -103,10 +103,32 @@ Project
 <h5>2022-01-10 12:00:00</h5>
 <div>
 <a href=/categories/tool/>tool</a>,
-<a href=/categories/liunx/>liunx</a>
+<a href=/categories/linux/>linux</a>
 </div>
 <p>Intro # 快速可自定义的虚拟机，几行命令搞定，不用再设置一堆东西。 自定义文件Vagrantfile实现环境重复利用 https://www.vagrantup.com/intro Install # https://www.vagrantup.com/downloads # wget https://releases.hashicorp.com/vagrant/2.2.19/vagrant_2.2.19_x86_64.msi Start # vagrant init generic/alpine312 # https://vagrantcloud.com/search vagrant up --provider=hyperv # start vagrant halt # stop vagrant ssh vagrant destroy # delete Other # vagrant box list # list image vagrant global-status # list vm vagrant destroy 1a2b3c4d # 手动下包 wget https://app.vagrantup.com/generic/boxes/alpine312/versions/3.6.4/providers/hyperv.box vagrant box add my/alpine312 hyperv.box # 127.0.0.1:2222 # root vagrant Vagrantfile # # touch Vagrantfile Vagrant.
 <a href=/posts/tool/vagrant/>...</a>
+</p>
+</article>
+<article class="markdown book-post">
+<h2>
+<a href=/posts/linux/debian/>debian</a>
+</h2>
+<h5>2021-06-18 00:00:00</h5>
+<div>
+<a href=/categories/linux/>linux</a>
+</div>
+<p>加速 # # backup cp /etc/apt/sources.list /etc/apt/sources.list.bak sed 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list sed 's/security.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list # run sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list sed -i 's/security.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list apt-get update -y common # apt-get install procps # top ps apt-get install net-tools apt-get install iputils-ping apt-get install apt-transport-https ca-certificates # https vi bug # vi /etc/vim/vimrc.tiny set nocompatible set backspace=2
+</p>
+</article>
+<article class="markdown book-post">
+<h2>
+<a href=/posts/linux/wsl/>wsl 工具 Linux 的 Windows 子系统</a>
+</h2>
+<h5>2019-05-08 09:59:30</h5>
+<div>
+<a href=/categories/linux/>linux</a>
+</div>
+<p>wsl # Linux 的 Windows 子系统 https://docs.microsoft.com/zh-cn/windows/wsl/about cmd # wsl -l -v wsl --shutdown vim ~/.bashrc # alias d='cd /mnt/d' alias e='cd /mnt/e' alias z='cd /mnt/z' fix # netsh winsock reset
 </p>
 </article>
 <footer class=book-footer>
@@ -125,7 +147,7 @@ Project
 <ul>
 <li class="flex justify-between">
 <a href=/categories/tool/>tool</a>
-<span>3</span>
+<span>5</span>
 </li>
 <li class="flex justify-between">
 <a href=/categories/docker/>docker</a>
@@ -140,8 +162,8 @@ Project
 <span>1</span>
 </li>
 <li class="flex justify-between">
-<a href=/categories/liunx/>liunx</a>
-<span>1</span>
+<a href=/categories/linux/>linux</a>
+<span>3</span>
 </li>
 </ul>
 </li>

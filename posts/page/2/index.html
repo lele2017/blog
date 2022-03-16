@@ -13,7 +13,7 @@
 <link rel=icon href=/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous>
 <script defer src=/flexsearch.min.js></script>
-<script defer src=/en.search.min.93a3438dd95325e4d5581bc65308f9b7fb5bc72a6eed67464459b38b0ca76fc0.js integrity="sha256-k6NDjdlTJeTVWBvGUwj5t/tbxypu7WdGRFmziwynb8A=" crossorigin=anonymous></script>
+<script defer src=/en.search.min.baeb7c0d85155e5015b78675c4a53a7f103644b300b1fc8bba1dd993bedc67bf.js integrity="sha256-uut8DYUVXlAVt4Z1xKU6fxA2RLMAsfyLuh3Zk77cZ78=" crossorigin=anonymous></script>
 <link rel=alternate type=application/rss+xml href=https://wolanx.com/posts/index.xml title=wolanx>
 </head>
 <body dir=ltr>
@@ -67,7 +67,7 @@ Project
 <ul>
 <li class="flex justify-between">
 <a href=/categories/tool/>tool</a>
-<span>3</span>
+<span>5</span>
 </li>
 <li class="flex justify-between">
 <a href=/categories/docker/>docker</a>
@@ -82,8 +82,8 @@ Project
 <span>1</span>
 </li>
 <li class="flex justify-between">
-<a href=/categories/liunx/>liunx</a>
-<span>1</span>
+<a href=/categories/linux/>linux</a>
+<span>3</span>
 </li>
 </ul>
 </li>
@@ -96,6 +96,17 @@ Project
 </nav>
 </aside>
 </header>
+<article class="markdown book-post">
+<h2>
+<a href=/posts/linux/debian/>debian</a>
+</h2>
+<h5>2021-06-18 00:00:00</h5>
+<div>
+<a href=/categories/linux/>linux</a>
+</div>
+<p>加速 # # backup cp /etc/apt/sources.list /etc/apt/sources.list.bak sed 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list sed 's/security.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list # run sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list sed -i 's/security.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list apt-get update -y common # apt-get install procps # top ps apt-get install net-tools apt-get install iputils-ping apt-get install apt-transport-https ca-certificates # https vi bug # vi /etc/vim/vimrc.tiny set nocompatible set backspace=2
+</p>
+</article>
 <article class="markdown book-post">
 <h2>
 <a href=/posts/docker/k3s/>k3s</a>
@@ -123,6 +134,17 @@ Project
 </article>
 <article class="markdown book-post">
 <h2>
+<a href=/posts/linux/wsl/>wsl 工具 Linux 的 Windows 子系统</a>
+</h2>
+<h5>2019-05-08 09:59:30</h5>
+<div>
+<a href=/categories/linux/>linux</a>
+</div>
+<p>wsl # Linux 的 Windows 子系统 https://docs.microsoft.com/zh-cn/windows/wsl/about cmd # wsl -l -v wsl --shutdown vim ~/.bashrc # alias d='cd /mnt/d' alias e='cd /mnt/e' alias z='cd /mnt/z' fix # netsh winsock reset
+</p>
+</article>
+<article class="markdown book-post">
+<h2>
 <a href=/posts/docker/kubectl/>kubectl</a>
 </h2>
 <h5>2019-03-23 00:00:00</h5>
@@ -131,6 +153,18 @@ Project
 </div>
 <p>kubectl # 备忘录 https://kubernetes.io/docs/reference/kubectl/cheatsheet/ export KUBECONFIG=~/Desktop/www/work-book/env/sandbox/1_kubernetes/kubeconfig kubectl get pod -A kubectl run hello-minikube --image=zx5435/go-fs:v1 --port=8080 kubectl delete -n default deployment hello-minikube kubectl logs -f pod-gim-uat-app-2 kubectl logs --tail=50 -f pod-gim-uat-app-2 install # curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.16.0/bin/windows/amd64/kubectl.exe config # namespace # kubectl config set-context --current --namespace=$(basename $PWD) kubectl config set-context --current --namespace=ccm-perf kubectl config set-context $(kubectl config current-context) --namespace=ccm-perf run # kubectl run hello-minikube --image=zx5435/go-fs:v1 --port=8080 delete 批量 # kubectl -nccm-uat get pod --field-selector=status.
 <a href=/posts/docker/kubectl/>...</a>
+</p>
+</article>
+<article class="markdown book-post">
+<h2>
+<a href=/posts/tool/clash/>clash 设置</a>
+</h2>
+<h5>2018-04-04 16:26:02</h5>
+<div>
+<a href=/categories/tool/>tool</a>
+</div>
+<p>clash # # install https://github.com/Fndroid/clash_for_windows_pkg/releases https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.19.12/Clash.for.Windows.Setup.0.19.12.exe D:\clash # setting https://docs.cfw.lbyczf.com/contents/quickstart.html https://portal.shadowsocks.nz/knowledgebase/182/ # shell host_ip=$(cat /etc/resolv.conf |grep "nameserver" |cut -f 2 -d " ") export ALL_PROXY="http://$host_ip:7890" export ALL_PROXY="http://127.0.0.1:7890" trojan # https://github.com/trojan-gfw/trojan/releases tar -xvf trojan-1.16.0-linux-amd64.tar.xz
+&ldquo;cert&rdquo;: &ldquo;/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem&rdquo;,
 </p>
 </article>
 <article class="markdown book-post">
@@ -153,7 +187,7 @@ Project
 <div>
 <a href=/categories/docker/>docker</a>
 </div>
-<p>doc # Docker学习笔记 https://segmentfault.com/a/1190000005930858 Docker 核心技术与实现原理 https://draveness.me/docker Docker 问答录（100 问） https://blog.lab99.org/post/docker-2016-07-14-faq.html Docker 实践系列文章 https://segmentfault.com/a/1190000006449675 install # sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo yum list docker-ce --showduplicates | sort -r sudo yum install -y docker-ce # 开机启动 systemctl status docker systemctl enable docker service docker restart kill -SIGHUP $(pidof dockerd) config # cat > /etc/docker/daemon.json &lt;&lt; EOF { "registry-mirrors": ["https://registry.docker-cn.com"], "log-opts": {"max-size": "500m", "max-file": "2"} } EOF { "debug": true, "registry-mirrors": ["https://registry.
+<p>doc # Docker学习笔记 https://segmentfault.com/a/1190000005930858 Docker 核心技术与实现原理 https://draveness.me/docker Docker 问答录（100 问） https://blog.lab99.org/post/docker-2016-07-14-faq.html Docker 实践系列文章 https://segmentfault.com/a/1190000006449675 install # # centos sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo yum list docker-ce --showduplicates | sort -r sudo yum install -y docker-ce # debian https://docs.docker.com/engine/install/debian/ # 开机启动 systemctl status docker systemctl enable docker service docker restart kill -SIGHUP $(pidof dockerd) config # cat > /etc/docker/daemon.json &lt;&lt; EOF { "registry-mirrors": ["https://registry.
 <a href=/posts/docker/docker/>...</a>
 </p>
 </article>
@@ -196,11 +230,14 @@ mysql postgres redis mongo apcu gd xdebug bcmath zip FROM php:7.1.11-fpm-alpine 
 <li class="page-item active">
 <a aria-current=page aria-label="Page 2" class=page-link role=button>2</a>
 </li>
-<li class="page-item disabled">
-<a aria-disabled=true aria-label=Next class=page-link role=button tabindex=-1><span aria-hidden=true>&#187;</span></a>
+<li class=page-item>
+<a href=/posts/page/3/ aria-label="Page 3" class=page-link role=button>3</a>
 </li>
-<li class="page-item disabled">
-<a aria-disabled=true aria-label=Last class=page-link role=button tabindex=-1><span aria-hidden=true>&#187;&#187;</span></a>
+<li class=page-item>
+<a href=/posts/page/3/ aria-label=Next class=page-link role=button><span aria-hidden=true>&#187;</span></a>
+</li>
+<li class=page-item>
+<a href=/posts/page/3/ aria-label=Last class=page-link role=button><span aria-hidden=true>&#187;&#187;</span></a>
 </li>
 </ul>
 <footer class=book-footer>
@@ -225,7 +262,7 @@ mysql postgres redis mongo apcu gd xdebug bcmath zip FROM php:7.1.11-fpm-alpine 
 <ul>
 <li class="flex justify-between">
 <a href=/categories/tool/>tool</a>
-<span>3</span>
+<span>5</span>
 </li>
 <li class="flex justify-between">
 <a href=/categories/docker/>docker</a>
@@ -240,8 +277,8 @@ mysql postgres redis mongo apcu gd xdebug bcmath zip FROM php:7.1.11-fpm-alpine 
 <span>1</span>
 </li>
 <li class="flex justify-between">
-<a href=/categories/liunx/>liunx</a>
-<span>1</span>
+<a href=/categories/linux/>linux</a>
+<span>3</span>
 </li>
 </ul>
 </li>
