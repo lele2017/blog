@@ -13,7 +13,7 @@
 <link rel=icon href=/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous>
 <script defer src=/flexsearch.min.js></script>
-<script defer src=/en.search.min.baeb7c0d85155e5015b78675c4a53a7f103644b300b1fc8bba1dd993bedc67bf.js integrity="sha256-uut8DYUVXlAVt4Z1xKU6fxA2RLMAsfyLuh3Zk77cZ78=" crossorigin=anonymous></script>
+<script defer src=/en.search.min.627ac2074de3361c936578c43c72784fd9093971154510b10c0fba3478a16bc3.js integrity="sha256-YnrCB03jNhyTZXjEPHJ4T9kJOXEVRRCxDA+6NHiha8M=" crossorigin=anonymous></script>
 <link rel=alternate type=application/rss+xml href=https://wolanx.com/posts/index.xml title=wolanx>
 </head>
 <body dir=ltr>
@@ -70,12 +70,16 @@ Project
 <span>5</span>
 </li>
 <li class="flex justify-between">
-<a href=/categories/docker/>docker</a>
-<span>8</span>
+<a href=/categories/windows/>windows</a>
+<span>1</span>
 </li>
 <li class="flex justify-between">
 <a href=/categories/csdn/>csdn</a>
-<span>3</span>
+<span>6</span>
+</li>
+<li class="flex justify-between">
+<a href=/categories/docker/>docker</a>
+<span>8</span>
 </li>
 <li class="flex justify-between">
 <a href=/categories/algo/>algo</a>
@@ -84,6 +88,10 @@ Project
 <li class="flex justify-between">
 <a href=/categories/linux/>linux</a>
 <span>3</span>
+</li>
+<li class="flex justify-between">
+<a href=/categories/clang/>clang</a>
+<span>1</span>
 </li>
 </ul>
 </li>
@@ -98,18 +106,42 @@ Project
 </header>
 <article class="markdown book-post">
 <h2>
-<a href=/posts/tool/markdown/>Markdown</a>
+<a href=/posts/tool/kemulator/>塞班手机模拟器 KEmulator</a>
 </h2>
-<h5>2022-02-22 00:00:00</h5>
+<h5>2022-05-23 12:00:00</h5>
 <div>
-<a href=/categories/tool/>tool</a>
+<a href=/categories/tool/>tool</a>,
+<a href=/categories/windows/>windows</a>
 </div>
-<p>From csdn
-欢迎使用Markdown编辑器 # 你好！ 这是你第一次使用 Markdown编辑器 所展示的欢迎页。如果你想学习如何使用Markdown编辑器, 可以仔细阅读这篇文章，了解一下Markdown的基本语法知识。
-新的改变 # 我们对Markdown编辑器进行了一些功能拓展与语法支持，除了标准的Markdown编辑器功能，我们增加了如下几点新功能，帮助你用它写博客：
-全新的界面设计 ，将会带来全新的写作体验； 在创作中心设置你喜爱的代码高亮样式，Markdown 将代码片显示选择的高亮样式 进行展示； 增加了 图片拖拽 功能，你可以将本地的图片直接拖拽到编辑区域直接展示； 全新的 KaTeX数学公式 语法； 增加了支持甘特图的mermaid语法1 功能； 增加了 多屏幕编辑 Markdown文章功能； 增加了 焦点写作模式、预览模式、简洁写作模式、左右区域同步滚轮设置 等功能，功能按钮位于编辑区域与预览区域中间； 增加了 检查列表 功能。 功能快捷键 # 撤销：Ctrl/Command+ Z重做：Ctrl/Command+ Y加粗：Ctrl/Command+ B斜体：Ctrl/Command+ I标题：Ctrl/Command+ Shift+ H无序列表：Ctrl/Command+ Shift+ U有序列表：Ctrl/Command+ Shift+ O检查列表：Ctrl/Command+ Shift+ C插入代码：Ctrl/Command+ Shift+ K插入链接：Ctrl/Command+ Shift+ L插入图片：Ctrl/Command+ Shift+ G查找：Ctrl/Command+ F替换：Ctrl/Command+ G合理的创建标题，有助于目录的生成 # 直接输入1次#，并按下space后，将生成1级标题。 输入2次#，并按下space后，将生成2级标题。 以此类推，我们支持6级标题。有助于使用TOC语法后生成一个完美的目录。
-如何改变文本的样式 # 强调文本 强调文本
-<a href=/posts/tool/markdown/>...</a>
+<p>安装 # java 环境准备 https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html#license-lightbox 登陆下 oracle 下载 32位 jre-8u202-windows-i586.tar.gz 模拟器准备 https://pan.baidu.com/s/1zSVZGO4Pn7W7UNisPnOOVw 提取码: 8zn4 下载 KEmulator-0.9.6 稳定可靠 运行 ~/.jdks/jre8_32/bin/java -jar KEmulator.jar 修改分辨率：视图-选项-定制-屏幕宽-800-高750 load jar包
+</p>
+</article>
+<article class="markdown book-post">
+<h2>
+<a href=/posts/article/pytorch-mnist-vgg16-%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%95/>pytorch mnist vgg16 错误记录</a>
+</h2>
+<h5>2022-05-06 20:01:16</h5>
+<div>
+<a href=/categories/csdn/>csdn</a>
+</div>
+<p>https://blog.csdn.net/wolanx/article/details/124599294 Intro # 在尝试了FC，CNN等模型在 mnist 的练习后，使用 torchvision.models 的官方定义尝试运行 vgg16，resnet。 常见会出现以下错误：
+RuntimeError: Given groups=1, weight of size [64, 3, 3, 3], expected input[64, 1, 28, 28] to have 3 channels, but got 1 channels instead RuntimeError: Given input size: (512x1x1). Calculated output size: (512x0x0). Output size is too small 模型定义如下 # # mnist cnn 不知道怎么写的，可以参考 https://github.com/wolanx/pii/blob/main/x10_ml/demo2-6_mnist/demo2-6.ipynb dataset1 = torchvision.datasets.MNIST(root="./data", train=True, download=True, transform=transform) model = torchvision.models.vgg16(pretrained=False, num_classes=10) model = model.
+<a href=/posts/article/pytorch-mnist-vgg16-%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%95/>...</a>
+</p>
+</article>
+<article class="markdown book-post">
+<h2>
+<a href=/posts/article/threejs-react-fiber-%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/>threejs react fiber 最佳实践</a>
+</h2>
+<h5>2022-03-16 17:50:27</h5>
+<div>
+<a href=/categories/csdn/>csdn</a>
+</div>
+<p>https://blog.csdn.net/wolanx/article/details/123526472 Intro # 在使用的相当一段时间的 threejs 和 react-three-fiber 后，在中文资料环境极其匮乏的情况下，做个极简·笔记式的分享。目标是能让大家在 最快 的速度上手，且 半·精通
+Install # npm install three @react-three/fiber 官方文档 Demo1 - 全局概览 # ![](https://img-blog.csdnimg.cn/1845e0529fbf434388ba99b656eaf466.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAeXVqaWUuemhhbw==,size_13,color_FFFFFF,t_70,g_se,x_16 =250x)
+这是一个短小精悍的 demo1，对着下面代码看解析
+物体 盒子：new BoxGeometry() 球：new SphereGeometry(.5, 32, 16) 物体上色 &lt;mesh geometry={ball} material={mtl1} /> 使用 mesh 将 物体和材料 捆绑 光1 &lt;ambientLight intensity={0.1} /> 环境光，四面八方的光，intensity 光的强度 光2 &lt;directionalLight /> 一束光 需要 color position：照射方向 控制 OrbitControls 交互操作，鼠标 旋转：左键拖拽 平移：右键拖拽 放大：滚轮 阴影 &lt;ContactShadows /> 参数字面意思 背景 &lt;color attach='background' args={['#aaa']} /> 也可以用 css 解决 import React, { Suspense } from 'react' import { BoxGeometry, MeshStandardMaterial } from 'three' import { Canvas } from '@react-three/fiber' import { ContactShadows, OrbitControls } from '@react-three/drei' const ball = new BoxGeometry() const mtl1 = new MeshStandardMaterial({ color: '#f00' }) export default function Demo () { return ( &lt;Canvas style={{ height: 800 }} camera={{ fov: 75, near: 0.
+<a href=/posts/article/threejs-react-fiber-%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/>...</a>
 </p>
 </article>
 <article class="markdown book-post">
@@ -198,31 +230,6 @@ Start # java -jar arthas-boot.jar # input pid help dashboard thread 1 thread 1 |
 二分 # 单调性 000111找突变边界 使用主动与被动不同的视角看 704. 二分查找 https://leetcode-cn.com/problems/binary-search/ 278. 第一个错误的版本 https://leetcode-cn.com/problems/first-bad-version/ 475. 供暖器 https://leetcode-cn.com/problems/heaters/ 540. 有序数组中的单一元素 https://leetcode-cn.com/problems/single-element-in-a-sorted-array/ 240. 搜索二维矩阵 II https://leetcode-cn.com/problems/search-a-2d-matrix-ii/ 875. 爱吃香蕉的珂珂 https://leetcode-cn.com/problems/koko-eating-bananas/ 611. 有效三角形的个数 https://leetcode-cn.com/problems/valid-triangle-number/ 1760. 袋子里最少数目的球 https://leetcode-cn.com/problems/minimum-limit-of-balls-in-a-bag/ 300. 最长递增子序列 https://leetcode-cn.com/problems/longest-increasing-subsequence/ 1011. 在 D 天内送达包裹的能力 https://leetcode-cn.com/problems/capacity-to-ship-packages-within-d-days/ 动态规划 #
 </p>
 </article>
-<article class="markdown book-post">
-<h2>
-<a href=/posts/tool/hugo/>hugo-book</a>
-</h2>
-<h5>2022-01-20 22:17:51</h5>
-<div>
-<a href=/categories/tool/>tool</a>
-</div>
-<p>Intro # 本站使用 博客系统hugo，搭配主题hugo-book
-hugo https://gohugo.io/getting-started/quick-start/ hugo-book 官方demo https://hugo-book-demo.netlify.app/posts/migrate-from-jekyll/ 代码demo https://github1s.com/alex-shpak/hugo-book Start # # 本地测试 hugo server -w # add hugo new posts/xxx.md Guide # Intro Install Start Packages Contributing About License Test # MacOS MacOS Content # Linux Linux Content # Windows Windows Content #
-</p>
-</article>
-<article class="markdown book-post">
-<h2>
-<a href=/posts/tool/vagrant/>vagrant</a>
-</h2>
-<h5>2022-01-10 12:00:00</h5>
-<div>
-<a href=/categories/tool/>tool</a>,
-<a href=/categories/linux/>linux</a>
-</div>
-<p>Intro # 快速可自定义的虚拟机，几行命令搞定，不用再设置一堆东西。 自定义文件Vagrantfile实现环境重复利用 https://www.vagrantup.com/intro Install # https://www.vagrantup.com/downloads # wget https://releases.hashicorp.com/vagrant/2.2.19/vagrant_2.2.19_x86_64.msi Start # vagrant init generic/alpine312 # https://vagrantcloud.com/search vagrant up --provider=hyperv # start vagrant halt # stop vagrant ssh vagrant destroy # delete Other # vagrant box list # list image vagrant global-status # list vm vagrant destroy 1a2b3c4d # 手动下包 wget https://app.vagrantup.com/generic/boxes/alpine312/versions/3.6.4/providers/hyperv.box vagrant box add my/alpine312 hyperv.box # 127.0.0.1:2222 # root vagrant Vagrantfile # # touch Vagrantfile Vagrant.
-<a href=/posts/tool/vagrant/>...</a>
-</p>
-</article>
 <ul class="pagination pagination-default">
 <li class="page-item disabled">
 <a aria-disabled=true aria-label=First class=page-link role=button tabindex=-1><span aria-hidden=true>&#171;&#171;</span></a>
@@ -271,12 +278,16 @@ hugo https://gohugo.io/getting-started/quick-start/ hugo-book 官方demo https:/
 <span>5</span>
 </li>
 <li class="flex justify-between">
-<a href=/categories/docker/>docker</a>
-<span>8</span>
+<a href=/categories/windows/>windows</a>
+<span>1</span>
 </li>
 <li class="flex justify-between">
 <a href=/categories/csdn/>csdn</a>
-<span>3</span>
+<span>6</span>
+</li>
+<li class="flex justify-between">
+<a href=/categories/docker/>docker</a>
+<span>8</span>
 </li>
 <li class="flex justify-between">
 <a href=/categories/algo/>algo</a>
@@ -285,6 +296,10 @@ hugo https://gohugo.io/getting-started/quick-start/ hugo-book 官方demo https:/
 <li class="flex justify-between">
 <a href=/categories/linux/>linux</a>
 <span>3</span>
+</li>
+<li class="flex justify-between">
+<a href=/categories/clang/>clang</a>
+<span>1</span>
 </li>
 </ul>
 </li>

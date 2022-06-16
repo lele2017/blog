@@ -13,7 +13,7 @@
 <link rel=icon href=/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous>
 <script defer src=/flexsearch.min.js></script>
-<script defer src=/en.search.min.baeb7c0d85155e5015b78675c4a53a7f103644b300b1fc8bba1dd993bedc67bf.js integrity="sha256-uut8DYUVXlAVt4Z1xKU6fxA2RLMAsfyLuh3Zk77cZ78=" crossorigin=anonymous></script>
+<script defer src=/en.search.min.627ac2074de3361c936578c43c72784fd9093971154510b10c0fba3478a16bc3.js integrity="sha256-YnrCB03jNhyTZXjEPHJ4T9kJOXEVRRCxDA+6NHiha8M=" crossorigin=anonymous></script>
 <link rel=alternate type=application/rss+xml href=https://wolanx.com/posts/index.xml title=wolanx>
 </head>
 <body dir=ltr>
@@ -70,12 +70,16 @@ Project
 <span>5</span>
 </li>
 <li class="flex justify-between">
-<a href=/categories/docker/>docker</a>
-<span>8</span>
+<a href=/categories/windows/>windows</a>
+<span>1</span>
 </li>
 <li class="flex justify-between">
 <a href=/categories/csdn/>csdn</a>
-<span>3</span>
+<span>6</span>
+</li>
+<li class="flex justify-between">
+<a href=/categories/docker/>docker</a>
+<span>8</span>
 </li>
 <li class="flex justify-between">
 <a href=/categories/algo/>algo</a>
@@ -84,6 +88,10 @@ Project
 <li class="flex justify-between">
 <a href=/categories/linux/>linux</a>
 <span>3</span>
+</li>
+<li class="flex justify-between">
+<a href=/categories/clang/>clang</a>
+<span>1</span>
 </li>
 </ul>
 </li>
@@ -98,13 +106,63 @@ Project
 </header>
 <article class="markdown book-post">
 <h2>
+<a href=/posts/docker/docker/>docker 基础</a>
+</h2>
+<h5>2018-03-22 00:00:00</h5>
+<div>
+<a href=/categories/docker/>docker</a>
+</div>
+<p>doc # Docker学习笔记 https://segmentfault.com/a/1190000005930858 Docker 核心技术与实现原理 https://draveness.me/docker Docker 问答录（100 问） https://blog.lab99.org/post/docker-2016-07-14-faq.html Docker 实践系列文章 https://segmentfault.com/a/1190000006449675 install # # centos sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo yum list docker-ce --showduplicates | sort -r sudo yum install -y docker-ce # debian https://docs.docker.com/engine/install/debian/ # 开机启动 systemctl status docker systemctl enable docker service docker restart kill -SIGHUP $(pidof dockerd) config # cat > /etc/docker/daemon.json &lt;&lt; EOF { "registry-mirrors": ["https://registry.
+<a href=/posts/docker/docker/>...</a>
+</p>
+</article>
+<article class="markdown book-post">
+<h2>
+<a href=/posts/docker/docker-compose/>docker-compose</a>
+</h2>
+<h5>2018-03-22 00:00:00</h5>
+<div>
+<a href=/categories/docker/>docker</a>
+</div>
+<p>docker-compose # docker-compose ps docker-compose logs --tail=100 -f docker-compose logs --tail=100 -f svc-web docker-compose restart svc-web install # # https://docs.docker.com/compose/install/#install-compose yum install -y docker-compose sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose sudo chmod +x /usr/local/bin/docker-compose docker-compose --version tpl # java + redis + influxdb # version: "3" services: svc-web: image: ghcr.io/wolanx/iothub-echo ports: - 1883:1883 - 18830:8080 entrypoint: java -cp /app/resources:/app/classes:/app/libs/* com.wolanx.echo.iothub.IotHubApplication volumes: - .:/root environment: - TZ=utc-8 - JVM=-XX:+UseContainerSupport - REDIS_HOST=svc-redis - INFLUXDB_HOST=svc-influxdb networks: - mynet svc-redis: image: redis:6.
+<a href=/posts/docker/docker-compose/>...</a>
+</p>
+</article>
+<article class="markdown book-post">
+<h2>
+<a href=/posts/docker/php.dockerfile/>php Dockerfile</a>
+</h2>
+<h5>2018-03-22 00:00:00</h5>
+<div>
+<a href=/categories/docker/>docker</a>
+</div>
+<p>2019-04-04 zst php:7.1.11 # docker pull zx5435/php:7.1.10
+All version is small about 100mb, quick to download and running fast. They are cover my work in everywhere, you can try it. include:
+mysql postgres redis mongo apcu gd xdebug bcmath zip FROM php:7.1.11-fpm-alpine RUN apk add --no-cache freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev \ && apk add --no-cache --virtual .build-deps autoconf g++ libssh2 openssl openssl-dev make pcre-dev tree curl \ && apk add --no-cache postgresql-dev \ && docker-php-ext-configure gd \ --with-gd \ --with-freetype-dir=/usr/include/ \ --with-png-dir=/usr/include/ \ --with-jpeg-dir=/usr/include/ \ && pecl install mongodb-1.
+<a href=/posts/docker/php.dockerfile/>...</a>
+</p>
+</article>
+<article class="markdown book-post">
+<h2>
 <a href=/posts/tool/jetbrain_idea/>idea</a>
 </h2>
 <h5>2017-09-25 00:00:00</h5>
 <div>
 <a href=/categories/tool/>tool</a>
 </div>
-<p>doc # webstorm下调试react js程序(不是在chrome里) https://www.jianshu.com/p/87a5609c5f44 Editor # General # Appearance # Show method separators Tools # Terminal # C:\Git\bin\sh.exe &ndash;login -i
+<p>doc # webstorm下调试react js程序(不是在chrome里) https://www.jianshu.com/p/87a5609c5f44 Editor # General # Appearance # Show method separators 函数分割线 Tools # External Tools # pycharm black setting:
+Program: black Arguments: $FileName$ Work dir: $FileDir$ Terminal # C:\Git\bin\sh.exe &ndash;login -i
+</p>
+</article>
+<article class="markdown book-post">
+<h2>
+<a href=/posts/clang/clang/>c demo</a>
+</h2>
+<h5>2015-02-13 20:43:41</h5>
+<div>
+<a href=/categories/clang/>clang</a>
+</div>
+<p>doc # 深入浅出让你理解什么是LLVM https://www.jianshu.com/p/1367dad95445 命令 # ### -E 预编译 `gcc -E -o a.e a.c` 把`/usr/include/stdio.h`的内容`include`过来,并`删除注释` ### -S 汇编 `gcc -S -o a.s a.c` `c`转化成`汇编` ### -c 编译 `gcc -c -o a.o a.s` `汇编`转化成`二进制机器指令` ### 链接 没参数 `gcc -o a a.o` ## 快速生成 rm -f a.out; cc a.c; ./a.out; `gcc a.c` = `gcc -o a a.c`
 </p>
 </article>
 <ul class="pagination pagination-default">
@@ -155,12 +213,16 @@ Project
 <span>5</span>
 </li>
 <li class="flex justify-between">
-<a href=/categories/docker/>docker</a>
-<span>8</span>
+<a href=/categories/windows/>windows</a>
+<span>1</span>
 </li>
 <li class="flex justify-between">
 <a href=/categories/csdn/>csdn</a>
-<span>3</span>
+<span>6</span>
+</li>
+<li class="flex justify-between">
+<a href=/categories/docker/>docker</a>
+<span>8</span>
 </li>
 <li class="flex justify-between">
 <a href=/categories/algo/>algo</a>
@@ -169,6 +231,10 @@ Project
 <li class="flex justify-between">
 <a href=/categories/linux/>linux</a>
 <span>3</span>
+</li>
+<li class="flex justify-between">
+<a href=/categories/clang/>clang</a>
+<span>1</span>
 </li>
 </ul>
 </li>

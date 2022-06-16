@@ -1,0 +1,201 @@
+<!doctype html><html lang=en-us dir=ltr>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="https://blog.csdn.net/wolanx/article/details/124599294  Intro #  在尝试了FC，CNN等模型在 mnist 的练习后，使用 torchvision.models 的官方定义尝试运行 vgg16，resnet。 常见会出现以下错误：
+ RuntimeError: Given groups=1, weight of size [64, 3, 3, 3], expected input[64, 1, 28, 28] to have 3 channels, but got 1 channels instead RuntimeError: Given input size: (512x1x1). Calculated output size: (512x0x0). Output size is too small  模型定义如下 #  # mnist cnn 不知道怎么写的，可以参考 https://github.com/wolanx/pii/blob/main/x10_ml/demo2-6_mnist/demo2-6.ipynb dataset1 = torchvision.datasets.MNIST(root=&#34;./data&#34;, train=True, download=True, transform=transform) model = torchvision.models.vgg16(pretrained=False, num_classes=10) model = model.">
+<meta name=theme-color content="#FFFFFF">
+<meta name=color-scheme content="light dark"><meta property="og:title" content="pytorch mnist vgg16 错误记录">
+<meta property="og:description" content="https://blog.csdn.net/wolanx/article/details/124599294  Intro #  在尝试了FC，CNN等模型在 mnist 的练习后，使用 torchvision.models 的官方定义尝试运行 vgg16，resnet。 常见会出现以下错误：
+ RuntimeError: Given groups=1, weight of size [64, 3, 3, 3], expected input[64, 1, 28, 28] to have 3 channels, but got 1 channels instead RuntimeError: Given input size: (512x1x1). Calculated output size: (512x0x0). Output size is too small  模型定义如下 #  # mnist cnn 不知道怎么写的，可以参考 https://github.com/wolanx/pii/blob/main/x10_ml/demo2-6_mnist/demo2-6.ipynb dataset1 = torchvision.datasets.MNIST(root=&#34;./data&#34;, train=True, download=True, transform=transform) model = torchvision.models.vgg16(pretrained=False, num_classes=10) model = model.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://wolanx.com/posts/article/pytorch-mnist-vgg16-%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%95/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2022-05-06T20:01:16+08:00">
+<meta property="article:modified_time" content="2022-05-06T20:01:16+08:00">
+<title>pytorch mnist vgg16 错误记录 | wolanx</title>
+<link rel=manifest href=/manifest.json>
+<link rel=icon href=/favicon.png type=image/x-icon>
+<link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous>
+<script defer src=/flexsearch.min.js></script>
+<script defer src=/en.search.min.627ac2074de3361c936578c43c72784fd9093971154510b10c0fba3478a16bc3.js integrity="sha256-YnrCB03jNhyTZXjEPHJ4T9kJOXEVRRCxDA+6NHiha8M=" crossorigin=anonymous></script>
+</head>
+<body dir=ltr>
+<input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control>
+<main class="container flex">
+<aside class=book-menu>
+<div class=book-menu-content>
+<nav>
+<h2 class=book-brand>
+<a class="flex align-center" href=/><span>wolanx</span>
+</a>
+</h2>
+<div class=book-search>
+<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
+<div class="book-search-spinner hidden"></div>
+<ul id=book-search-results></ul>
+</div>
+<ul>
+<li>
+<a href=/posts/>
+Blog
+</a>
+</li>
+<li>
+<a href=/projects/>
+Project
+</a>
+</li>
+</ul>
+</nav>
+<script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+</div>
+</aside>
+<div class=book-page>
+<header class=book-header>
+<div class="flex align-center justify-between">
+<label for=menu-control>
+<img src=/svg/menu.svg class=book-icon alt=Menu>
+</label>
+<strong>pytorch mnist vgg16 错误记录</strong>
+<label for=toc-control>
+<img src=/svg/toc.svg class=book-icon alt="Table of Contents">
+</label>
+</div>
+<aside class="hidden clearfix">
+<nav id=TableOfContents>
+<ul>
+<li><a href=#intro>Intro</a>
+<ul>
+<li><a href=#模型定义如下>模型定义如下</a></li>
+</ul>
+</li>
+<li><a href=#错误一>错误一</a></li>
+<li><a href=#错误二>错误二</a></li>
+</ul>
+</nav>
+</aside>
+</header>
+<article class=markdown>
+<h1>
+<a href=/posts/article/pytorch-mnist-vgg16-%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%95/>pytorch mnist vgg16 错误记录</a>
+</h1>
+<h5>2022-05-06 20:01:16</h5>
+<div>
+<a href=/categories/csdn/>csdn</a>
+</div>
+<blockquote>
+<p><a href=https://blog.csdn.net/wolanx/article/details/124599294 target=_blank>https://blog.csdn.net/wolanx/article/details/124599294</a>
+</p>
+</blockquote>
+<h2 id=intro>
+Intro
+<a class=anchor href=#intro>#</a>
+</h2>
+<p>在尝试了FC，CNN等模型在 mnist 的练习后，使用 torchvision.models 的官方定义尝试运行 vgg16，resnet。
+常见会出现以下错误：</p>
+<ul>
+<li><code>RuntimeError</code>: Given groups=1, weight of size [64, 3, 3, 3], expected input[64, 1, 28, 28] to have 3 channels, but got 1 channels instead</li>
+<li><code>RuntimeError</code>: Given input size: (512x1x1). Calculated output size: (512x0x0). Output size is too small</li>
+</ul>
+<h3 id=模型定义如下>
+模型定义如下
+<a class=anchor href=#%e6%a8%a1%e5%9e%8b%e5%ae%9a%e4%b9%89%e5%a6%82%e4%b8%8b>#</a>
+</h3>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e># mnist cnn 不知道怎么写的，可以参考 https://github.com/wolanx/pii/blob/main/x10_ml/demo2-6_mnist/demo2-6.ipynb</span>
+dataset1 <span style=color:#f92672>=</span> torchvision<span style=color:#f92672>.</span>datasets<span style=color:#f92672>.</span>MNIST(root<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;./data&#34;</span>, train<span style=color:#f92672>=</span><span style=color:#66d9ef>True</span>, download<span style=color:#f92672>=</span><span style=color:#66d9ef>True</span>, transform<span style=color:#f92672>=</span>transform)
+
+model <span style=color:#f92672>=</span> torchvision<span style=color:#f92672>.</span>models<span style=color:#f92672>.</span>vgg16(pretrained<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span>, num_classes<span style=color:#f92672>=</span><span style=color:#ae81ff>10</span>)
+model <span style=color:#f92672>=</span> model<span style=color:#f92672>.</span>to(device)
+print(model)
+</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>VGG(
+  (features): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU(inplace=True)
+    (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU(inplace=True)
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    ...
+  )
+  (avgpool): AdaptiveAvgPool2d(output_size=(7, 7))
+  (classifier): Sequential(
+    (0): Linear(in_features=25088, out_features=4096, bias=True)
+    (1): ReLU(inplace=True)
+    ...
+  )
+)
+</code></pre></div><h2 id=错误一>
+错误一
+<a class=anchor href=#%e9%94%99%e8%af%af%e4%b8%80>#</a>
+</h2>
+<blockquote>
+<p>Given groups=1, weight of size [64, 3, 3, 3], expected input[64, 1, 28, 28] to have 3 channels, but got 1 channels instead</p>
+</blockquote>
+<p>是说维度不同，mnist里的数据为单色<em>28px</em>28px，所以是(1, 28, 28)，但vgg是面向RGB图像是三色的，需要把它变成RGB的3通道，但是显然要自己去搞这样的数据太麻烦。换个思路，查看vgg16的定义把vgg的features的第一层修改下</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>VGG(
+  (features): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))                # 改这一层
+    (1): ReLU(inplace=True)
+</code></pre></div><p>修改完如下</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>model <span style=color:#f92672>=</span> torchvision<span style=color:#f92672>.</span>models<span style=color:#f92672>.</span>vgg16(pretrained<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span>, num_classes<span style=color:#f92672>=</span><span style=color:#ae81ff>10</span>)
+model<span style=color:#f92672>.</span>features[<span style=color:#ae81ff>0</span>] <span style=color:#f92672>=</span> nn<span style=color:#f92672>.</span>Conv2d(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>64</span>, kernel_size<span style=color:#f92672>=</span>(<span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>3</span>), stride<span style=color:#f92672>=</span>(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>), padding<span style=color:#f92672>=</span>(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>))  <span style=color:#75715e># 这里的 conv2d(3,64) 改成了 conv2d(1,64)</span>
+model <span style=color:#f92672>=</span> model<span style=color:#f92672>.</span>to(device)
+print(model) <span style=color:#75715e># 再次检查下</span>
+</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>VGG(
+  (features): Sequential(
+    (0): Conv2d(1, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))                # 改这一层
+    (1): ReLU(inplace=True)
+</code></pre></div><p>到这一步，错误一就解决了，但紧接着会出现错误二</p>
+<h2 id=错误二>
+错误二
+<a class=anchor href=#%e9%94%99%e8%af%af%e4%ba%8c>#</a>
+</h2>
+<blockquote>
+<p>Given input size: (512x1x1). Calculated output size: (512x0x0). Output size is too small</p>
+</blockquote>
+<p>这一步说的太抽象，先回顾下vgg16的几层模型，需要注意到，图像经过多次conv，而conv stride=1时，相当于多图像进行了缩小（一半），而 mnist 的像素为 28 * 28，缩小一半为 14 * 14，再 7 * 7，再 4* 4，再 2 * 2，再 1 * 1，再就 0 * 0。而vgg层数还没运行到最后就没了。和错误一相似，一里是RGB不满足，错误二是像素不满足，同样要换样本不现实。简单处理就是，不要不断的缩小，减层可以，但是会破坏定义结构。但也可以是反卷积：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>model <span style=color:#f92672>=</span> torchvision<span style=color:#f92672>.</span>models<span style=color:#f92672>.</span>vgg16(pretrained<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span>, num_classes<span style=color:#f92672>=</span><span style=color:#ae81ff>10</span>)
+model<span style=color:#f92672>.</span>features[<span style=color:#ae81ff>0</span>] <span style=color:#f92672>=</span> nn<span style=color:#f92672>.</span>Conv2d(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>16</span>, kernel_size<span style=color:#f92672>=</span>(<span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>3</span>), stride<span style=color:#f92672>=</span>(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>), padding<span style=color:#f92672>=</span>(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>))  <span style=color:#75715e># 不是 (3,64) (1,16)，单通道再加小一点</span>
+model<span style=color:#f92672>.</span>features[<span style=color:#ae81ff>2</span>] <span style=color:#f92672>=</span> nn<span style=color:#f92672>.</span>ConvTranspose2d(<span style=color:#ae81ff>16</span>, <span style=color:#ae81ff>64</span>, kernel_size<span style=color:#f92672>=</span>(<span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>3</span>), stride<span style=color:#f92672>=</span>(<span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>2</span>), padding<span style=color:#f92672>=</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>), bias<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span>)
+model <span style=color:#f92672>=</span> model<span style=color:#f92672>.</span>to(device)
+print(model) <span style=color:#75715e># 再次检查下</span>
+</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>VGG(
+  (features): Sequential(
+    (0): Conv2d(1, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))   # 这里变了
+    (1): ReLU(inplace=True)
+    (2): ConvTranspose2d(16, 64, kernel_size=(3, 3), stride=(2, 2), bias=False)  # 这里变了
+</code></pre></div><p>这样就解决了像素太低问题，整个模型至少现在能跑了，但是如果有做train的话，发现error实在收敛太慢，还需要再优化下。</p>
+</article>
+<footer class=book-footer>
+<div class="flex flex-wrap justify-between">
+<div>
+<a class="flex align-center" href=https://github.com/wolanx/blog/edit/main/content/posts/article/pytorch%20mnist%20vgg16%20%e9%94%99%e8%af%af%e8%ae%b0%e5%bd%95.md target=_blank rel=noopener>
+<img src=/svg/edit.svg class=book-icon alt=Edit>
+<span>Edit this page</span>
+</a>
+</div>
+</div>
+<script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+</footer>
+<div class=book-comments>
+</div>
+<label for=menu-control class="hidden book-menu-overlay"></label>
+</div>
+<aside class=book-toc>
+<div class=book-toc-content>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#intro>Intro</a>
+<ul>
+<li><a href=#模型定义如下>模型定义如下</a></li>
+</ul>
+</li>
+<li><a href=#错误一>错误一</a></li>
+<li><a href=#错误二>错误二</a></li>
+</ul>
+</nav>
+</div>
+</aside>
+</main>
+</body>
+</html>

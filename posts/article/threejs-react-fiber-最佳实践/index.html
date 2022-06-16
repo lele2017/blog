@@ -1,0 +1,527 @@
+<!doctype html><html lang=en-us dir=ltr>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="https://blog.csdn.net/wolanx/article/details/123526472  Intro #  在使用的相当一段时间的 threejs 和 react-three-fiber 后，在中文资料环境极其匮乏的情况下，做个极简·笔记式的分享。目标是能让大家在 最快 的速度上手，且 半·精通
+Install #  npm install three @react-three/fiber 官方文档 Demo1 - 全局概览 #  ![](https://img-blog.csdnimg.cn/1845e0529fbf434388ba99b656eaf466.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAeXVqaWUuemhhbw==,size_13,color_FFFFFF,t_70,g_se,x_16 =250x)
+ 这是一个短小精悍的 demo1，对着下面代码看解析
+  物体 盒子：new BoxGeometry() 球：new SphereGeometry(.5, 32, 16) 物体上色 <mesh geometry={ball} material={mtl1} /> 使用 mesh 将 物体和材料 捆绑 光1 <ambientLight intensity={0.1} /> 环境光，四面八方的光，intensity 光的强度 光2 <directionalLight /> 一束光 需要 color position：照射方向 控制 OrbitControls 交互操作，鼠标 旋转：左键拖拽 平移：右键拖拽 放大：滚轮 阴影 <ContactShadows /> 参数字面意思 背景 <color attach='background' args={['#aaa']} /> 也可以用 css 解决  import React, { Suspense } from 'react' import { BoxGeometry, MeshStandardMaterial } from 'three' import { Canvas } from '@react-three/fiber' import { ContactShadows, OrbitControls } from '@react-three/drei' const ball = new BoxGeometry() const mtl1 = new MeshStandardMaterial({ color: '#f00' }) export default function Demo () { return ( <Canvas style={{ height: 800 }} camera={{ fov: 75, near: 0.">
+<meta name=theme-color content="#FFFFFF">
+<meta name=color-scheme content="light dark"><meta property="og:title" content="threejs react fiber 最佳实践">
+<meta property="og:description" content="https://blog.csdn.net/wolanx/article/details/123526472  Intro #  在使用的相当一段时间的 threejs 和 react-three-fiber 后，在中文资料环境极其匮乏的情况下，做个极简·笔记式的分享。目标是能让大家在 最快 的速度上手，且 半·精通
+Install #  npm install three @react-three/fiber 官方文档 Demo1 - 全局概览 #  ![](https://img-blog.csdnimg.cn/1845e0529fbf434388ba99b656eaf466.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAeXVqaWUuemhhbw==,size_13,color_FFFFFF,t_70,g_se,x_16 =250x)
+ 这是一个短小精悍的 demo1，对着下面代码看解析
+  物体 盒子：new BoxGeometry() 球：new SphereGeometry(.5, 32, 16) 物体上色 <mesh geometry={ball} material={mtl1} /> 使用 mesh 将 物体和材料 捆绑 光1 <ambientLight intensity={0.1} /> 环境光，四面八方的光，intensity 光的强度 光2 <directionalLight /> 一束光 需要 color position：照射方向 控制 OrbitControls 交互操作，鼠标 旋转：左键拖拽 平移：右键拖拽 放大：滚轮 阴影 <ContactShadows /> 参数字面意思 背景 <color attach='background' args={['#aaa']} /> 也可以用 css 解决  import React, { Suspense } from 'react' import { BoxGeometry, MeshStandardMaterial } from 'three' import { Canvas } from '@react-three/fiber' import { ContactShadows, OrbitControls } from '@react-three/drei' const ball = new BoxGeometry() const mtl1 = new MeshStandardMaterial({ color: '#f00' }) export default function Demo () { return ( <Canvas style={{ height: 800 }} camera={{ fov: 75, near: 0.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://wolanx.com/posts/article/threejs-react-fiber-%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2022-03-16T17:50:27+00:00">
+<meta property="article:modified_time" content="2022-03-16T17:50:27+00:00">
+<title>threejs react fiber 最佳实践 | wolanx</title>
+<link rel=manifest href=/manifest.json>
+<link rel=icon href=/favicon.png type=image/x-icon>
+<link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous>
+<script defer src=/flexsearch.min.js></script>
+<script defer src=/en.search.min.627ac2074de3361c936578c43c72784fd9093971154510b10c0fba3478a16bc3.js integrity="sha256-YnrCB03jNhyTZXjEPHJ4T9kJOXEVRRCxDA+6NHiha8M=" crossorigin=anonymous></script>
+</head>
+<body dir=ltr>
+<input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control>
+<main class="container flex">
+<aside class=book-menu>
+<div class=book-menu-content>
+<nav>
+<h2 class=book-brand>
+<a class="flex align-center" href=/><span>wolanx</span>
+</a>
+</h2>
+<div class=book-search>
+<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
+<div class="book-search-spinner hidden"></div>
+<ul id=book-search-results></ul>
+</div>
+<ul>
+<li>
+<a href=/posts/>
+Blog
+</a>
+</li>
+<li>
+<a href=/projects/>
+Project
+</a>
+</li>
+</ul>
+</nav>
+<script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+</div>
+</aside>
+<div class=book-page>
+<header class=book-header>
+<div class="flex align-center justify-between">
+<label for=menu-control>
+<img src=/svg/menu.svg class=book-icon alt=Menu>
+</label>
+<strong>threejs react fiber 最佳实践</strong>
+<label for=toc-control>
+<img src=/svg/toc.svg class=book-icon alt="Table of Contents">
+</label>
+</div>
+<aside class="hidden clearfix">
+<nav id=TableOfContents>
+<ul>
+<li><a href=#intro>Intro</a></li>
+<li><a href=#install>Install</a></li>
+<li><a href=#demo1---全局概览>Demo1 - 全局概览</a></li>
+<li><a href=#demo2---文件加载>Demo2 - 文件加载</a></li>
+<li><a href=#demo3-自动对焦>Demo3 自动对焦</a></li>
+<li><a href=#进阶部分>进阶部分</a>
+<ul>
+<li><a href=#编辑物体位置旋转缩放>编辑物体位置、旋转、缩放</a></li>
+<li><a href=#截图拍照>截图拍照</a></li>
+<li><a href=#如何改色>如何改色</a></li>
+</ul>
+</li>
+<li><a href=#总结>总结</a></li>
+</ul>
+</nav>
+</aside>
+</header>
+<article class=markdown>
+<h1>
+<a href=/posts/article/threejs-react-fiber-%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/>threejs react fiber 最佳实践</a>
+</h1>
+<h5>2022-03-16 17:50:27</h5>
+<div>
+<a href=/categories/csdn/>csdn</a>
+</div>
+<blockquote>
+<p><a href=https://blog.csdn.net/wolanx/article/details/123526472 target=_blank>https://blog.csdn.net/wolanx/article/details/123526472</a>
+</p>
+</blockquote>
+<h2 id=intro>
+Intro
+<a class=anchor href=#intro>#</a>
+</h2>
+<p>在使用的相当一段时间的 <code>threejs</code> 和 <code>react-three-fiber</code> 后，在中文资料环境极其匮乏的情况下，做个<code>极简·笔记式</code>的分享。目标是能让大家在 <code>最快</code> 的速度上手，且 <code>半·精通</code></p>
+<h2 id=install>
+Install
+<a class=anchor href=#install>#</a>
+</h2>
+<p><code>npm install three @react-three/fiber</code> <a href=https://docs.pmnd.rs/react-three-fiber/getting-started/introduction target=_blank>官方文档</a>
+</p>
+<h2 id=demo1---全局概览>
+Demo1 - 全局概览
+<a class=anchor href=#demo1---%e5%85%a8%e5%b1%80%e6%a6%82%e8%a7%88>#</a>
+</h2>
+<p>![](<a href="https://img-blog.csdnimg.cn/1845e0529fbf434388ba99b656eaf466.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAeXVqaWUuemhhbw==,size_13,color_FFFFFF,t_70,g_se,x_16" target=_blank>https://img-blog.csdnimg.cn/1845e0529fbf434388ba99b656eaf466.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAeXVqaWUuemhhbw==,size_13,color_FFFFFF,t_70,g_se,x_16</a>
+=250x)</p>
+<blockquote>
+<p>这是一个短小精悍的 demo1，对着下面代码看解析</p>
+</blockquote>
+<ul>
+<li>物体 <code>盒子：new BoxGeometry()</code> <code>球：new SphereGeometry(.5, 32, 16)</code></li>
+<li>物体上色 <code>&lt;mesh geometry={ball} material={mtl1} /></code> 使用 mesh 将 物体和材料 捆绑</li>
+<li>光1 <code>&lt;ambientLight intensity={0.1} /></code> 环境光，四面八方的光，<code>intensity</code> 光的强度</li>
+<li>光2 <code>&lt;directionalLight /></code> 一束光 需要 <code>color</code> <code>position：照射方向</code></li>
+<li>控制 <code>OrbitControls</code> 交互操作，鼠标 <code>旋转：左键拖拽</code> <code>平移：右键拖拽</code> <code>放大：滚轮</code></li>
+<li>阴影 <code>&lt;ContactShadows /></code> 参数字面意思</li>
+<li>背景 <code>&lt;color attach='background' args={['#aaa']} /></code> 也可以用 css 解决</li>
+</ul>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>import</span> <span style=color:#a6e22e>React</span>, { <span style=color:#a6e22e>Suspense</span> } <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#39;react&#39;</span>
+<span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>BoxGeometry</span>, <span style=color:#a6e22e>MeshStandardMaterial</span> } <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#39;three&#39;</span>
+<span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>Canvas</span> } <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#39;@react-three/fiber&#39;</span>
+<span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>ContactShadows</span>, <span style=color:#a6e22e>OrbitControls</span> } <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#39;@react-three/drei&#39;</span>
+
+<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>ball</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>BoxGeometry</span>()
+<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>mtl1</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>MeshStandardMaterial</span>({ <span style=color:#a6e22e>color</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;#f00&#39;</span> })
+
+<span style=color:#66d9ef>export</span> <span style=color:#66d9ef>default</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>Demo</span> () {
+    <span style=color:#66d9ef>return</span> (
+        <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>Canvas</span> <span style=color:#a6e22e>style</span><span style=color:#f92672>=</span>{{ <span style=color:#a6e22e>height</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>800</span> }} <span style=color:#a6e22e>camera</span><span style=color:#f92672>=</span>{{ <span style=color:#a6e22e>fov</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>75</span>, <span style=color:#a6e22e>near</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>0.1</span>, <span style=color:#a6e22e>far</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>1000</span>, <span style=color:#a6e22e>position</span><span style=color:#f92672>:</span> [<span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>] }}<span style=color:#f92672>&gt;</span>
+            <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>Suspense</span> <span style=color:#a6e22e>fallback</span><span style=color:#f92672>=</span>{<span style=color:#66d9ef>null</span>}<span style=color:#f92672>&gt;</span>
+                <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>ambientLight</span> <span style=color:#a6e22e>intensity</span><span style=color:#f92672>=</span>{<span style=color:#ae81ff>0.1</span>} <span style=color:#f92672>/&gt;</span>
+                <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>directionalLight</span> <span style=color:#a6e22e>color</span><span style=color:#f92672>=</span>{<span style=color:#e6db74>&#39;#fff&#39;</span>} <span style=color:#a6e22e>intensity</span><span style=color:#f92672>=</span>{<span style=color:#ae81ff>1</span>} <span style=color:#a6e22e>position</span><span style=color:#f92672>=</span>{[<span style=color:#f92672>-</span><span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>5</span>]} <span style=color:#f92672>/&gt;</span>
+                <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>mesh</span> <span style=color:#a6e22e>geometry</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>ball</span>} <span style=color:#a6e22e>material</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>mtl1</span>} <span style=color:#f92672>/&gt;</span>
+                <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>OrbitControls</span> <span style=color:#a6e22e>makeDefault</span> <span style=color:#f92672>/&gt;</span>
+                <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>ContactShadows</span> <span style=color:#a6e22e>rotation</span><span style=color:#f92672>-</span><span style=color:#a6e22e>x</span><span style=color:#f92672>=</span>{Math.<span style=color:#a6e22e>PI</span> <span style=color:#f92672>/</span> <span style=color:#ae81ff>2</span>} <span style=color:#a6e22e>position</span><span style=color:#f92672>=</span>{[<span style=color:#ae81ff>0</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1.4</span>, <span style=color:#ae81ff>0</span>]} <span style=color:#a6e22e>opacity</span><span style=color:#f92672>=</span>{<span style=color:#ae81ff>0.75</span>} <span style=color:#a6e22e>width</span><span style=color:#f92672>=</span>{<span style=color:#ae81ff>10</span>} <span style=color:#a6e22e>height</span><span style=color:#f92672>=</span>{<span style=color:#ae81ff>10</span>} <span style=color:#a6e22e>blur</span><span style=color:#f92672>=</span>{<span style=color:#ae81ff>2.6</span>} <span style=color:#a6e22e>far</span><span style=color:#f92672>=</span>{<span style=color:#ae81ff>2</span>} <span style=color:#f92672>/&gt;</span>
+                <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>color</span> <span style=color:#a6e22e>attach</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#39;background&#39;</span> <span style=color:#a6e22e>args</span><span style=color:#f92672>=</span>{[<span style=color:#e6db74>&#39;#aaa&#39;</span>]} <span style=color:#f92672>/&gt;</span>
+            <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/Suspense&gt;</span>
+        <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/Canvas&gt;</span>
+    )
+}
+</code></pre></div><p>如果你认真看完 demo1 每一处细节，你已经对 <code>threejs</code> 有了 <code>50%</code> 的认识了。。。后续就是对每个部分的<code>展开和丰富</code></p>
+<h2 id=demo2---文件加载>
+Demo2 - 文件加载
+<a class=anchor href=#demo2---%e6%96%87%e4%bb%b6%e5%8a%a0%e8%bd%bd>#</a>
+</h2>
+<p><img src="https://img-blog.csdnimg.cn/aeab56aba49c47349376ad0cefbd8b67.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAeXVqaWUuemhhbw==,size_19,color_FFFFFF,t_70,g_se,x_16" alt></p>
+<blockquote>
+<p>实际项目并不会像 demo1 中使用系统物体，通常是 <code>外部文件</code>，常见格式有 obj，gltf，glb，fbx 等。 demo2 从外部加载，并添加了一些常用 <code>工具</code></p>
+</blockquote>
+<ul>
+<li>远程加载 <code>useLoader(OBJLoader, src)</code> 不同的格式，只需要切换加载类，快捷版：<code>useFBX(src)</code> <code>useGLTF(src, true)</code></li>
+<li>坐标系 <code>new AxesHelper(100)</code> 方便查看三维世界</li>
+<li>性能工具 <code>&lt;Stats showPanel={0} parent={statRef} /></code> fps，需要通过 ref 来控制位置</li>
+<li>环境设置 <code>&lt;Environment /></code> 具体看代码 6个贴面（东南西北+上下），主要控制光反射</li>
+<li>错误抑制 <code>&lt;ErrorBoundary></code> 出错以后，可以把错误局限在这里面，不影响整体框架，应用了 antd 的，也可以自己实现或者不要</li>
+</ul>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>import</span> <span style=color:#a6e22e>React</span>, { <span style=color:#a6e22e>Suspense</span>, <span style=color:#a6e22e>useRef</span> } <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#39;react&#39;</span>
+<span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>AxesHelper</span> } <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#39;three&#39;</span>
+<span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>Canvas</span>, <span style=color:#a6e22e>useLoader</span> } <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#39;@react-three/fiber&#39;</span>
+<span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>Environment</span>, <span style=color:#a6e22e>OrbitControls</span>, <span style=color:#a6e22e>Stats</span> } <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#39;@react-three/drei&#39;</span>
+<span style=color:#66d9ef>import</span> <span style=color:#a6e22e>ErrorBoundary</span> <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#39;antd/es/alert/ErrorBoundary&#39;</span>
+<span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>OBJLoader</span> } <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#39;three/examples/jsm/loaders/OBJLoader&#39;</span>
+
+<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>MyMesh</span> () {
+    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>src</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;/obj/demo2.obj&#39;</span>
+    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>object</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>useLoader</span>(<span style=color:#a6e22e>OBJLoader</span>, <span style=color:#a6e22e>src</span>)
+    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>object</span>)
+    <span style=color:#66d9ef>return</span> (
+        <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>primitive</span> <span style=color:#a6e22e>object</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>object</span>} <span style=color:#f92672>/&gt;</span>
+    )
+}
+
+<span style=color:#66d9ef>export</span> <span style=color:#66d9ef>default</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>Demo</span> () {
+    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>statRef</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>useRef</span>(<span style=color:#66d9ef>null</span>)
+    <span style=color:#66d9ef>return</span> (
+        <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>div</span> <span style=color:#a6e22e>ref</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>statRef</span>}<span style=color:#f92672>&gt;</span>
+            <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>Stats</span> <span style=color:#a6e22e>showPanel</span><span style=color:#f92672>=</span>{<span style=color:#ae81ff>0</span>} <span style=color:#a6e22e>parent</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>statRef</span>} <span style=color:#a6e22e>style</span><span style=color:#f92672>=</span>{{ <span style=color:#a6e22e>top</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;auto&#39;</span>, <span style=color:#a6e22e>bottom</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>0</span> }} <span style=color:#f92672>/&gt;</span>
+            <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>ErrorBoundary</span><span style=color:#f92672>&gt;</span>
+                <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>Canvas</span> <span style=color:#a6e22e>style</span><span style=color:#f92672>=</span>{{ <span style=color:#a6e22e>height</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>800</span> }} <span style=color:#a6e22e>camera</span><span style=color:#f92672>=</span>{{ <span style=color:#a6e22e>fov</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>75</span>, <span style=color:#a6e22e>near</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>0.1</span>, <span style=color:#a6e22e>far</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>1000</span>, <span style=color:#a6e22e>position</span><span style=color:#f92672>:</span> [<span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>] }}<span style=color:#f92672>&gt;</span>
+                    <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>Suspense</span> <span style=color:#a6e22e>fallback</span><span style=color:#f92672>=</span>{<span style=color:#66d9ef>null</span>}<span style=color:#f92672>&gt;</span>
+                        <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>directionalLight</span> <span style=color:#a6e22e>color</span><span style=color:#f92672>=</span>{<span style=color:#e6db74>&#39;#fff&#39;</span>} <span style=color:#a6e22e>intensity</span><span style=color:#f92672>=</span>{<span style=color:#ae81ff>1</span>} <span style=color:#a6e22e>position</span><span style=color:#f92672>=</span>{[<span style=color:#f92672>-</span><span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>5</span>]} <span style=color:#f92672>/&gt;</span>
+                        <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>primitive</span> <span style=color:#a6e22e>object</span><span style=color:#f92672>=</span>{<span style=color:#66d9ef>new</span> <span style=color:#a6e22e>AxesHelper</span>(<span style=color:#ae81ff>100</span>)} <span style=color:#f92672>/&gt;</span>
+                        <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>MyMesh</span> <span style=color:#f92672>/&gt;</span>
+                        <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>OrbitControls</span> <span style=color:#a6e22e>makeDefault</span> <span style=color:#f92672>/&gt;</span>
+                        <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>color</span> <span style=color:#a6e22e>attach</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#39;background&#39;</span> <span style=color:#a6e22e>args</span><span style=color:#f92672>=</span>{[<span style=color:#e6db74>&#39;#aaa&#39;</span>]} <span style=color:#f92672>/&gt;</span>
+                        <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>Environment</span>
+                            <span style=color:#a6e22e>background</span><span style=color:#f92672>=</span>{<span style=color:#66d9ef>false</span>} <span style=color:#a6e22e>preset</span><span style=color:#f92672>=</span>{<span style=color:#66d9ef>null</span>} <span style=color:#a6e22e>scene</span><span style=color:#f92672>=</span>{<span style=color:#66d9ef>undefined</span>}
+                            <span style=color:#a6e22e>path</span><span style=color:#f92672>=</span>{<span style=color:#e6db74>&#39;/img/three/env/&#39;</span>}
+                            <span style=color:#a6e22e>files</span><span style=color:#f92672>=</span>{[<span style=color:#e6db74>&#39;px.png&#39;</span>, <span style=color:#e6db74>&#39;nx.png&#39;</span>, <span style=color:#e6db74>&#39;py.png&#39;</span>, <span style=color:#e6db74>&#39;ny.png&#39;</span>, <span style=color:#e6db74>&#39;pz.png&#39;</span>, <span style=color:#e6db74>&#39;nz.png&#39;</span>]}
+                        <span style=color:#f92672>/&gt;</span>
+                    <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/Suspense&gt;</span>
+                <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/Canvas&gt;</span>
+            <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/ErrorBoundary&gt;</span>
+        <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/div&gt;</span>
+    )
+}
+</code></pre></div><p>如果不出意外，你的模型已经出来了，但是有 <code>一半</code> 的可能你只是一个灰白物体，没上色。因为obj格式的 <code>材质</code> 部分是有要求的。首先 obj 可能没直接包含 mtl 文件，或者 mtl 文件没有相对路径于 obj 文件（同一目录）。其次 mtl 中的图片定义，也没有相对路径于 obj 文件。 情况复杂且多，需要大家根据 <code>Network</code> 自我 debug。</p>
+<h2 id=demo3-自动对焦>
+Demo3 自动对焦
+<a class=anchor href=#demo3-%e8%87%aa%e5%8a%a8%e5%af%b9%e7%84%a6>#</a>
+</h2>
+<blockquote>
+<p>这个需求很多，网上解释也很多，但我是没看懂，也没见人真解决。在翻看 threejs-editor 时，发现了 auto-focus 的源码（editor/js/EditorControls.js:34 focus），然后进行改装，这边给个参考。过程：先计算物体边界，转化成盒子模型，然后倍数，算出合适的位置 + 角度，然后设置回去。</p>
+</blockquote>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>import</span> <span style=color:#a6e22e>React</span>, { <span style=color:#a6e22e>Suspense</span>, <span style=color:#a6e22e>useEffect</span>, <span style=color:#a6e22e>useState</span> } <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#39;react&#39;</span>
+<span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>Box3</span>, <span style=color:#a6e22e>Sphere</span>, <span style=color:#a6e22e>Vector3</span> } <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#39;three&#39;</span>
+<span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>Canvas</span>, <span style=color:#a6e22e>useLoader</span> } <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#39;@react-three/fiber&#39;</span>
+<span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>OrbitControls</span>, <span style=color:#a6e22e>PerspectiveCamera</span> } <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#39;@react-three/drei&#39;</span>
+<span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>OBJLoader</span> } <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#39;three/examples/jsm/loaders/OBJLoader&#39;</span>
+
+<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>OBJ_POS_000</span> <span style=color:#f92672>=</span> [<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>]
+<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>CAM_POS_212</span> <span style=color:#f92672>=</span> [<span style=color:#ae81ff>1</span>, .<span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>1</span>]
+
+<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>calcBound</span> (<span style=color:#a6e22e>object</span>, <span style=color:#a6e22e>x</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>1.5</span>) {
+    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>box</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Box3</span>().<span style=color:#a6e22e>setFromObject</span>(<span style=color:#a6e22e>object</span>)
+
+    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>center</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Vector3</span>()
+    <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>distance</span>
+    <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>objPos2</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Vector3</span>()
+
+    <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>box</span>.<span style=color:#a6e22e>isEmpty</span>() <span style=color:#f92672>===</span> <span style=color:#66d9ef>false</span>) {
+        <span style=color:#75715e>/** @var {Vector3} */</span>
+        <span style=color:#a6e22e>objPos2</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>box</span>.<span style=color:#a6e22e>getCenter</span>(<span style=color:#a6e22e>center</span>)
+        <span style=color:#a6e22e>objPos2</span>.<span style=color:#a6e22e>negate</span>()
+        <span style=color:#a6e22e>distance</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>box</span>.<span style=color:#a6e22e>getBoundingSphere</span>(<span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Sphere</span>()).<span style=color:#a6e22e>radius</span>
+    } <span style=color:#66d9ef>else</span> {
+        <span style=color:#a6e22e>center</span>.<span style=color:#a6e22e>setFromMatrixPosition</span>(<span style=color:#a6e22e>object</span>.<span style=color:#a6e22e>matrixWorld</span>)
+        <span style=color:#a6e22e>distance</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0.1</span>
+    }
+
+    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>delta</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Vector3</span>()
+    <span style=color:#a6e22e>delta</span>.<span style=color:#a6e22e>set</span>(...<span style=color:#a6e22e>CAM_POS_212</span>)
+    <span style=color:#a6e22e>delta</span>.<span style=color:#a6e22e>applyQuaternion</span>(<span style=color:#a6e22e>object</span>.<span style=color:#a6e22e>quaternion</span>)
+    <span style=color:#a6e22e>delta</span>.<span style=color:#a6e22e>multiplyScalar</span>(<span style=color:#a6e22e>distance</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>x</span>)
+    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>camPos2</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Vector3</span>()
+    <span style=color:#a6e22e>camPos2</span>.<span style=color:#a6e22e>copy</span>(<span style=color:#a6e22e>objPos2</span>).<span style=color:#a6e22e>add</span>(<span style=color:#a6e22e>delta</span>)
+
+    <span style=color:#66d9ef>return</span> [<span style=color:#a6e22e>objPos2</span>.<span style=color:#a6e22e>toArray</span>(), <span style=color:#a6e22e>camPos2</span>.<span style=color:#a6e22e>toArray</span>()]
+}
+
+<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>MyMesh</span> () {
+    <span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>objPos</span>, <span style=color:#a6e22e>setObjPos</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>(<span style=color:#a6e22e>OBJ_POS_000</span>)
+    <span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>camPos</span>, <span style=color:#a6e22e>setCamPos</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>(<span style=color:#a6e22e>CAM_POS_212</span>)
+
+    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>src</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;/obj/demo2.obj&#39;</span>
+    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>object</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>useLoader</span>(<span style=color:#a6e22e>OBJLoader</span>, <span style=color:#a6e22e>src</span>)
+    <span style=color:#a6e22e>useEffect</span>(() =&gt; {
+        <span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>objPos2</span>, <span style=color:#a6e22e>camPos2</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>calcBound</span>(<span style=color:#a6e22e>object</span>, <span style=color:#ae81ff>2.5</span>)
+        <span style=color:#a6e22e>setObjPos</span>(<span style=color:#a6e22e>objPos2</span>)
+        <span style=color:#a6e22e>setCamPos</span>(<span style=color:#a6e22e>camPos2</span>)
+        <span style=color:#75715e>// eslint-disable-next-line
+</span><span style=color:#75715e></span>    }, [<span style=color:#a6e22e>object</span>])
+
+    <span style=color:#66d9ef>return</span> (
+        <span style=color:#f92672>&lt;&gt;</span>
+            <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>primitive</span> <span style=color:#a6e22e>object</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>object</span>} <span style=color:#a6e22e>position</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>objPos</span>} <span style=color:#f92672>/&gt;</span>
+            <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>PerspectiveCamera</span> <span style=color:#a6e22e>makeDefault</span> <span style=color:#a6e22e>fov</span><span style=color:#f92672>=</span>{<span style=color:#ae81ff>50</span>} <span style=color:#a6e22e>far</span><span style=color:#f92672>=</span>{<span style=color:#ae81ff>5000</span>} <span style=color:#a6e22e>near</span><span style=color:#f92672>=</span>{.<span style=color:#ae81ff>01</span>} <span style=color:#a6e22e>position</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>camPos</span>} <span style=color:#f92672>/&gt;</span>
+        <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/&gt;</span>
+    )
+}
+
+<span style=color:#66d9ef>export</span> <span style=color:#66d9ef>default</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>Demo</span> () {
+    <span style=color:#66d9ef>return</span> (
+        <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>Canvas</span> <span style=color:#a6e22e>style</span><span style=color:#f92672>=</span>{{ <span style=color:#a6e22e>height</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>800</span> }} <span style=color:#a6e22e>camera</span><span style=color:#f92672>=</span>{{ <span style=color:#a6e22e>fov</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>75</span>, <span style=color:#a6e22e>near</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>0.1</span>, <span style=color:#a6e22e>far</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>1000</span>, <span style=color:#a6e22e>position</span><span style=color:#f92672>:</span> [<span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>] }}<span style=color:#f92672>&gt;</span>
+            <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>Suspense</span> <span style=color:#a6e22e>fallback</span><span style=color:#f92672>=</span>{<span style=color:#66d9ef>null</span>}<span style=color:#f92672>&gt;</span>
+                <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>ambientLight</span> <span style=color:#a6e22e>intensity</span><span style=color:#f92672>=</span>{<span style=color:#ae81ff>0.1</span>} <span style=color:#f92672>/&gt;</span>
+                <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>directionalLight</span> <span style=color:#a6e22e>color</span><span style=color:#f92672>=</span>{<span style=color:#e6db74>&#39;#fff&#39;</span>} <span style=color:#a6e22e>intensity</span><span style=color:#f92672>=</span>{<span style=color:#ae81ff>1</span>} <span style=color:#a6e22e>position</span><span style=color:#f92672>=</span>{[<span style=color:#f92672>-</span><span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>5</span>]} <span style=color:#f92672>/&gt;</span>
+                <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>MyMesh</span> <span style=color:#f92672>/&gt;</span>
+                <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>OrbitControls</span> <span style=color:#a6e22e>makeDefault</span> <span style=color:#f92672>/&gt;</span>
+                <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>color</span> <span style=color:#a6e22e>attach</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#39;background&#39;</span> <span style=color:#a6e22e>args</span><span style=color:#f92672>=</span>{[<span style=color:#e6db74>&#39;#aaa&#39;</span>]} <span style=color:#f92672>/&gt;</span>
+            <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/Suspense&gt;</span>
+        <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/Canvas&gt;</span>
+    )
+}
+</code></pre></div><h2 id=进阶部分>
+进阶部分
+<a class=anchor href=#%e8%bf%9b%e9%98%b6%e9%83%a8%e5%88%86>#</a>
+</h2>
+<blockquote>
+<p>前面的 demo 都给了完整可运行代码，后面部分由于需要配套的基础代码太多，只能给 <code>关键部分</code>。大家自行整合，实在不行，留言询问 up。</p>
+</blockquote>
+<h3 id=编辑物体位置旋转缩放>
+编辑物体位置、旋转、缩放
+<a class=anchor href=#%e7%bc%96%e8%be%91%e7%89%a9%e4%bd%93%e4%bd%8d%e7%bd%ae%e6%97%8b%e8%bd%ac%e7%bc%a9%e6%94%be>#</a>
+</h3>
+<p><img src="https://img-blog.csdnimg.cn/0fc1a57e0d1a4bd0830ee213f7a4d797.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAeXVqaWUuemhhbw==,size_8,color_FFFFFF,t_70,g_se,x_16" alt></p>
+<blockquote>
+<p>这个 demo 来自网上，但是缺少保存的过程，这边给个保存参考</p>
+</blockquote>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#75715e>// 保存逻辑参考
+</span><span style=color:#75715e></span>
+<span style=color:#66d9ef>const</span> { <span style=color:#a6e22e>gl</span>, <span style=color:#a6e22e>scene</span>, <span style=color:#a6e22e>camera</span> } <span style=color:#f92672>=</span> <span style=color:#a6e22e>useThree</span>()
+<span style=color:#75715e>// 前提是要有 uuid
+</span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>obj</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>scene</span>.<span style=color:#a6e22e>getObjectByName</span>(<span style=color:#a6e22e>uuid</span>)
+<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>partObj</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>packRef</span>.<span style=color:#a6e22e>current</span>.<span style=color:#a6e22e>getObjByUuid</span>(<span style=color:#a6e22e>uuid</span>)
+<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>position</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>partObj</span>.<span style=color:#a6e22e>position</span>.<span style=color:#a6e22e>toArray</span>()
+<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>rotation</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>partObj</span>.<span style=color:#a6e22e>rotation</span>.<span style=color:#a6e22e>toVector3</span>().<span style=color:#a6e22e>toArray</span>()
+<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>partObj</span>, <span style=color:#a6e22e>position</span>, <span style=color:#a6e22e>rotation</span>)
+<span style=color:#75715e>// 然后自己定义数据结构，入库
+</span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>Suspense</span>, <span style=color:#a6e22e>useState</span> } <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#39;react&#39;</span>
+<span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>Canvas</span>, <span style=color:#a6e22e>useThree</span> } <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#39;@react-three/fiber&#39;</span>
+<span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>ContactShadows</span>, <span style=color:#a6e22e>OrbitControls</span>, <span style=color:#a6e22e>TransformControls</span>, <span style=color:#a6e22e>useCursor</span>, <span style=color:#a6e22e>useGLTF</span> } <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#39;@react-three/drei&#39;</span>
+<span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>proxy</span>, <span style=color:#a6e22e>useSnapshot</span> } <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#39;valtio&#39;</span>
+
+<span style=color:#75715e>// Reactive state model, using Valtio ...
+</span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>modes</span> <span style=color:#f92672>=</span> [<span style=color:#e6db74>&#39;translate&#39;</span>, <span style=color:#e6db74>&#39;rotate&#39;</span>, <span style=color:#e6db74>&#39;scale&#39;</span>]
+<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>state</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>proxy</span>({ <span style=color:#a6e22e>current</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>null</span>, <span style=color:#a6e22e>mode</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>0</span> })
+
+<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>Model</span> ({ <span style=color:#a6e22e>name</span>, ...<span style=color:#a6e22e>props</span> }) {
+    <span style=color:#75715e>// Ties this component to the state model
+</span><span style=color:#75715e></span>    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>snap</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>useSnapshot</span>(<span style=color:#a6e22e>state</span>)
+    <span style=color:#75715e>// Fetching the GLTF, nodes is a collection of all the meshes
+</span><span style=color:#75715e></span>    <span style=color:#75715e>// It&#39;s cached/memoized, it only gets loaded and parsed once
+</span><span style=color:#75715e></span>    <span style=color:#66d9ef>const</span> { <span style=color:#a6e22e>nodes</span> } <span style=color:#f92672>=</span> <span style=color:#a6e22e>useGLTF</span>(<span style=color:#e6db74>&#39;https://utihp1.csb.app/compressed.glb&#39;</span>)
+    <span style=color:#75715e>// Feed hover state into useCursor, which sets document.body.style.cursor to pointer|auto
+</span><span style=color:#75715e></span>    <span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>hovered</span>, <span style=color:#a6e22e>setHovered</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>(<span style=color:#66d9ef>false</span>)
+    <span style=color:#a6e22e>useCursor</span>(<span style=color:#a6e22e>hovered</span>)
+    <span style=color:#66d9ef>return</span> (
+        <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>mesh</span>
+            <span style=color:#75715e>// Click sets the mesh as the new target
+</span><span style=color:#75715e></span>            <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{(<span style=color:#a6e22e>e</span>) =&gt; {
+                <span style=color:#a6e22e>e</span>.<span style=color:#a6e22e>stopPropagation</span>()
+                <span style=color:#a6e22e>state</span>.<span style=color:#a6e22e>current</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>name</span>
+            }}
+            <span style=color:#75715e>// If a click happened but this mesh wasn&#39;t hit we null out the target,
+</span><span style=color:#75715e></span>            <span style=color:#75715e>// This works because missed pointers fire before the actual hits
+</span><span style=color:#75715e></span>            <span style=color:#a6e22e>onPointerMissed</span><span style=color:#f92672>=</span>{(<span style=color:#a6e22e>e</span>) =&gt; {<span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>e</span>.<span style=color:#a6e22e>type</span> <span style=color:#f92672>===</span> <span style=color:#e6db74>&#39;click&#39;</span>) <span style=color:#a6e22e>state</span>.<span style=color:#a6e22e>current</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>null</span>}}
+            <span style=color:#75715e>// Right click cycles through the transform modes
+</span><span style=color:#75715e></span>            <span style=color:#a6e22e>onContextMenu</span><span style=color:#f92672>=</span>{(<span style=color:#a6e22e>e</span>) =&gt; {
+                <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>snap</span>.<span style=color:#a6e22e>current</span> <span style=color:#f92672>===</span> <span style=color:#a6e22e>name</span>) {
+                    <span style=color:#a6e22e>e</span>.<span style=color:#a6e22e>stopPropagation</span>()
+                    <span style=color:#a6e22e>state</span>.<span style=color:#a6e22e>mode</span> <span style=color:#f92672>=</span> (<span style=color:#a6e22e>snap</span>.<span style=color:#a6e22e>mode</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>) <span style=color:#f92672>%</span> <span style=color:#a6e22e>modes</span>.<span style=color:#a6e22e>length</span>
+                }
+            }}
+            <span style=color:#a6e22e>onPointerOver</span><span style=color:#f92672>=</span>{(<span style=color:#a6e22e>e</span>) =&gt; {
+                <span style=color:#a6e22e>e</span>.<span style=color:#a6e22e>stopPropagation</span>()
+                <span style=color:#a6e22e>setHovered</span>(<span style=color:#66d9ef>true</span>)
+            }}
+            <span style=color:#a6e22e>onPointerOut</span><span style=color:#f92672>=</span>{() =&gt; <span style=color:#a6e22e>setHovered</span>(<span style=color:#66d9ef>false</span>)}
+            <span style=color:#a6e22e>name</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>name</span>}
+            <span style=color:#a6e22e>geometry</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>nodes</span>[<span style=color:#a6e22e>name</span>].<span style=color:#a6e22e>geometry</span>}
+            <span style=color:#a6e22e>material</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>nodes</span>[<span style=color:#a6e22e>name</span>].<span style=color:#a6e22e>material</span>}
+            <span style=color:#a6e22e>material</span><span style=color:#f92672>-</span><span style=color:#a6e22e>color</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>snap</span>.<span style=color:#a6e22e>current</span> <span style=color:#f92672>===</span> <span style=color:#a6e22e>name</span> <span style=color:#f92672>?</span> <span style=color:#e6db74>&#39;#ff6080&#39;</span> <span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;white&#39;</span>}
+            {...<span style=color:#a6e22e>props</span>}
+            <span style=color:#a6e22e>dispose</span><span style=color:#f92672>=</span>{<span style=color:#66d9ef>null</span>}
+        <span style=color:#f92672>/&gt;</span>
+    )
+}
+
+<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>Controls</span> () {
+    <span style=color:#75715e>// Get notified on changes to state
+</span><span style=color:#75715e></span>    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>snap</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>useSnapshot</span>(<span style=color:#a6e22e>state</span>)
+    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>scene</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>useThree</span>((<span style=color:#a6e22e>state</span>) =&gt; <span style=color:#a6e22e>state</span>.<span style=color:#a6e22e>scene</span>)
+    <span style=color:#66d9ef>return</span> (
+        <span style=color:#f92672>&lt;&gt;</span>
+            {<span style=color:#75715e>/* As of drei@7.13 transform-controls can refer to the target by children, or the object prop */</span>}
+            {<span style=color:#a6e22e>snap</span>.<span style=color:#a6e22e>current</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>TransformControls</span> <span style=color:#a6e22e>object</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>scene</span>.<span style=color:#a6e22e>getObjectByName</span>(<span style=color:#a6e22e>snap</span>.<span style=color:#a6e22e>current</span>)} <span style=color:#a6e22e>mode</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>modes</span>[<span style=color:#a6e22e>snap</span>.<span style=color:#a6e22e>mode</span>]} <span style=color:#f92672>/&gt;</span>}
+            {<span style=color:#75715e>/* makeDefault makes the controls known to r3f, now transform-controls can auto-disable them when active */</span>}
+            <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>OrbitControls</span> <span style=color:#a6e22e>makeDefault</span> <span style=color:#a6e22e>minPolarAngle</span><span style=color:#f92672>=</span>{<span style=color:#ae81ff>0</span>} <span style=color:#a6e22e>maxPolarAngle</span><span style=color:#f92672>=</span>{Math.<span style=color:#a6e22e>PI</span> <span style=color:#f92672>/</span> <span style=color:#ae81ff>1.75</span>} <span style=color:#f92672>/&gt;</span>
+        <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/&gt;</span>
+    )
+}
+
+<span style=color:#66d9ef>export</span> <span style=color:#66d9ef>default</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>Home</span> () {
+    <span style=color:#66d9ef>return</span> (
+        <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>Canvas</span> <span style=color:#a6e22e>camera</span><span style=color:#f92672>=</span>{{ <span style=color:#a6e22e>position</span><span style=color:#f92672>:</span> [<span style=color:#ae81ff>0</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>10</span>, <span style=color:#ae81ff>80</span>], <span style=color:#a6e22e>fov</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>50</span> }} <span style=color:#a6e22e>dpr</span><span style=color:#f92672>=</span>{[<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>]}<span style=color:#f92672>&gt;</span>
+            <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>pointLight</span> <span style=color:#a6e22e>position</span><span style=color:#f92672>=</span>{[<span style=color:#ae81ff>100</span>, <span style=color:#ae81ff>100</span>, <span style=color:#ae81ff>100</span>]} <span style=color:#a6e22e>intensity</span><span style=color:#f92672>=</span>{<span style=color:#ae81ff>0.8</span>} <span style=color:#f92672>/&gt;</span>
+            <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>hemisphereLight</span> <span style=color:#a6e22e>color</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#39;#ffffff&#39;</span> <span style=color:#a6e22e>groundColor</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#39;#b9b9b9&#39;</span> <span style=color:#a6e22e>position</span><span style=color:#f92672>=</span>{[<span style=color:#f92672>-</span><span style=color:#ae81ff>7</span>, <span style=color:#ae81ff>25</span>, <span style=color:#ae81ff>13</span>]} <span style=color:#a6e22e>intensity</span><span style=color:#f92672>=</span>{<span style=color:#ae81ff>0.85</span>} <span style=color:#f92672>/&gt;</span>
+            <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>Suspense</span> <span style=color:#a6e22e>fallback</span><span style=color:#f92672>=</span>{<span style=color:#66d9ef>null</span>}<span style=color:#f92672>&gt;</span>
+                <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>group</span> <span style=color:#a6e22e>position</span><span style=color:#f92672>=</span>{[<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>10</span>, <span style=color:#ae81ff>0</span>]}<span style=color:#f92672>&gt;</span>
+                    <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>Model</span> <span style=color:#a6e22e>name</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#39;Curly&#39;</span> <span style=color:#a6e22e>position</span><span style=color:#f92672>=</span>{[<span style=color:#ae81ff>1</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>11</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>20</span>]} <span style=color:#a6e22e>rotation</span><span style=color:#f92672>=</span>{[<span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>0</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>0</span>]} <span style=color:#f92672>/&gt;</span>
+                    <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>Model</span> <span style=color:#a6e22e>name</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#39;DNA&#39;</span> <span style=color:#a6e22e>position</span><span style=color:#f92672>=</span>{[<span style=color:#ae81ff>20</span>, <span style=color:#ae81ff>0</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>17</span>]} <span style=color:#a6e22e>rotation</span><span style=color:#f92672>=</span>{[<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>]} <span style=color:#f92672>/&gt;</span>
+                    <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>Model</span> <span style=color:#a6e22e>name</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#39;Headphones&#39;</span> <span style=color:#a6e22e>position</span><span style=color:#f92672>=</span>{[<span style=color:#ae81ff>20</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>4</span>]} <span style=color:#a6e22e>rotation</span><span style=color:#f92672>=</span>{[<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>]} <span style=color:#f92672>/&gt;</span>
+                    <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>Model</span> <span style=color:#a6e22e>name</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#39;Notebook&#39;</span> <span style=color:#a6e22e>position</span><span style=color:#f92672>=</span>{[<span style=color:#f92672>-</span><span style=color:#ae81ff>21</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>15</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>13</span>]} <span style=color:#a6e22e>rotation</span><span style=color:#f92672>=</span>{[<span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>]} <span style=color:#f92672>/&gt;</span>
+                    <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>Model</span> <span style=color:#a6e22e>name</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#39;Rocket003&#39;</span> <span style=color:#a6e22e>position</span><span style=color:#f92672>=</span>{[<span style=color:#ae81ff>18</span>, <span style=color:#ae81ff>15</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>25</span>]} <span style=color:#a6e22e>rotation</span><span style=color:#f92672>=</span>{[<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0</span>]} <span style=color:#f92672>/&gt;</span>
+                    <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>Model</span> <span style=color:#a6e22e>name</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#39;Roundcube001&#39;</span> <span style=color:#a6e22e>position</span><span style=color:#f92672>=</span>{[<span style=color:#f92672>-</span><span style=color:#ae81ff>25</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>4</span>, <span style=color:#ae81ff>5</span>]} <span style=color:#a6e22e>rotation</span><span style=color:#f92672>=</span>{[<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>]} <span style=color:#a6e22e>scale</span><span style=color:#f92672>=</span>{<span style=color:#ae81ff>0.5</span>} <span style=color:#f92672>/&gt;</span>
+                    <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>Model</span> <span style=color:#a6e22e>name</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#39;Table&#39;</span> <span style=color:#a6e22e>position</span><span style=color:#f92672>=</span>{[<span style=color:#ae81ff>1</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>4</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>28</span>]} <span style=color:#a6e22e>rotation</span><span style=color:#f92672>=</span>{[<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>]} <span style=color:#a6e22e>scale</span><span style=color:#f92672>=</span>{<span style=color:#ae81ff>0.5</span>} <span style=color:#f92672>/&gt;</span>
+                    <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>Model</span> <span style=color:#a6e22e>name</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#39;VR_Headset&#39;</span> <span style=color:#a6e22e>position</span><span style=color:#f92672>=</span>{[<span style=color:#ae81ff>7</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>15</span>, <span style=color:#ae81ff>28</span>]} <span style=color:#a6e22e>rotation</span><span style=color:#f92672>=</span>{[<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>]} <span style=color:#a6e22e>scale</span><span style=color:#f92672>=</span>{<span style=color:#ae81ff>5</span>} <span style=color:#f92672>/&gt;</span>
+                    <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>Model</span> <span style=color:#a6e22e>name</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#39;Zeppelin&#39;</span> <span style=color:#a6e22e>position</span><span style=color:#f92672>=</span>{[<span style=color:#f92672>-</span><span style=color:#ae81ff>20</span>, <span style=color:#ae81ff>10</span>, <span style=color:#ae81ff>10</span>]} <span style=color:#a6e22e>rotation</span><span style=color:#f92672>=</span>{[<span style=color:#ae81ff>3</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>3</span>]} <span style=color:#a6e22e>scale</span><span style=color:#f92672>=</span>{<span style=color:#ae81ff>0.005</span>} <span style=color:#f92672>/&gt;</span>
+                    <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>ContactShadows</span> <span style=color:#a6e22e>rotation</span><span style=color:#f92672>-</span><span style=color:#a6e22e>x</span><span style=color:#f92672>=</span>{Math.<span style=color:#a6e22e>PI</span> <span style=color:#f92672>/</span> <span style=color:#ae81ff>2</span>} <span style=color:#a6e22e>position</span><span style=color:#f92672>=</span>{[<span style=color:#ae81ff>0</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>35</span>, <span style=color:#ae81ff>0</span>]} <span style=color:#a6e22e>opacity</span><span style=color:#f92672>=</span>{<span style=color:#ae81ff>0.25</span>} <span style=color:#a6e22e>width</span><span style=color:#f92672>=</span>{<span style=color:#ae81ff>200</span>} <span style=color:#a6e22e>height</span><span style=color:#f92672>=</span>{<span style=color:#ae81ff>200</span>} <span style=color:#a6e22e>blur</span><span style=color:#f92672>=</span>{<span style=color:#ae81ff>1</span>} <span style=color:#a6e22e>far</span><span style=color:#f92672>=</span>{<span style=color:#ae81ff>50</span>} <span style=color:#f92672>/&gt;</span>
+                <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/group&gt;</span>
+            <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/Suspense&gt;</span>
+            <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>Controls</span> <span style=color:#f92672>/&gt;</span>
+        <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/Canvas&gt;</span>
+    )
+}
+</code></pre></div><h3 id=截图拍照>
+截图拍照
+<a class=anchor href=#%e6%88%aa%e5%9b%be%e6%8b%8d%e7%85%a7>#</a>
+</h3>
+<p><img src=https://img-blog.csdnimg.cn/5ae845c03f524094a806c0404318f8ff.png alt></p>
+<blockquote>
+<p>当需要预览图时，生成出来的会更方便。 两种方式提供，第一种直接截屏当前状态，第二种新摄像头</p>
+</blockquote>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>const</span> { <span style=color:#a6e22e>gl</span>, <span style=color:#a6e22e>scene</span>, <span style=color:#a6e22e>camera</span> } <span style=color:#f92672>=</span> <span style=color:#a6e22e>useThree</span>()
+
+<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>doPhoto1</span>() {
+    <span style=color:#a6e22e>gl</span>.<span style=color:#a6e22e>render</span>(<span style=color:#a6e22e>scene</span>, <span style=color:#a6e22e>camera</span>)
+    <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>gl</span>.<span style=color:#a6e22e>domElement</span>.<span style=color:#a6e22e>toDataURL</span>()
+}
+<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>doPhotot2</span>() {
+    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>camera2</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>THREE</span>.<span style=color:#a6e22e>PerspectiveCamera</span>(<span style=color:#ae81ff>75</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0.01</span>, <span style=color:#ae81ff>1000</span>)
+    <span style=color:#a6e22e>camera2</span>.<span style=color:#a6e22e>copy</span>(<span style=color:#a6e22e>camera</span>)
+    <span style=color:#a6e22e>camera2</span>.<span style=color:#a6e22e>position</span>.<span style=color:#a6e22e>set</span>(.<span style=color:#ae81ff>6</span>, .<span style=color:#ae81ff>6</span>, .<span style=color:#ae81ff>6</span>)
+    <span style=color:#a6e22e>gl</span>.<span style=color:#a6e22e>render</span>(<span style=color:#a6e22e>scene</span>, <span style=color:#a6e22e>camera2</span>)
+    <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>gl</span>.<span style=color:#a6e22e>domElement</span>.<span style=color:#a6e22e>toDataURL</span>(<span style=color:#e6db74>&#39;image/jpeg&#39;</span>, .<span style=color:#ae81ff>5</span>)
+}
+</code></pre></div><h3 id=如何改色>
+如何改色
+<a class=anchor href=#%e5%a6%82%e4%bd%95%e6%94%b9%e8%89%b2>#</a>
+</h3>
+<blockquote>
+<p>最复杂的留到最后，前面的部分基本都是应用层，只需要对 api 足够了解就能做出很多案例。这部分将需要 <code>自定义 Class</code>，改写官方实现。这里有两种方式，一种是改写加载类，一种是提取后自己组装</p>
+</blockquote>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-md data-lang=md>还记得 const object = useLoader(OBJLoader, src) 吗
+OBJLoader 是官方的类 examples/jsm/loaders/OBJLoader.js
+其中parse 方法 this.materials.create( sourceMaterial.name ) 就是关键
+所以我们可以定义一个 MyOBJLoader 然后改写 parse
+</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#75715e>// 另一种方式，维护一个 mapping 表格，然后使用 mesh
+</span><span style=color:#75715e></span><span style=color:#66d9ef>export</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>useMcc</span> (<span style=color:#a6e22e>metaTable</span>) {
+    <span style=color:#a6e22e>useEffect</span>(<span style=color:#66d9ef>async</span> () =&gt; {
+        <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>unitOne</span> <span style=color:#66d9ef>of</span> <span style=color:#a6e22e>metaTable</span>) {
+            <span style=color:#66d9ef>const</span> { <span style=color:#a6e22e>objName</span>, <span style=color:#a6e22e>mtlName</span>, <span style=color:#a6e22e>mtlId</span>, <span style=color:#a6e22e>mtlUdfEnable</span>, <span style=color:#a6e22e>mtlUdfUrl</span> } <span style=color:#f92672>=</span> <span style=color:#a6e22e>unitOne</span>
+            <span style=color:#75715e>// const name = Math.random().toString(36).slice(-6)
+</span><span style=color:#75715e></span>            <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>name</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>`</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>objName</span><span style=color:#e6db74>}</span><span style=color:#e6db74>-</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>mtlName</span><span style=color:#e6db74>}</span><span style=color:#e6db74>`</span>
+            <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>mtlId</span>) {
+                <span style=color:#a6e22e>mccObjects</span>[<span style=color:#a6e22e>name</span>] <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> <span style=color:#a6e22e>loadByMid</span>(<span style=color:#a6e22e>mtlId</span>, <span style=color:#a6e22e>mtlUdfEnable</span>, <span style=color:#a6e22e>mtlUdfUrl</span>)
+            } <span style=color:#66d9ef>else</span> {
+                <span style=color:#a6e22e>mccObjects</span>[<span style=color:#a6e22e>name</span>] <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>THREE</span>.<span style=color:#a6e22e>MeshStandardMaterial</span>({ <span style=color:#a6e22e>color</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>str2rgb</span>(<span style=color:#a6e22e>name</span>) })
+            }
+        }
+        <span style=color:#a6e22e>setMccObjects</span>({ ...<span style=color:#a6e22e>mccObjects</span> })
+    }, [<span style=color:#a6e22e>metaTable</span>])
+
+    <span style=color:#66d9ef>return</span> { <span style=color:#a6e22e>mccObjects</span> }
+}
+<span style=color:#66d9ef>export</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>useMetaTable</span> (<span style=color:#a6e22e>mccObjects</span>, <span style=color:#a6e22e>object</span>) {
+    <span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>tb</span>, <span style=color:#a6e22e>set</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>([])
+
+    <span style=color:#a6e22e>useEffect</span>(() =&gt; {
+        <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span><span style=color:#a6e22e>mccObjects</span>) <span style=color:#66d9ef>return</span>
+        <span style=color:#75715e>// console.log(&#39;mccObjects&#39;, mccObjects)
+</span><span style=color:#75715e></span>
+        <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>ret</span> <span style=color:#f92672>=</span> []
+        <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>mesh</span> <span style=color:#66d9ef>of</span> <span style=color:#a6e22e>object</span>.<span style=color:#a6e22e>children</span>) {
+            <span style=color:#a6e22e>ret</span>.<span style=color:#a6e22e>push</span>({
+                <span style=color:#a6e22e>uuid</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>mesh</span>.<span style=color:#a6e22e>uuid</span>,
+                <span style=color:#a6e22e>geometry</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>mesh</span>.<span style=color:#a6e22e>geometry</span>,
+                <span style=color:#a6e22e>material</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>mesh</span>.<span style=color:#a6e22e>material</span>.<span style=color:#a6e22e>length</span>
+                    <span style=color:#f92672>?</span> <span style=color:#a6e22e>mesh</span>.<span style=color:#a6e22e>material</span>.<span style=color:#a6e22e>map</span>(<span style=color:#a6e22e>v</span> =&gt; <span style=color:#a6e22e>get</span>(<span style=color:#a6e22e>mccObjects</span>, <span style=color:#a6e22e>mesh</span>.<span style=color:#a6e22e>name</span>, <span style=color:#a6e22e>v</span>.<span style=color:#a6e22e>name</span>))
+                    <span style=color:#f92672>:</span> <span style=color:#a6e22e>get</span>(<span style=color:#a6e22e>mccObjects</span>, <span style=color:#a6e22e>mesh</span>.<span style=color:#a6e22e>name</span>, <span style=color:#a6e22e>mesh</span>.<span style=color:#a6e22e>material</span>.<span style=color:#a6e22e>name</span>),
+            })
+        }
+        <span style=color:#a6e22e>set</span>(<span style=color:#a6e22e>ret</span>)
+    }, [<span style=color:#a6e22e>mccObjects</span>])
+
+    <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>get</span> (<span style=color:#a6e22e>arr</span>, <span style=color:#a6e22e>objName</span>, <span style=color:#a6e22e>mtlName</span>) {
+        <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>name</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>`</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>objName</span><span style=color:#e6db74>}</span><span style=color:#e6db74>-</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>mtlName</span><span style=color:#e6db74>}</span><span style=color:#e6db74>`</span>
+        <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>arr</span>[<span style=color:#a6e22e>name</span>]
+    }
+
+    <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>tb</span>
+}
+
+<span style=color:#66d9ef>const</span> { <span style=color:#a6e22e>mccObjects</span> } <span style=color:#f92672>=</span> <span style=color:#a6e22e>useMcc</span>(<span style=color:#a6e22e>meta</span>)
+<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>metaTable</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>useMetaTable</span>(<span style=color:#a6e22e>mccObjects</span>, <span style=color:#a6e22e>object</span>)
+<span style=color:#f92672>&lt;</span><span style=color:#a6e22e>group</span> <span style=color:#a6e22e>position</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>objPos</span>}<span style=color:#f92672>&gt;</span>
+    {<span style=color:#a6e22e>metaTable</span>.<span style=color:#a6e22e>map</span>(<span style=color:#a6e22e>v</span> =&gt; (
+        <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>mesh</span> <span style=color:#a6e22e>key</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>v</span>.<span style=color:#a6e22e>uuid</span>} <span style=color:#a6e22e>geometry</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>v</span>.<span style=color:#a6e22e>geometry</span>} <span style=color:#a6e22e>material</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>v</span>.<span style=color:#a6e22e>material</span>} <span style=color:#f92672>/&gt;</span>
+    ))}
+<span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/group&gt;</span>
+</code></pre></div><h2 id=总结>
+总结
+<a class=anchor href=#%e6%80%bb%e7%bb%93>#</a>
+</h2>
+<p>这些 demo 覆盖了很多场景，有疑问欢迎交流。所有代码随意使用，转发请带原文。</p>
+</article>
+<footer class=book-footer>
+<div class="flex flex-wrap justify-between">
+<div>
+<a class="flex align-center" href=https://github.com/wolanx/blog/edit/main/content/posts/article/threejs%20react%20fiber%20%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5.md target=_blank rel=noopener>
+<img src=/svg/edit.svg class=book-icon alt=Edit>
+<span>Edit this page</span>
+</a>
+</div>
+</div>
+<script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+</footer>
+<div class=book-comments>
+</div>
+<label for=menu-control class="hidden book-menu-overlay"></label>
+</div>
+<aside class=book-toc>
+<div class=book-toc-content>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#intro>Intro</a></li>
+<li><a href=#install>Install</a></li>
+<li><a href=#demo1---全局概览>Demo1 - 全局概览</a></li>
+<li><a href=#demo2---文件加载>Demo2 - 文件加载</a></li>
+<li><a href=#demo3-自动对焦>Demo3 自动对焦</a></li>
+<li><a href=#进阶部分>进阶部分</a>
+<ul>
+<li><a href=#编辑物体位置旋转缩放>编辑物体位置、旋转、缩放</a></li>
+<li><a href=#截图拍照>截图拍照</a></li>
+<li><a href=#如何改色>如何改色</a></li>
+</ul>
+</li>
+<li><a href=#总结>总结</a></li>
+</ul>
+</nav>
+</div>
+</aside>
+</main>
+</body>
+</html>

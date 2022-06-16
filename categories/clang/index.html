@@ -4,17 +4,17 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=description content>
 <meta name=theme-color content="#FFFFFF">
-<meta name=color-scheme content="light dark"><meta property="og:title" content="tool">
+<meta name=color-scheme content="light dark"><meta property="og:title" content="clang">
 <meta property="og:description" content>
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://wolanx.com/categories/tool/">
-<title>tool | wolanx</title>
+<meta property="og:url" content="https://wolanx.com/categories/clang/">
+<title>clang | wolanx</title>
 <link rel=manifest href=/manifest.json>
 <link rel=icon href=/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous>
 <script defer src=/flexsearch.min.js></script>
 <script defer src=/en.search.min.627ac2074de3361c936578c43c72784fd9093971154510b10c0fba3478a16bc3.js integrity="sha256-YnrCB03jNhyTZXjEPHJ4T9kJOXEVRRCxDA+6NHiha8M=" crossorigin=anonymous></script>
-<link rel=alternate type=application/rss+xml href=https://wolanx.com/categories/tool/index.xml title=wolanx>
+<link rel=alternate type=application/rss+xml href=https://wolanx.com/categories/clang/index.xml title=wolanx>
 </head>
 <body dir=ltr>
 <input type=checkbox class="hidden toggle" id=menu-control>
@@ -54,7 +54,7 @@ Project
 <label for=menu-control>
 <img src=/svg/menu.svg class=book-icon alt=Menu>
 </label>
-<strong>tool</strong>
+<strong>clang</strong>
 <label for=toc-control>
 <img src=/svg/toc.svg class=book-icon alt="Table of Contents">
 </label>
@@ -106,63 +106,13 @@ Project
 </header>
 <article class="markdown book-post">
 <h2>
-<a href=/posts/tool/kemulator/>塞班手机模拟器 KEmulator</a>
+<a href=/posts/clang/clang/>c demo</a>
 </h2>
-<h5>2022-05-23 12:00:00</h5>
+<h5>2015-02-13 20:43:41</h5>
 <div>
-<a href=/categories/tool/>tool</a>,
-<a href=/categories/windows/>windows</a>
+<a href=/categories/clang/>clang</a>
 </div>
-<p>安装 # java 环境准备 https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html#license-lightbox 登陆下 oracle 下载 32位 jre-8u202-windows-i586.tar.gz 模拟器准备 https://pan.baidu.com/s/1zSVZGO4Pn7W7UNisPnOOVw 提取码: 8zn4 下载 KEmulator-0.9.6 稳定可靠 运行 ~/.jdks/jre8_32/bin/java -jar KEmulator.jar 修改分辨率：视图-选项-定制-屏幕宽-800-高750 load jar包
-</p>
-</article>
-<article class="markdown book-post">
-<h2>
-<a href=/posts/tool/hugo/>hugo-book</a>
-</h2>
-<h5>2022-01-20 22:17:51</h5>
-<div>
-<a href=/categories/tool/>tool</a>
-</div>
-<p>Intro # 本站使用 博客系统hugo，搭配主题hugo-book
-hugo https://gohugo.io/getting-started/quick-start/ hugo-book 官方demo https://hugo-book-demo.netlify.app/posts/migrate-from-jekyll/ 代码demo https://github1s.com/alex-shpak/hugo-book Start # # 本地测试 hugo server -w # add hugo new posts/xxx.md Guide # Intro Install Start Packages Contributing About License Test # MacOS MacOS Content # Linux Linux Content # Windows Windows Content #
-</p>
-</article>
-<article class="markdown book-post">
-<h2>
-<a href=/posts/tool/vagrant/>工程化虚拟机 vagrant</a>
-</h2>
-<h5>2022-01-10 12:00:00</h5>
-<div>
-<a href=/categories/tool/>tool</a>,
-<a href=/categories/linux/>linux</a>
-</div>
-<p>Intro # 快速可自定义的虚拟机，几行命令搞定，不用再设置一堆东西。 自定义文件Vagrantfile实现环境重复利用 https://www.vagrantup.com/intro Install # https://www.vagrantup.com/downloads # wget https://releases.hashicorp.com/vagrant/2.2.19/vagrant_2.2.19_x86_64.msi Start # vagrant init generic/alpine312 # https://vagrantcloud.com/search vagrant up --provider=hyperv # start vagrant halt # stop vagrant ssh vagrant destroy # delete Other # vagrant box list # list image vagrant global-status # list vm vagrant destroy 1a2b3c4d # 手动下包 wget https://app.vagrantup.com/generic/boxes/alpine312/versions/3.6.4/providers/hyperv.box vagrant box add my/alpine312 hyperv.box # 127.0.0.1:2222 # root vagrant Vagrantfile # # touch Vagrantfile Vagrant.
-<a href=/posts/tool/vagrant/>...</a>
-</p>
-</article>
-<article class="markdown book-post">
-<h2>
-<a href=/posts/tool/clash/>clash 设置</a>
-</h2>
-<h5>2018-04-04 16:26:02</h5>
-<div>
-<a href=/categories/tool/>tool</a>
-</div>
-<p>clash # # install win mac https://github.com/Fndroid/clash_for_windows_pkg/releases https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.19.12/Clash.for.Windows.Setup.0.19.12.exe D:\clash # setting https://docs.cfw.lbyczf.com/contents/quickstart.html https://portal.shadowsocks.nz/knowledgebase/182/ # shell host_ip=$(cat /etc/resolv.conf |grep "nameserver" |cut -f 2 -d " ") export ALL_PROXY="http://$host_ip:7890" export ALL_PROXY="http://127.0.0.1:7890" trojan # https://github.com/trojan-gfw/trojan/releases tar -xvf trojan-1.16.0-linux-amd64.tar.xz
-&ldquo;cert&rdquo;: &ldquo;/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem&rdquo;,
-</p>
-</article>
-<article class="markdown book-post">
-<h2>
-<a href=/posts/tool/jetbrain_idea/>idea</a>
-</h2>
-<h5>2017-09-25 00:00:00</h5>
-<div>
-<a href=/categories/tool/>tool</a>
-</div>
-<p>doc # webstorm下调试react js程序(不是在chrome里) https://www.jianshu.com/p/87a5609c5f44 Editor # General # Appearance # Show method separators 函数分割线 Tools # External Tools # pycharm black setting:
-Program: black Arguments: $FileName$ Work dir: $FileDir$ Terminal # C:\Git\bin\sh.exe &ndash;login -i
+<p>doc # 深入浅出让你理解什么是LLVM https://www.jianshu.com/p/1367dad95445 命令 # ### -E 预编译 `gcc -E -o a.e a.c` 把`/usr/include/stdio.h`的内容`include`过来,并`删除注释` ### -S 汇编 `gcc -S -o a.s a.c` `c`转化成`汇编` ### -c 编译 `gcc -c -o a.o a.s` `汇编`转化成`二进制机器指令` ### 链接 没参数 `gcc -o a a.o` ## 快速生成 rm -f a.out; cc a.c; ./a.out; `gcc a.c` = `gcc -o a a.c`
 </p>
 </article>
 <footer class=book-footer>

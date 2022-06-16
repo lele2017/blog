@@ -13,7 +13,7 @@
 <link rel=icon href=/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous>
 <script defer src=/flexsearch.min.js></script>
-<script defer src=/en.search.min.baeb7c0d85155e5015b78675c4a53a7f103644b300b1fc8bba1dd993bedc67bf.js integrity="sha256-uut8DYUVXlAVt4Z1xKU6fxA2RLMAsfyLuh3Zk77cZ78=" crossorigin=anonymous></script>
+<script defer src=/en.search.min.627ac2074de3361c936578c43c72784fd9093971154510b10c0fba3478a16bc3.js integrity="sha256-YnrCB03jNhyTZXjEPHJ4T9kJOXEVRRCxDA+6NHiha8M=" crossorigin=anonymous></script>
 <link rel=alternate type=application/rss+xml href=https://wolanx.com/posts/index.xml title=wolanx>
 </head>
 <body dir=ltr>
@@ -70,12 +70,16 @@ Project
 <span>5</span>
 </li>
 <li class="flex justify-between">
-<a href=/categories/docker/>docker</a>
-<span>8</span>
+<a href=/categories/windows/>windows</a>
+<span>1</span>
 </li>
 <li class="flex justify-between">
 <a href=/categories/csdn/>csdn</a>
-<span>3</span>
+<span>6</span>
+</li>
+<li class="flex justify-between">
+<a href=/categories/docker/>docker</a>
+<span>8</span>
 </li>
 <li class="flex justify-between">
 <a href=/categories/algo/>algo</a>
@@ -84,6 +88,10 @@ Project
 <li class="flex justify-between">
 <a href=/categories/linux/>linux</a>
 <span>3</span>
+</li>
+<li class="flex justify-between">
+<a href=/categories/clang/>clang</a>
+<span>1</span>
 </li>
 </ul>
 </li>
@@ -98,13 +106,54 @@ Project
 </header>
 <article class="markdown book-post">
 <h2>
+<a href=/posts/tool/hugo/>hugo-book</a>
+</h2>
+<h5>2022-01-20 22:17:51</h5>
+<div>
+<a href=/categories/tool/>tool</a>
+</div>
+<p>Intro # 本站使用 博客系统hugo，搭配主题hugo-book
+hugo https://gohugo.io/getting-started/quick-start/ hugo-book 官方demo https://hugo-book-demo.netlify.app/posts/migrate-from-jekyll/ 代码demo https://github1s.com/alex-shpak/hugo-book Start # # 本地测试 hugo server -w # add hugo new posts/xxx.md Guide # Intro Install Start Packages Contributing About License Test # MacOS MacOS Content # Linux Linux Content # Windows Windows Content #
+</p>
+</article>
+<article class="markdown book-post">
+<h2>
+<a href=/posts/article/markdown/>Markdown</a>
+</h2>
+<h5>2022-01-20 00:00:00</h5>
+<div>
+<a href=/categories/csdn/>csdn</a>
+</div>
+<p>From csdn
+欢迎使用Markdown编辑器 # 你好！ 这是你第一次使用 Markdown编辑器 所展示的欢迎页。如果你想学习如何使用Markdown编辑器, 可以仔细阅读这篇文章，了解一下Markdown的基本语法知识。
+新的改变 # 我们对Markdown编辑器进行了一些功能拓展与语法支持，除了标准的Markdown编辑器功能，我们增加了如下几点新功能，帮助你用它写博客：
+全新的界面设计 ，将会带来全新的写作体验； 在创作中心设置你喜爱的代码高亮样式，Markdown 将代码片显示选择的高亮样式 进行展示； 增加了 图片拖拽 功能，你可以将本地的图片直接拖拽到编辑区域直接展示； 全新的 KaTeX数学公式 语法； 增加了支持甘特图的mermaid语法1 功能； 增加了 多屏幕编辑 Markdown文章功能； 增加了 焦点写作模式、预览模式、简洁写作模式、左右区域同步滚轮设置 等功能，功能按钮位于编辑区域与预览区域中间； 增加了 检查列表 功能。 功能快捷键 # 撤销：Ctrl/Command+ Z重做：Ctrl/Command+ Y加粗：Ctrl/Command+ B斜体：Ctrl/Command+ I标题：Ctrl/Command+ Shift+ H无序列表：Ctrl/Command+ Shift+ U有序列表：Ctrl/Command+ Shift+ O检查列表：Ctrl/Command+ Shift+ C插入代码：Ctrl/Command+ Shift+ K插入链接：Ctrl/Command+ Shift+ L插入图片：Ctrl/Command+ Shift+ G查找：Ctrl/Command+ F替换：Ctrl/Command+ G合理的创建标题，有助于目录的生成 # 直接输入1次#，并按下space后，将生成1级标题。 输入2次#，并按下space后，将生成2级标题。 以此类推，我们支持6级标题。有助于使用TOC语法后生成一个完美的目录。
+如何改变文本的样式 # 强调文本 强调文本
+<a href=/posts/article/markdown/>...</a>
+</p>
+</article>
+<article class="markdown book-post">
+<h2>
+<a href=/posts/tool/vagrant/>工程化虚拟机 vagrant</a>
+</h2>
+<h5>2022-01-10 12:00:00</h5>
+<div>
+<a href=/categories/tool/>tool</a>,
+<a href=/categories/linux/>linux</a>
+</div>
+<p>Intro # 快速可自定义的虚拟机，几行命令搞定，不用再设置一堆东西。 自定义文件Vagrantfile实现环境重复利用 https://www.vagrantup.com/intro Install # https://www.vagrantup.com/downloads # wget https://releases.hashicorp.com/vagrant/2.2.19/vagrant_2.2.19_x86_64.msi Start # vagrant init generic/alpine312 # https://vagrantcloud.com/search vagrant up --provider=hyperv # start vagrant halt # stop vagrant ssh vagrant destroy # delete Other # vagrant box list # list image vagrant global-status # list vm vagrant destroy 1a2b3c4d # 手动下包 wget https://app.vagrantup.com/generic/boxes/alpine312/versions/3.6.4/providers/hyperv.box vagrant box add my/alpine312 hyperv.box # 127.0.0.1:2222 # root vagrant Vagrantfile # # touch Vagrantfile Vagrant.
+<a href=/posts/tool/vagrant/>...</a>
+</p>
+</article>
+<article class="markdown book-post">
+<h2>
 <a href=/posts/linux/debian/>debian</a>
 </h2>
 <h5>2021-06-18 00:00:00</h5>
 <div>
 <a href=/categories/linux/>linux</a>
 </div>
-<p>加速 # # backup cp /etc/apt/sources.list /etc/apt/sources.list.bak sed 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list sed 's/security.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list # run sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list sed -i 's/security.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list apt-get update -y common # apt-get install procps # top ps apt-get install net-tools apt-get install iputils-ping apt-get install apt-transport-https ca-certificates # https vi bug # vi /etc/vim/vimrc.tiny set nocompatible set backspace=2
+<p>加速 # # backup cp /etc/apt/sources.list /etc/apt/sources.list.bak sed 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list sed 's/security.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list # run sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list sed -i 's/security.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list apt-get update -y common # apt-get install procps # top ps apt-get install net-tools apt-get install iputils-ping apt-get install apt-transport-https ca-certificates # https user # adduser new_user usermod -G sudo new_user # 将用户添加到sudo组中 su - new_user vi bug 方向键 # vi /etc/vim/vimrc.tiny set nocompatible set backspace=2
 </p>
 </article>
 <article class="markdown book-post">
@@ -163,7 +212,7 @@ Project
 <div>
 <a href=/categories/tool/>tool</a>
 </div>
-<p>clash # # install https://github.com/Fndroid/clash_for_windows_pkg/releases https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.19.12/Clash.for.Windows.Setup.0.19.12.exe D:\clash # setting https://docs.cfw.lbyczf.com/contents/quickstart.html https://portal.shadowsocks.nz/knowledgebase/182/ # shell host_ip=$(cat /etc/resolv.conf |grep "nameserver" |cut -f 2 -d " ") export ALL_PROXY="http://$host_ip:7890" export ALL_PROXY="http://127.0.0.1:7890" trojan # https://github.com/trojan-gfw/trojan/releases tar -xvf trojan-1.16.0-linux-amd64.tar.xz
+<p>clash # # install win mac https://github.com/Fndroid/clash_for_windows_pkg/releases https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.19.12/Clash.for.Windows.Setup.0.19.12.exe D:\clash # setting https://docs.cfw.lbyczf.com/contents/quickstart.html https://portal.shadowsocks.nz/knowledgebase/182/ # shell host_ip=$(cat /etc/resolv.conf |grep "nameserver" |cut -f 2 -d " ") export ALL_PROXY="http://$host_ip:7890" export ALL_PROXY="http://127.0.0.1:7890" trojan # https://github.com/trojan-gfw/trojan/releases tar -xvf trojan-1.16.0-linux-amd64.tar.xz
 &ldquo;cert&rdquo;: &ldquo;/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem&rdquo;,
 </p>
 </article>
@@ -177,44 +226,6 @@ Project
 </div>
 <p>infrastructure # portainer 管理 # docker run -d --restart=unless-stopped --name portainer -p 1234:9000 -v "/var/run/docker.sock:/var/run/docker.sock" portainer/portainer-ce:2.6.0 docker run -d --restart=unless-stopped --name portainer -p 1234:9000 -v "/var/run/docker.sock:/var/run/docker.sock" portainer/portainer:1.23.2 # //./pipe/docker_engine # "hosts": ["tcp://0.0.0.0:2375"] server { listen 80; charset utf-8; server_name uat.docker.manager; location / { proxy_pass http://127.0.0.1:1234; proxy_http_version 1.1; proxy_set_header Connection ""; proxy_set_header Host $host; proxy_set_header Scheme $scheme; } } registry # DOCKER_OPTS="--insecure-registry 192.168.1.19:5000" docker run -d -p 5000:5000 --restart=always --name registry registry:2.
 <a href=/posts/docker/app/>...</a>
-</p>
-</article>
-<article class="markdown book-post">
-<h2>
-<a href=/posts/docker/docker/>docker 基础</a>
-</h2>
-<h5>2018-03-22 00:00:00</h5>
-<div>
-<a href=/categories/docker/>docker</a>
-</div>
-<p>doc # Docker学习笔记 https://segmentfault.com/a/1190000005930858 Docker 核心技术与实现原理 https://draveness.me/docker Docker 问答录（100 问） https://blog.lab99.org/post/docker-2016-07-14-faq.html Docker 实践系列文章 https://segmentfault.com/a/1190000006449675 install # # centos sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo yum list docker-ce --showduplicates | sort -r sudo yum install -y docker-ce # debian https://docs.docker.com/engine/install/debian/ # 开机启动 systemctl status docker systemctl enable docker service docker restart kill -SIGHUP $(pidof dockerd) config # cat > /etc/docker/daemon.json &lt;&lt; EOF { "registry-mirrors": ["https://registry.
-<a href=/posts/docker/docker/>...</a>
-</p>
-</article>
-<article class="markdown book-post">
-<h2>
-<a href=/posts/docker/docker-compose/>docker-compose</a>
-</h2>
-<h5>2018-03-22 00:00:00</h5>
-<div>
-<a href=/categories/docker/>docker</a>
-</div>
-<p>docker-compose # docker-compose ps docker-compose logs --tail=100 -f docker-compose logs --tail=100 -f svc-web docker-compose restart svc-web install # # https://docs.docker.com/compose/install/#install-compose yum install -y docker-compose sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose sudo chmod +x /usr/local/bin/docker-compose docker-compose --version tpl # java + redis + influxdb # version: "3" services: svc-web: image: ghcr.io/wolanx/iothub-echo ports: - 1883:1883 - 18830:8080 entrypoint: java -cp /app/resources:/app/classes:/app/libs/* com.wolanx.echo.iothub.IotHubApplication volumes: - .:/root environment: - TZ=utc-8 - JVM=-XX:+UseContainerSupport - REDIS_HOST=svc-redis - INFLUXDB_HOST=svc-influxdb networks: - mynet svc-redis: image: redis:6.
-<a href=/posts/docker/docker-compose/>...</a>
-</p>
-</article>
-<article class="markdown book-post">
-<h2>
-<a href=/posts/docker/php.dockerfile/>php Dockerfile</a>
-</h2>
-<h5>2018-03-22 00:00:00</h5>
-<div>
-<a href=/categories/docker/>docker</a>
-</div>
-<p>2019-04-04 zst php:7.1.11 # docker pull zx5435/php:7.1.10
-All version is small about 100mb, quick to download and running fast. They are cover my work in everywhere, you can try it. include:
-mysql postgres redis mongo apcu gd xdebug bcmath zip FROM php:7.1.11-fpm-alpine RUN apk add --no-cache freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev \ && apk add --no-cache --virtual .build-deps autoconf g++ libssh2 openssl openssl-dev make pcre-dev tree curl \ && apk add --no-cache postgresql-dev \ && docker-php-ext-configure gd \ --with-gd \ --with-freetype-dir=/usr/include/ \ --with-png-dir=/usr/include/ \ --with-jpeg-dir=/usr/include/ \ && pecl install mongodb-1.
-<a href=/posts/docker/php.dockerfile/>...</a>
 </p>
 </article>
 <ul class="pagination pagination-default">
@@ -265,12 +276,16 @@ mysql postgres redis mongo apcu gd xdebug bcmath zip FROM php:7.1.11-fpm-alpine 
 <span>5</span>
 </li>
 <li class="flex justify-between">
-<a href=/categories/docker/>docker</a>
-<span>8</span>
+<a href=/categories/windows/>windows</a>
+<span>1</span>
 </li>
 <li class="flex justify-between">
 <a href=/categories/csdn/>csdn</a>
-<span>3</span>
+<span>6</span>
+</li>
+<li class="flex justify-between">
+<a href=/categories/docker/>docker</a>
+<span>8</span>
 </li>
 <li class="flex justify-between">
 <a href=/categories/algo/>algo</a>
@@ -279,6 +294,10 @@ mysql postgres redis mongo apcu gd xdebug bcmath zip FROM php:7.1.11-fpm-alpine 
 <li class="flex justify-between">
 <a href=/categories/linux/>linux</a>
 <span>3</span>
+</li>
+<li class="flex justify-between">
+<a href=/categories/clang/>clang</a>
+<span>1</span>
 </li>
 </ul>
 </li>
