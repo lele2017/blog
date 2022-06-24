@@ -1,0 +1,246 @@
+<!doctype html><html lang=en-us dir=ltr>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="sh #  Shell 教程 http://www.runoob.com/linux/linux-shell.html 分享70个经典的 Shell 脚本面试题与答案 https://www.jb51.net/article/135168.htm tsdb => csv => sql => influx => oss #  # cd /z/wolanx/GiMC/src/backend/temp/mig # chcp.com 65001 # sh ./db2csv.sh # nohup bash all.sh > ~/1.log 2>&1 & set -e tt=&#34;20201231&#34; tz=&#34;20200101&#34; while [[ &#34;${tt}&#34; -ge &#34;${tz}&#34; ]]; do #tt=&#34;20220502&#34; echo &#34;start ${tt}&#34; python3 db2csv.py $tt python2 /root/datax-wolanx/bin/datax.py /root/datax-wolanx/mig/${tt}.json > /dev/null rm ${tt}.json cat /z/data/${tt}__* > /z/data/${tt}.csv cat /z/data/${tt}.csv | wc -l rm /z/data/${tt}__* echo -e &#34;# DML\n# CONTEXT-DATABASE: gimc-hk&#34; > /z/data/${tt}.">
+<meta name=theme-color content="#FFFFFF">
+<meta name=color-scheme content="light dark"><meta property="og:title" content="shell 脚本">
+<meta property="og:description" content="sh #  Shell 教程 http://www.runoob.com/linux/linux-shell.html 分享70个经典的 Shell 脚本面试题与答案 https://www.jb51.net/article/135168.htm tsdb => csv => sql => influx => oss #  # cd /z/wolanx/GiMC/src/backend/temp/mig # chcp.com 65001 # sh ./db2csv.sh # nohup bash all.sh > ~/1.log 2>&1 & set -e tt=&#34;20201231&#34; tz=&#34;20200101&#34; while [[ &#34;${tt}&#34; -ge &#34;${tz}&#34; ]]; do #tt=&#34;20220502&#34; echo &#34;start ${tt}&#34; python3 db2csv.py $tt python2 /root/datax-wolanx/bin/datax.py /root/datax-wolanx/mig/${tt}.json > /dev/null rm ${tt}.json cat /z/data/${tt}__* > /z/data/${tt}.csv cat /z/data/${tt}.csv | wc -l rm /z/data/${tt}__* echo -e &#34;# DML\n# CONTEXT-DATABASE: gimc-hk&#34; > /z/data/${tt}.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://wolanx.com/posts/linux/shell/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2017-12-13T00:00:00+00:00">
+<meta property="article:modified_time" content="2017-12-13T00:00:00+00:00">
+<title>shell 脚本 | wolanx</title>
+<link rel=manifest href=/manifest.json>
+<link rel=icon href=/favicon.png type=image/x-icon>
+<link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous>
+<script defer src=/flexsearch.min.js></script>
+<script defer src=/en.search.min.4227ca5d4ff8d8b5505b3abca16fd0e79039b1444be2647b87820433f415928a.js integrity="sha256-QifKXU/42LVQWzq8oW/Q55A5sURL4mR7h4IEM/QVkoo=" crossorigin=anonymous></script>
+</head>
+<body dir=ltr>
+<input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control>
+<main class="container flex">
+<aside class=book-menu>
+<div class=book-menu-content>
+<nav>
+<h2 class=book-brand>
+<a class="flex align-center" href=/><span>wolanx</span>
+</a>
+</h2>
+<div class=book-search>
+<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
+<div class="book-search-spinner hidden"></div>
+<ul id=book-search-results></ul>
+</div>
+<ul>
+<li>
+<a href=/posts/>
+Blog
+</a>
+</li>
+<li>
+<a href=/projects/>
+Project
+</a>
+</li>
+</ul>
+</nav>
+<script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+</div>
+</aside>
+<div class=book-page>
+<header class=book-header>
+<div class="flex align-center justify-between">
+<label for=menu-control>
+<img src=/svg/menu.svg class=book-icon alt=Menu>
+</label>
+<strong>shell 脚本</strong>
+<label for=toc-control>
+<img src=/svg/toc.svg class=book-icon alt="Table of Contents">
+</label>
+</div>
+<aside class="hidden clearfix">
+<nav id=TableOfContents>
+<ul>
+<li><a href=#sh>sh</a></li>
+<li><a href=#tsdb--csv--sql--influx--oss>tsdb => csv => sql => influx => oss</a>
+<ul>
+<li><a href=#上传文件批量>上传文件批量</a></li>
+</ul>
+</li>
+<li><a href=#循环机器执行>循环机器执行</a></li>
+<li><a href=#久游代码部署>久游代码部署</a></li>
+<li><a href=#with-ssh>with ssh</a></li>
+</ul>
+</nav>
+</aside>
+</header>
+<article class=markdown>
+<h1>
+<a href=/posts/linux/shell/>shell 脚本</a>
+</h1>
+<h5>2017-12-13 00:00:00</h5>
+<div>
+<a href=/categories/linux/>linux</a>
+</div>
+<h2 id=sh>
+sh
+<a class=anchor href=#sh>#</a>
+</h2>
+<p>Shell 教程 <a href=http://www.runoob.com/linux/linux-shell.html target=_blank>http://www.runoob.com/linux/linux-shell.html</a>
+分享70个经典的 Shell 脚本面试题与答案 <a href=https://www.jb51.net/article/135168.htm target=_blank>https://www.jb51.net/article/135168.htm</a>
+</p>
+<h2 id=tsdb--csv--sql--influx--oss>
+tsdb => csv => sql => influx => oss
+<a class=anchor href=#tsdb--csv--sql--influx--oss>#</a>
+</h2>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#75715e># cd /z/wolanx/GiMC/src/backend/temp/mig</span>
+<span style=color:#75715e># chcp.com 65001</span>
+<span style=color:#75715e># sh ./db2csv.sh</span>
+<span style=color:#75715e># nohup bash all.sh &gt; ~/1.log 2&gt;&amp;1 &amp;</span>
+set -e
+
+tt<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;20201231&#34;</span>
+tz<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;20200101&#34;</span>
+<span style=color:#66d9ef>while</span> <span style=color:#f92672>[[</span> <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>tt<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span> -ge <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>tz<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span> <span style=color:#f92672>]]</span>;
+<span style=color:#66d9ef>do</span>
+    <span style=color:#75715e>#tt=&#34;20220502&#34;</span>
+    echo <span style=color:#e6db74>&#34;start </span><span style=color:#e6db74>${</span>tt<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>
+
+    python3 db2csv.py $tt
+    python2 /root/datax-wolanx/bin/datax.py /root/datax-wolanx/mig/<span style=color:#e6db74>${</span>tt<span style=color:#e6db74>}</span>.json &gt; /dev/null
+    rm <span style=color:#e6db74>${</span>tt<span style=color:#e6db74>}</span>.json
+
+    cat /z/data/<span style=color:#e6db74>${</span>tt<span style=color:#e6db74>}</span>__* &gt; /z/data/<span style=color:#e6db74>${</span>tt<span style=color:#e6db74>}</span>.csv
+    cat /z/data/<span style=color:#e6db74>${</span>tt<span style=color:#e6db74>}</span>.csv | wc -l
+    rm /z/data/<span style=color:#e6db74>${</span>tt<span style=color:#e6db74>}</span>__*
+
+    echo -e <span style=color:#e6db74>&#34;# DML\n# CONTEXT-DATABASE: gimc-hk&#34;</span> &gt; /z/data/<span style=color:#e6db74>${</span>tt<span style=color:#e6db74>}</span>.sql
+    cat /z/data/<span style=color:#e6db74>${</span>tt<span style=color:#e6db74>}</span>.csv | awk -F<span style=color:#e6db74>&#39;,&#39;</span> <span style=color:#e6db74>&#39;{printf &#34;sensor_0s,SNO=%s %s=%s %s\n&#34;, $3, $1, $4, $2}&#39;</span> &gt;&gt; /z/data/<span style=color:#e6db74>${</span>tt<span style=color:#e6db74>}</span>.sql
+    rm /z/data/<span style=color:#e6db74>${</span>tt<span style=color:#e6db74>}</span>.csv
+
+    sed -i <span style=color:#e6db74>&#39;/checkhitsdb/d&#39;</span> /z/data/<span style=color:#e6db74>${</span>tt<span style=color:#e6db74>}</span>.sql
+    sed -i <span style=color:#e6db74>&#39;/= /d&#39;</span> /z/data/<span style=color:#e6db74>${</span>tt<span style=color:#e6db74>}</span>.sql
+    sed -i <span style=color:#e6db74>&#39;s/ _/_/g&#39;</span> /z/data/<span style=color:#e6db74>${</span>tt<span style=color:#e6db74>}</span>.sql
+    influx -ssl -host ts-xxx.influxdata.tsdb.aliyuncs.com -port <span style=color:#ae81ff>8086</span> -username grundfos -password password -database gimc-hk -import -path<span style=color:#f92672>=</span>/z/data/<span style=color:#e6db74>${</span>tt<span style=color:#e6db74>}</span>.sql -precision<span style=color:#f92672>=</span>s
+
+    ossutil cp /z/data/<span style=color:#e6db74>${</span>tt<span style=color:#e6db74>}</span>.sql oss://oss-dcc-gimc-tsdb-hk/ds-hk-sql/
+    rm /z/data/<span style=color:#e6db74>${</span>tt<span style=color:#e6db74>}</span>.sql
+
+    echo <span style=color:#e6db74>&#34;end </span><span style=color:#e6db74>${</span>tt<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>
+
+    tt<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>date -d <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>tt<span style=color:#e6db74>}</span><span style=color:#e6db74> -1day&#34;</span> +%Y%m%d<span style=color:#66d9ef>)</span>
+<span style=color:#66d9ef>done</span>
+
+</code></pre></div><h3 id=上传文件批量>
+上传文件批量
+<a class=anchor href=#%e4%b8%8a%e4%bc%a0%e6%96%87%e4%bb%b6%e6%89%b9%e9%87%8f>#</a>
+</h3>
+<pre tabindex=0><code>for ((a=10;a&lt;=245;a++));do
+    n=`printf &quot;%03d&quot; $a`;
+    echo $n;
+    echo $(curl -H 'Content-Type:text/plain' --data-binary @seofile_${n} &quot;http://data.zz.baidu.com/urls?site=www.app-echo.com&amp;token=3iyzwDoYB6IQAMKL&quot;);
+done
+</code></pre><h2 id=循环机器执行>
+循环机器执行
+<a class=anchor href=#%e5%be%aa%e7%8e%af%e6%9c%ba%e5%99%a8%e6%89%a7%e8%a1%8c>#</a>
+</h2>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=color:#75715e>#! /bin/bash
+</span><span style=color:#75715e></span>
+ips<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;
+</span><span style=color:#e6db74>172.16.30.13
+</span><span style=color:#e6db74>172.16.30.14
+</span><span style=color:#e6db74>172.16.30.15
+</span><span style=color:#e6db74>172.16.30.25
+</span><span style=color:#e6db74>172.16.30.26
+</span><span style=color:#e6db74>172.16.30.27
+</span><span style=color:#e6db74>&#34;</span>
+<span style=color:#66d9ef>for</span> ip in $ips
+<span style=color:#66d9ef>do</span>
+    echo <span style=color:#e6db74>&#34;do @</span>$ip<span style=color:#e6db74>&#34;</span>
+    echo <span style=color:#e6db74>&#34;==============================&#34;</span>
+    <span style=color:#75715e># ssh root@$ip &#34;pwd&#34;</span>
+
+    ssh root@$ip <span style=color:#e6db74>&#39;#!/bin/sh
+</span><span style=color:#e6db74>echo $LANG
+</span><span style=color:#e6db74>&#39;</span>
+
+	<span style=color:#75715e># echo $doStr</span>
+    <span style=color:#75715e># ssh root@$ip $doStr</span>
+
+    echo <span style=color:#e6db74>&#34;\n\n&#34;</span>
+<span style=color:#66d9ef>done</span>
+</code></pre></div><h2 id=久游代码部署>
+久游代码部署
+<a class=anchor href=#%e4%b9%85%e6%b8%b8%e4%bb%a3%e7%a0%81%e9%83%a8%e7%bd%b2>#</a>
+</h2>
+<pre tabindex=0><code>rsync -avl --delete    --exclude &quot;log&quot; --exclude &quot;cli&quot; --exclude &quot;admin&quot; --exclude &quot;caches&quot; --exclude &quot;yaf_config.php&quot; /usr/db/htdocs/au3/beta/ maintain@114.141.159.7:/usr/db/htdocs/au3/
+</code></pre><pre tabindex=0><code>#!/bin/bash
+weball=&quot;
+192.168.1.5
+192.168.1.6
+192.168.1.7
+&quot;
+for ip in $weball
+do
+    rsync -avl --delete    --exclude &quot;log&quot; --exclude &quot;cli&quot; --exclude &quot;caches&quot; --exclude &quot;upload&quot; --exclude &quot;fileupload&quot;   -e ssh /usr/db/htdocs/yaf_aushop/preproduct/ maintain@$ip:/usr/db/htdocs/shop_with_yaf/
+
+    echo &quot;maintain@$ip is ok&quot;
+
+done
+</code></pre><h2 id=with-ssh>
+with ssh
+<a class=anchor href=#with-ssh>#</a>
+</h2>
+<pre tabindex=0><code>#! /bin/bash
+
+ssh root@172.16.30.15 &quot;pwd&quot;
+
+ssh www@172.16.45.87 '#!/bin/sh
+	export LC_ALL=C
+	hostname
+	cd /srv/wwwroot/app
+	git branch
+	git pull
+	git submodule init
+	git submodule sync
+	git submodule update
+	git status
+'
+</code></pre></article>
+<footer class=book-footer>
+<div class="flex flex-wrap justify-between">
+<div>
+<a class="flex align-center" href=https://github.com/wolanx/blog/edit/main/content/posts/linux/shell.md target=_blank rel=noopener>
+<img src=/svg/edit.svg class=book-icon alt=Edit>
+<span>Edit this page</span>
+</a>
+</div>
+</div>
+<script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+</footer>
+<div class=book-comments>
+</div>
+<label for=menu-control class="hidden book-menu-overlay"></label>
+</div>
+<aside class=book-toc>
+<div class=book-toc-content>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#sh>sh</a></li>
+<li><a href=#tsdb--csv--sql--influx--oss>tsdb => csv => sql => influx => oss</a>
+<ul>
+<li><a href=#上传文件批量>上传文件批量</a></li>
+</ul>
+</li>
+<li><a href=#循环机器执行>循环机器执行</a></li>
+<li><a href=#久游代码部署>久游代码部署</a></li>
+<li><a href=#with-ssh>with ssh</a></li>
+</ul>
+</nav>
+</div>
+</aside>
+</main>
+</body>
+</html>

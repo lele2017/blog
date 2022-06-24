@@ -13,7 +13,7 @@
 <link rel=icon href=/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous>
 <script defer src=/flexsearch.min.js></script>
-<script defer src=/en.search.min.627ac2074de3361c936578c43c72784fd9093971154510b10c0fba3478a16bc3.js integrity="sha256-YnrCB03jNhyTZXjEPHJ4T9kJOXEVRRCxDA+6NHiha8M=" crossorigin=anonymous></script>
+<script defer src=/en.search.min.4227ca5d4ff8d8b5505b3abca16fd0e79039b1444be2647b87820433f415928a.js integrity="sha256-QifKXU/42LVQWzq8oW/Q55A5sURL4mR7h4IEM/QVkoo=" crossorigin=anonymous></script>
 <link rel=alternate type=application/rss+xml href=https://wolanx.com/posts/index.xml title=wolanx>
 </head>
 <body dir=ltr>
@@ -87,7 +87,7 @@ Project
 </li>
 <li class="flex justify-between">
 <a href=/categories/linux/>linux</a>
-<span>3</span>
+<span>5</span>
 </li>
 <li class="flex justify-between">
 <a href=/categories/clang/>clang</a>
@@ -134,6 +134,19 @@ hugo https://gohugo.io/getting-started/quick-start/ hugo-book 官方demo https:/
 </article>
 <article class="markdown book-post">
 <h2>
+<a href=/posts/linux/alias/>alias</a>
+</h2>
+<h5>2022-01-19 00:00:00</h5>
+<div>
+<a href=/categories/linux/>linux</a>
+</div>
+<p>方法 1 alias # alias tfa=&lsquo;terraform apply &ndash;auto-approve&rsquo;
+方法 2 ln # ln -sf /c/Program\ Files/Notepad++/notepad++.exe .
+方法 3 sh # $ cat pad #!/bin/sh /c/Program\ Files/Notepad++/notepad++.exe $*
+</p>
+</article>
+<article class="markdown book-post">
+<h2>
 <a href=/posts/tool/vagrant/>工程化虚拟机 vagrant</a>
 </h2>
 <h5>2022-01-10 12:00:00</h5>
@@ -153,7 +166,8 @@ hugo https://gohugo.io/getting-started/quick-start/ hugo-book 官方demo https:/
 <div>
 <a href=/categories/linux/>linux</a>
 </div>
-<p>加速 # # backup cp /etc/apt/sources.list /etc/apt/sources.list.bak sed 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list sed 's/security.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list # run sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list sed -i 's/security.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list apt-get update -y common # apt-get install procps # top ps apt-get install net-tools apt-get install iputils-ping apt-get install apt-transport-https ca-certificates # https user # adduser new_user usermod -G sudo new_user # 将用户添加到sudo组中 su - new_user vi bug 方向键 # vi /etc/vim/vimrc.tiny set nocompatible set backspace=2
+<p>加速 # # backup cp /etc/apt/sources.list /etc/apt/sources.list.bak sed 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list sed 's/security.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list # run sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list sed -i 's/security.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list apt-get update -y common # apt-get install procps # top ps apt-get install net-tools apt-get install iputils-ping apt-get install apt-transport-https ca-certificates # https user # adduser new_user usermod -G sudo new_user # 将用户添加到sudo组中 su - new_user vi bug 方向键 # vi /etc/vim/vimrc.tiny set nocompatible set backspace=2 ubuntu 加速 # cp /etc/apt/sources.
+<a href=/posts/linux/debian/>...</a>
 </p>
 </article>
 <article class="markdown book-post">
@@ -214,18 +228,6 @@ hugo https://gohugo.io/getting-started/quick-start/ hugo-book 官方demo https:/
 </div>
 <p>clash # # install win mac https://github.com/Fndroid/clash_for_windows_pkg/releases https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.19.12/Clash.for.Windows.Setup.0.19.12.exe D:\clash # setting https://docs.cfw.lbyczf.com/contents/quickstart.html https://portal.shadowsocks.nz/knowledgebase/182/ # shell host_ip=$(cat /etc/resolv.conf |grep "nameserver" |cut -f 2 -d " ") export ALL_PROXY="http://$host_ip:7890" export ALL_PROXY="http://127.0.0.1:7890" trojan # https://github.com/trojan-gfw/trojan/releases tar -xvf trojan-1.16.0-linux-amd64.tar.xz
 &ldquo;cert&rdquo;: &ldquo;/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem&rdquo;,
-</p>
-</article>
-<article class="markdown book-post">
-<h2>
-<a href=/posts/docker/app/>docker app</a>
-</h2>
-<h5>2018-03-22 00:00:00</h5>
-<div>
-<a href=/categories/docker/>docker</a>
-</div>
-<p>infrastructure # portainer 管理 # docker run -d --restart=unless-stopped --name portainer -p 1234:9000 -v "/var/run/docker.sock:/var/run/docker.sock" portainer/portainer-ce:2.6.0 docker run -d --restart=unless-stopped --name portainer -p 1234:9000 -v "/var/run/docker.sock:/var/run/docker.sock" portainer/portainer:1.23.2 # //./pipe/docker_engine # "hosts": ["tcp://0.0.0.0:2375"] server { listen 80; charset utf-8; server_name uat.docker.manager; location / { proxy_pass http://127.0.0.1:1234; proxy_http_version 1.1; proxy_set_header Connection ""; proxy_set_header Host $host; proxy_set_header Scheme $scheme; } } registry # DOCKER_OPTS="--insecure-registry 192.168.1.19:5000" docker run -d -p 5000:5000 --restart=always --name registry registry:2.
-<a href=/posts/docker/app/>...</a>
 </p>
 </article>
 <ul class="pagination pagination-default">
@@ -293,7 +295,7 @@ hugo https://gohugo.io/getting-started/quick-start/ hugo-book 官方demo https:/
 </li>
 <li class="flex justify-between">
 <a href=/categories/linux/>linux</a>
-<span>3</span>
+<span>5</span>
 </li>
 <li class="flex justify-between">
 <a href=/categories/clang/>clang</a>

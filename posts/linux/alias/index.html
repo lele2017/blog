@@ -2,15 +2,19 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="安装 #   java 环境准备  https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html#license-lightbox  登陆下 oracle 下载 32位 jre-8u202-windows-i586.tar.gz   模拟器准备  https://pan.baidu.com/s/1zSVZGO4Pn7W7UNisPnOOVw 提取码: 8zn4 下载 KEmulator-0.9.6 稳定可靠   运行  ~/.jdks/jre8_32/bin/java -jar KEmulator.jar 修改分辨率：视图-选项-定制-屏幕宽-800-高750 load jar包    ">
+<meta name=description content="方法 1 alias #  alias tfa=&lsquo;terraform apply &ndash;auto-approve&rsquo;
+方法 2 ln #  ln -sf /c/Program\ Files/Notepad++/notepad++.exe .
+方法 3 sh #  $ cat pad #!/bin/sh /c/Program\ Files/Notepad++/notepad++.exe $* ">
 <meta name=theme-color content="#FFFFFF">
-<meta name=color-scheme content="light dark"><meta property="og:title" content="塞班手机模拟器 KEmulator">
-<meta property="og:description" content="安装 #   java 环境准备  https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html#license-lightbox  登陆下 oracle 下载 32位 jre-8u202-windows-i586.tar.gz   模拟器准备  https://pan.baidu.com/s/1zSVZGO4Pn7W7UNisPnOOVw 提取码: 8zn4 下载 KEmulator-0.9.6 稳定可靠   运行  ~/.jdks/jre8_32/bin/java -jar KEmulator.jar 修改分辨率：视图-选项-定制-屏幕宽-800-高750 load jar包    ">
+<meta name=color-scheme content="light dark"><meta property="og:title" content="alias">
+<meta property="og:description" content="方法 1 alias #  alias tfa=&lsquo;terraform apply &ndash;auto-approve&rsquo;
+方法 2 ln #  ln -sf /c/Program\ Files/Notepad++/notepad++.exe .
+方法 3 sh #  $ cat pad #!/bin/sh /c/Program\ Files/Notepad++/notepad++.exe $* ">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://wolanx.com/posts/tool/kemulator/"><meta property="article:section" content="posts">
-<meta property="article:published_time" content="2022-05-23T12:00:00+08:00">
-<meta property="article:modified_time" content="2022-05-23T12:00:00+08:00">
-<title>塞班手机模拟器 KEmulator | wolanx</title>
+<meta property="og:url" content="https://wolanx.com/posts/linux/alias/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2022-01-19T00:00:00+00:00">
+<meta property="article:modified_time" content="2022-01-19T00:00:00+00:00">
+<title>alias | wolanx</title>
 <link rel=manifest href=/manifest.json>
 <link rel=icon href=/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous>
@@ -55,7 +59,7 @@ Project
 <label for=menu-control>
 <img src=/svg/menu.svg class=book-icon alt=Menu>
 </label>
-<strong>塞班手机模拟器 KEmulator</strong>
+<strong>alias</strong>
 <label for=toc-control>
 <img src=/svg/toc.svg class=book-icon alt="Table of Contents">
 </label>
@@ -63,53 +67,43 @@ Project
 <aside class="hidden clearfix">
 <nav id=TableOfContents>
 <ul>
-<li><a href=#安装>安装</a></li>
+<li><a href=#方法-1-alias>方法 1 alias</a></li>
+<li><a href=#方法-2-ln>方法 2 ln</a></li>
+<li><a href=#方法-3-sh>方法 3 sh</a></li>
 </ul>
 </nav>
 </aside>
 </header>
 <article class=markdown>
 <h1>
-<a href=/posts/tool/kemulator/>塞班手机模拟器 KEmulator</a>
+<a href=/posts/linux/alias/>alias</a>
 </h1>
-<h5>2022-05-23 12:00:00</h5>
+<h5>2022-01-19 00:00:00</h5>
 <div>
-<a href=/categories/tool/>tool</a>,
-<a href=/categories/windows/>windows</a>
+<a href=/categories/linux/>linux</a>
 </div>
-<h2 id=安装>
-安装
-<a class=anchor href=#%e5%ae%89%e8%a3%85>#</a>
+<h2 id=方法-1-alias>
+方法 1 alias
+<a class=anchor href=#%e6%96%b9%e6%b3%95-1-alias>#</a>
 </h2>
-<ul>
-<li>java 环境准备
-<ul>
-<li><a href=https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html#license-lightbox target=_blank>https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html#license-lightbox</a>
-</li>
-<li>登陆下 oracle</li>
-<li>下载 32位 jre-8u202-windows-i586.tar.gz</li>
-</ul>
-</li>
-<li>模拟器准备
-<ul>
-<li><a href=https://pan.baidu.com/s/1zSVZGO4Pn7W7UNisPnOOVw target=_blank>https://pan.baidu.com/s/1zSVZGO4Pn7W7UNisPnOOVw</a>
-提取码: 8zn4</li>
-<li>下载 KEmulator-0.9.6 稳定可靠</li>
-</ul>
-</li>
-<li>运行
-<ul>
-<li>~/.jdks/jre8_32/bin/java -jar KEmulator.jar</li>
-<li>修改分辨率：视图-选项-定制-屏幕宽-800-高750</li>
-<li>load jar包</li>
-</ul>
-</li>
-</ul>
-</article>
+<p>alias tfa=&lsquo;terraform apply &ndash;auto-approve&rsquo;</p>
+<h2 id=方法-2-ln>
+方法 2 ln
+<a class=anchor href=#%e6%96%b9%e6%b3%95-2-ln>#</a>
+</h2>
+<p>ln -sf /c/Program\ Files/Notepad++/notepad++.exe .</p>
+<h2 id=方法-3-sh>
+方法 3 sh
+<a class=anchor href=#%e6%96%b9%e6%b3%95-3-sh>#</a>
+</h2>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ cat pad
+<span style=color:#75715e>#!/bin/sh</span>
+/c/Program<span style=color:#ae81ff>\ </span>Files/Notepad++/notepad++.exe $*
+</code></pre></div></article>
 <footer class=book-footer>
 <div class="flex flex-wrap justify-between">
 <div>
-<a class="flex align-center" href=https://github.com/wolanx/blog/edit/main/content/posts/tool/KEmulator.md target=_blank rel=noopener>
+<a class="flex align-center" href=https://github.com/wolanx/blog/edit/main/content/posts/linux/alias.md target=_blank rel=noopener>
 <img src=/svg/edit.svg class=book-icon alt=Edit>
 <span>Edit this page</span>
 </a>
@@ -125,7 +119,9 @@ Project
 <div class=book-toc-content>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#安装>安装</a></li>
+<li><a href=#方法-1-alias>方法 1 alias</a></li>
+<li><a href=#方法-2-ln>方法 2 ln</a></li>
+<li><a href=#方法-3-sh>方法 3 sh</a></li>
 </ul>
 </nav>
 </div>

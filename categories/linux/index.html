@@ -13,7 +13,7 @@
 <link rel=icon href=/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous>
 <script defer src=/flexsearch.min.js></script>
-<script defer src=/en.search.min.627ac2074de3361c936578c43c72784fd9093971154510b10c0fba3478a16bc3.js integrity="sha256-YnrCB03jNhyTZXjEPHJ4T9kJOXEVRRCxDA+6NHiha8M=" crossorigin=anonymous></script>
+<script defer src=/en.search.min.4227ca5d4ff8d8b5505b3abca16fd0e79039b1444be2647b87820433f415928a.js integrity="sha256-QifKXU/42LVQWzq8oW/Q55A5sURL4mR7h4IEM/QVkoo=" crossorigin=anonymous></script>
 <link rel=alternate type=application/rss+xml href=https://wolanx.com/categories/linux/index.xml title=wolanx>
 </head>
 <body dir=ltr>
@@ -87,7 +87,7 @@ Project
 </li>
 <li class="flex justify-between">
 <a href=/categories/linux/>linux</a>
-<span>3</span>
+<span>5</span>
 </li>
 <li class="flex justify-between">
 <a href=/categories/clang/>clang</a>
@@ -104,6 +104,19 @@ Project
 </nav>
 </aside>
 </header>
+<article class="markdown book-post">
+<h2>
+<a href=/posts/linux/alias/>alias</a>
+</h2>
+<h5>2022-01-19 00:00:00</h5>
+<div>
+<a href=/categories/linux/>linux</a>
+</div>
+<p>方法 1 alias # alias tfa=&lsquo;terraform apply &ndash;auto-approve&rsquo;
+方法 2 ln # ln -sf /c/Program\ Files/Notepad++/notepad++.exe .
+方法 3 sh # $ cat pad #!/bin/sh /c/Program\ Files/Notepad++/notepad++.exe $*
+</p>
+</article>
 <article class="markdown book-post">
 <h2>
 <a href=/posts/tool/vagrant/>工程化虚拟机 vagrant</a>
@@ -125,7 +138,8 @@ Project
 <div>
 <a href=/categories/linux/>linux</a>
 </div>
-<p>加速 # # backup cp /etc/apt/sources.list /etc/apt/sources.list.bak sed 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list sed 's/security.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list # run sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list sed -i 's/security.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list apt-get update -y common # apt-get install procps # top ps apt-get install net-tools apt-get install iputils-ping apt-get install apt-transport-https ca-certificates # https user # adduser new_user usermod -G sudo new_user # 将用户添加到sudo组中 su - new_user vi bug 方向键 # vi /etc/vim/vimrc.tiny set nocompatible set backspace=2
+<p>加速 # # backup cp /etc/apt/sources.list /etc/apt/sources.list.bak sed 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list sed 's/security.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list # run sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list sed -i 's/security.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list apt-get update -y common # apt-get install procps # top ps apt-get install net-tools apt-get install iputils-ping apt-get install apt-transport-https ca-certificates # https user # adduser new_user usermod -G sudo new_user # 将用户添加到sudo组中 su - new_user vi bug 方向键 # vi /etc/vim/vimrc.tiny set nocompatible set backspace=2 ubuntu 加速 # cp /etc/apt/sources.
+<a href=/posts/linux/debian/>...</a>
 </p>
 </article>
 <article class="markdown book-post">
@@ -137,6 +151,18 @@ Project
 <a href=/categories/linux/>linux</a>
 </div>
 <p>wsl # Linux 的 Windows 子系统 https://docs.microsoft.com/zh-cn/windows/wsl/about cmd # wsl -l -v wsl --shutdown vim ~/.bashrc # alias d='cd /mnt/d' alias e='cd /mnt/e' alias z='cd /mnt/z' fix # netsh winsock reset
+</p>
+</article>
+<article class="markdown book-post">
+<h2>
+<a href=/posts/linux/shell/>shell 脚本</a>
+</h2>
+<h5>2017-12-13 00:00:00</h5>
+<div>
+<a href=/categories/linux/>linux</a>
+</div>
+<p>sh # Shell 教程 http://www.runoob.com/linux/linux-shell.html 分享70个经典的 Shell 脚本面试题与答案 https://www.jb51.net/article/135168.htm tsdb => csv => sql => influx => oss # # cd /z/wolanx/GiMC/src/backend/temp/mig # chcp.com 65001 # sh ./db2csv.sh # nohup bash all.sh > ~/1.log 2>&1 & set -e tt="20201231" tz="20200101" while [[ "${tt}" -ge "${tz}" ]]; do #tt="20220502" echo "start ${tt}" python3 db2csv.py $tt python2 /root/datax-wolanx/bin/datax.py /root/datax-wolanx/mig/${tt}.json > /dev/null rm ${tt}.json cat /z/data/${tt}__* > /z/data/${tt}.csv cat /z/data/${tt}.csv | wc -l rm /z/data/${tt}__* echo -e "# DML\n# CONTEXT-DATABASE: gimc-hk" > /z/data/${tt}.
+<a href=/posts/linux/shell/>...</a>
 </p>
 </article>
 <footer class=book-footer>
@@ -175,7 +201,7 @@ Project
 </li>
 <li class="flex justify-between">
 <a href=/categories/linux/>linux</a>
-<span>3</span>
+<span>5</span>
 </li>
 <li class="flex justify-between">
 <a href=/categories/clang/>clang</a>

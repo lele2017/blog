@@ -13,7 +13,7 @@
 <link rel=icon href=/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous>
 <script defer src=/flexsearch.min.js></script>
-<script defer src=/en.search.min.627ac2074de3361c936578c43c72784fd9093971154510b10c0fba3478a16bc3.js integrity="sha256-YnrCB03jNhyTZXjEPHJ4T9kJOXEVRRCxDA+6NHiha8M=" crossorigin=anonymous></script>
+<script defer src=/en.search.min.4227ca5d4ff8d8b5505b3abca16fd0e79039b1444be2647b87820433f415928a.js integrity="sha256-QifKXU/42LVQWzq8oW/Q55A5sURL4mR7h4IEM/QVkoo=" crossorigin=anonymous></script>
 <link rel=alternate type=application/rss+xml href=https://wolanx.com/posts/index.xml title=wolanx>
 </head>
 <body dir=ltr>
@@ -87,7 +87,7 @@ Project
 </li>
 <li class="flex justify-between">
 <a href=/categories/linux/>linux</a>
-<span>3</span>
+<span>5</span>
 </li>
 <li class="flex justify-between">
 <a href=/categories/clang/>clang</a>
@@ -104,6 +104,18 @@ Project
 </nav>
 </aside>
 </header>
+<article class="markdown book-post">
+<h2>
+<a href=/posts/docker/app/>docker app</a>
+</h2>
+<h5>2018-03-22 00:00:00</h5>
+<div>
+<a href=/categories/docker/>docker</a>
+</div>
+<p>infrastructure # portainer 管理 # docker run -d --restart=unless-stopped --name portainer -p 1234:9000 -v "/var/run/docker.sock:/var/run/docker.sock" portainer/portainer-ce:2.6.0 docker run -d --restart=unless-stopped --name portainer -p 1234:9000 -v "/var/run/docker.sock:/var/run/docker.sock" portainer/portainer:1.23.2 # //./pipe/docker_engine # "hosts": ["tcp://0.0.0.0:2375"] server { listen 80; charset utf-8; server_name uat.docker.manager; location / { proxy_pass http://127.0.0.1:1234; proxy_http_version 1.1; proxy_set_header Connection ""; proxy_set_header Host $host; proxy_set_header Scheme $scheme; } } registry # DOCKER_OPTS="--insecure-registry 192.168.1.19:5000" docker run -d -p 5000:5000 --restart=always --name registry registry:2.
+<a href=/posts/docker/app/>...</a>
+</p>
+</article>
 <article class="markdown book-post">
 <h2>
 <a href=/posts/docker/docker/>docker 基础</a>
@@ -140,6 +152,18 @@ Project
 All version is small about 100mb, quick to download and running fast. They are cover my work in everywhere, you can try it. include:
 mysql postgres redis mongo apcu gd xdebug bcmath zip FROM php:7.1.11-fpm-alpine RUN apk add --no-cache freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev \ && apk add --no-cache --virtual .build-deps autoconf g++ libssh2 openssl openssl-dev make pcre-dev tree curl \ && apk add --no-cache postgresql-dev \ && docker-php-ext-configure gd \ --with-gd \ --with-freetype-dir=/usr/include/ \ --with-png-dir=/usr/include/ \ --with-jpeg-dir=/usr/include/ \ && pecl install mongodb-1.
 <a href=/posts/docker/php.dockerfile/>...</a>
+</p>
+</article>
+<article class="markdown book-post">
+<h2>
+<a href=/posts/linux/shell/>shell 脚本</a>
+</h2>
+<h5>2017-12-13 00:00:00</h5>
+<div>
+<a href=/categories/linux/>linux</a>
+</div>
+<p>sh # Shell 教程 http://www.runoob.com/linux/linux-shell.html 分享70个经典的 Shell 脚本面试题与答案 https://www.jb51.net/article/135168.htm tsdb => csv => sql => influx => oss # # cd /z/wolanx/GiMC/src/backend/temp/mig # chcp.com 65001 # sh ./db2csv.sh # nohup bash all.sh > ~/1.log 2>&1 & set -e tt="20201231" tz="20200101" while [[ "${tt}" -ge "${tz}" ]]; do #tt="20220502" echo "start ${tt}" python3 db2csv.py $tt python2 /root/datax-wolanx/bin/datax.py /root/datax-wolanx/mig/${tt}.json > /dev/null rm ${tt}.json cat /z/data/${tt}__* > /z/data/${tt}.csv cat /z/data/${tt}.csv | wc -l rm /z/data/${tt}__* echo -e "# DML\n# CONTEXT-DATABASE: gimc-hk" > /z/data/${tt}.
+<a href=/posts/linux/shell/>...</a>
 </p>
 </article>
 <article class="markdown book-post">
@@ -230,7 +254,7 @@ Program: black Arguments: $FileName$ Work dir: $FileDir$ Terminal # C:\Git\bin\s
 </li>
 <li class="flex justify-between">
 <a href=/categories/linux/>linux</a>
-<span>3</span>
+<span>5</span>
 </li>
 <li class="flex justify-between">
 <a href=/categories/clang/>clang</a>
